@@ -16,6 +16,8 @@ public class Evento {
 	
 	private LocalDateTime dateEnd;
 
+	private TipoEvento tipoEvento;
+	
 	public Long getId() {
 		return id;
 	}
@@ -62,6 +64,14 @@ public class Evento {
 
 	public void setDateEnd(LocalDateTime dateEnd) {
 		this.dateEnd = dateEnd;
+	}
+
+	public TipoEvento getTipoEvento() {
+		return tipoEvento;
+	}
+
+	public void setTipoEvento(TipoEvento tipoEvento) {
+		this.tipoEvento = tipoEvento;
 	}
 	
 }
