@@ -23,37 +23,22 @@ public class SecurityConfig {
 
 	@Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		
-		
 		http.csrf(csrf -> csrf.disable())
-
-        .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-        .authorizeHttpRequests(req -> {
-        	req.requestMatchers(HttpMethod.GET, "/").permitAll();
-        	req.requestMatchers(HttpMethod.GET, "/api/listAllUsers").anonymous();
-            req.requestMatchers(HttpMethod.POST, "/login").permitAll();
-            req.anyRequest().authenticated();
-        });
-        //.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
-        
+			.sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+			.authorizeHttpRequests(req -> {
+				req.requestMatchers(HttpMethod.GET, "/").permitAll();
+				req.requestMatchers(HttpMethod.POST, "/login").permitAll();
+				req.anyRequest().authenticated();
+			});
         
         return http.build();
     }
 	
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().requestMatchers("/ignore2");
+		return (web) -> web.ignoring().requestMatchers("/ignore2", "/swagger-ui/**","/swagger-ui.html", "/v3/api-docs/**", "/v2/api-docs/**", "/redoc.html");
 	}
-	
-	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	    http
-	        .csrf((csrf) -> csrf
-	            .ignoringRequestMatchers("/no-csrf")
-	        );
-	    return http.build();
-	}
-	
+
 	@Bean
 	AuthenticationManager authenticationManager(AuthenticationConfiguration configuration)
 	        throws Exception {
