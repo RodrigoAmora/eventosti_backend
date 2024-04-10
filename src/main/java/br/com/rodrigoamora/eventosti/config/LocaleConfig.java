@@ -32,9 +32,7 @@ public class LocaleConfig implements WebMvcConfigurer {
 	
 	@Bean
 	MessageSource messageSource() {
-	    ReloadableResourceBundleMessageSource messageSource
-	      = new ReloadableResourceBundleMessageSource();
-	    
+	    ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 	    messageSource.setBasename("classpath:messages");
 	    messageSource.setDefaultEncoding("ISO-8859-1");
 	    return messageSource;
@@ -46,7 +44,6 @@ public class LocaleConfig implements WebMvcConfigurer {
 	    bean.setValidationMessageSource(messageSource());
 	    return bean;
 	}
-	
     
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
