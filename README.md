@@ -17,7 +17,7 @@ Caso prefira usar o Postman, na pasta collections tem o arquivo com a collection
 Dependências:
 -------------
 Este projeto usa o Java 21 e as seguintes dependências:
-* Spring Boot 3.2.4
+* Spring Boot 3.1.5
 * Spring Security
 * Swagger
 * JPA
