@@ -11,10 +11,10 @@ import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
 
 @RestController
 @RequestMapping("/evento")
-public class EventosController {
+public class EventoApiController {
 
 	@Autowired
-	private EventoServiceImpl eventoService;
+	EventoServiceImpl eventoService;
 	
 	@PostMapping
 	public Evento salvarEvento(@RequestBody Evento evento) {

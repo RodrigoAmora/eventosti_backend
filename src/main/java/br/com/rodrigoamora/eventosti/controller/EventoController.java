@@ -11,7 +11,7 @@ import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
 
 @Controller
-public class EventosController {
+public class EventoController {
 
 	@Autowired
 	private EventoServiceImpl eventoService;
