@@ -100,6 +100,12 @@
 			<version>1.5.12</version>
 		</dependency>
 		
+		<!-- JPA -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
 		<!-- MySQL -->
 		<dependency>
 			<groupId>com.mysql</groupId>
@@ -113,51 +119,13 @@
 		    <artifactId>h2</artifactId>
 		    <scope>test</scope>
 		</dependency>
-
+		
+		<!-- Org.Json -->
 		<dependency>
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
 		    <version>20201115</version>
 		</dependency>
-		
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-text</artifactId>
-		    <version>1.8</version>
-		</dependency>
-		
-		<dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.2</version>
-            <scope>provided</scope>
-        </dependency>
-        
-        
-        <!-- 
-			Dependencies to solve the problem:
-			java.lang.classnotfoundexception javax.xml.bind.datatypeconverter
-		 -->
-		<dependency>
-	        <groupId>javax.xml.bind</groupId>
-	        <artifactId>jaxb-api</artifactId>
-	        <version>2.3.0</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>com.sun.xml.bind</groupId>
-	        <artifactId>jaxb-impl</artifactId>
-	        <version>2.3.0</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.glassfish.jaxb</groupId>
-	        <artifactId>jaxb-runtime</artifactId>
-	        <version>2.3.0</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>javax.activation</groupId>
-	        <artifactId>activation</artifactId>
-	        <version>1.1.1</version>
-	    </dependency>
 	</dependencies>
 
 	<build>
