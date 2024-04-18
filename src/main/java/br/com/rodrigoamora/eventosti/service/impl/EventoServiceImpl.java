@@ -2,11 +2,13 @@ package br.com.rodrigoamora.eventosti.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Component;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.repository.EventoRepository;
 import br.com.rodrigoamora.eventosti.service.EventoService;
 
+@Component
 public class EventoServiceImpl implements EventoService {
 
 	@Autowired
