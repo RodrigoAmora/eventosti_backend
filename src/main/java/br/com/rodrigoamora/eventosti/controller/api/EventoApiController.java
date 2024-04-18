@@ -14,7 +14,7 @@ import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
 public class EventoApiController {
 
 	@Autowired
-	EventoServiceImpl eventoService;
+	private EventoServiceImpl eventoService;
 	
 	@PostMapping
 	public Evento salvarEvento(@RequestBody Evento evento) {
