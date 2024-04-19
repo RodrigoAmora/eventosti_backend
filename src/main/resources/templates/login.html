@@ -8,9 +8,9 @@
 		
 		<div class="container">
 			<div class="row text-center">
-				<h1>Please Log In</h1>
+				<h1>Log In</h1>
 				
-				<hr>
+				<hr class="border border-primary border-3 opacity-75">
 				
 				<div th:if="${param.error}" class="mb-12">
 					Invalid username and password.
@@ -20,9 +20,9 @@
 					You have been logged out.
 				</div>
 				
-				<form th:action="@{/formLogin}" method="post">
+				<form th:action="@{/formLogin}" method="post" class="row g-3">
 					<div class="mb-3">
-						<input type="text" name="username" placeholder="Username" class="form-control" />
+						<input type="email" name="username" placeholder="Username" class="form-control" />
 					</div>
 					
 					<div class="mb-3">
@@ -30,7 +30,7 @@
 					</div>
 					
 					<div class="mb-12">
-						<input type="submit" value="Log in" class="btn btn-primary" />
+						<button type="submit" class="btn btn-primary" />Log in</button>
 					</div>
 				</form>
 			</div>
