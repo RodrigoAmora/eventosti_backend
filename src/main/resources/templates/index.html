@@ -8,6 +8,27 @@
 			<div class="row text-center">
 				<div class="clock"></div>
 			</div>
+			
+			<div id="listEventos" class="row">
+				<h3 class="main-title text-center">Lista de Eventos</h3>
+				
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th class="text-center" scope="col">Nome</th>
+							<th class="text-center" scope="col">Dt. Início</th>
+							<th class="text-center" scope="col">Tipo Evento</th>
+						</tr>
+					</thead>
+					<tr th:each="evento : ${eventos}">
+						<td style="text-align: center;"><span th:text="${evento.nome}"></span></td>
+						<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataInicio, 'dd/MM/yyyy')}"></span></td>
+						<td style="text-align: center;"><span th:text="${evento.tipoEvento}"></span></td>
+					</tr>
+				</table>
+			</div>
+			<!-- Fim da lista de eventos -->
+			
 		</div>
 		
 		<footer th:replace="~{base ::footer}"></footer>
