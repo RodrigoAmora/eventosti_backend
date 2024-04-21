@@ -20,6 +20,7 @@ Este projeto usa o Java 21 e as seguintes dependências:
 * Spring Boot 3.1.5
 * Spring Security
 * Swagger
+* OpenAPI
 * JPA
 * Devtools
 * jUnit
