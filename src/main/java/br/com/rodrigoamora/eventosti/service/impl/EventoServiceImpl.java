@@ -2,6 +2,8 @@ package br.com.rodrigoamora.eventosti.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
@@ -23,8 +25,9 @@ public class EventoServiceImpl implements EventoService {
 	public void apagarEventoPorId(Long id) {}
 
 	@Override
-	public Page<Evento> listarTodos() {
-		return null;
+	public Page<Evento> listarTodos(int page, int size) {
+		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
+		return this.eventoRepository.listarTodos(pageRequest);
 	}
 
 	@Override
