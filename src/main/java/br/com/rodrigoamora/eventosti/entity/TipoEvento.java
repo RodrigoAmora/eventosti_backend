@@ -1,5 +1,9 @@
 package br.com.rodrigoamora.eventosti.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum TipoEvento {
 
 	PRESENCIAL("PRESENCIAL"),
@@ -12,6 +16,7 @@ public enum TipoEvento {
 		this.tipoEvento = tipoEvento;
 	}
 
+	@JsonValue
 	public String getTipoEvento() {
 		return tipoEvento;
 	}
