@@ -1,6 +1,8 @@
 package br.com.rodrigoamora.eventosti.entity;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,9 +24,11 @@ public class Evento {
 	
 	private String site;
 	
-	private LocalDateTime dataInicio;
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dataInicio;
 	
-	private LocalDateTime dataFim;
+	@JsonFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dataFim;
 
 	private TipoEvento tipoEvento;
 
@@ -60,19 +64,19 @@ public class Evento {
 		this.site = site;
 	}
 
-	public LocalDateTime getDataInicio() {
+	public LocalDate getDataInicio() {
 		return dataInicio;
 	}
 
-	public void setDataInicio(LocalDateTime dataInicio) {
+	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
 
-	public LocalDateTime getDataFim() {
+	public LocalDate getDataFim() {
 		return dataFim;
 	}
 
-	public void setDataFim(LocalDateTime dataFim) {
+	public void setDataFim(LocalDate dataFim) {
 		this.dataFim = dataFim;
 	}
 
