@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rodrigoamora.eventosti.entity.Usuario;
-import br.com.rodrigoamora.eventosti.service.impl.UsuarioServiceImpl;
+import br.com.rodrigoamora.eventosti.service.impl.UuarioServiceImpl;
 
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioApiController {
 
 	@Autowired
-	private UsuarioServiceImpl usuarioService;
+	private UuarioServiceImpl usuarioService;
 	
 	@PostMapping
 	public Usuario salvarEvento(@RequestBody Usuario usuario) {
