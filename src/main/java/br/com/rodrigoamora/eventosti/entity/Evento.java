@@ -16,18 +16,18 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String title;
+	private String nome;
 	
-	private String description;
+	private String descricao;
 	
 	private String site;
 	
-	private LocalDateTime dateStart;
+	private LocalDateTime dataInicio;
 	
-	private LocalDateTime dateEnd;
+	private LocalDateTime dataFim;
 
 	private TipoEvento tipoEvento;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -36,20 +36,20 @@ public class Evento {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public String getSite() {
@@ -60,20 +60,20 @@ public class Evento {
 		this.site = site;
 	}
 
-	public LocalDateTime getDateStart() {
-		return dateStart;
+	public LocalDateTime getDataInicio() {
+		return dataInicio;
 	}
 
-	public void setDateStart(LocalDateTime dateStart) {
-		this.dateStart = dateStart;
+	public void setDataInicio(LocalDateTime dataInicio) {
+		this.dataInicio = dataInicio;
 	}
 
-	public LocalDateTime getDateEnd() {
-		return dateEnd;
+	public LocalDateTime getDataFim() {
+		return dataFim;
 	}
 
-	public void setDateEnd(LocalDateTime dateEnd) {
-		this.dateEnd = dateEnd;
+	public void setDataFim(LocalDateTime dataFim) {
+		this.dataFim = dataFim;
 	}
 
 	public TipoEvento getTipoEvento() {
