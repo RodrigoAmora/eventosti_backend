@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.rodrigoamora.eventosti.entity.Usuario;
 import br.com.rodrigoamora.eventosti.repository.UsuarioRepository;
 import br.com.rodrigoamora.eventosti.service.UsuarioService;
-import br.com.rodrigoamora.eventosti.validator.PasswordValidator;
+import br.com.rodrigoamora.eventosti.validador.SenhaValidador;
 
 public class UuarioServiceImpl implements UsuarioService {
 
@@ -31,7 +31,7 @@ public class UuarioServiceImpl implements UsuarioService {
 	}
 
 	private String encryptPassword(String password) {
-		return PasswordValidator.encryptPassword(password);
+		return SenhaValidador.encryptPassword(password);
 	}
 	
 }
