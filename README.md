@@ -1,5 +1,7 @@
 # eventosti_backend
-Projeto de uma API em Java e Spring Boot que exibe eventos de tecnologia.
+Descrição:
+----------
+Projeto que exibe eventos de TI, feito em Java e Spring Boot.
 
 <hr>
 
