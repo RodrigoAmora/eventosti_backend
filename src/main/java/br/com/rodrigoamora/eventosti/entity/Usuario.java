@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name="usuarios")
@@ -27,12 +28,15 @@ public class Usuario {
 	private String email;
 	private String senha;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@Transient
+	private String hasError;
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     @JoinTable(
             name="users_roles",
-            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="ID")},
-            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="ID")})
-    private List<Role> roles = new ArrayList<>();
+            joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+            inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
+    private List<Role> roles;
 	
 	public Long getId() {
 		return id;
@@ -68,11 +72,22 @@ public class Usuario {
 	}
 
 	public List<Role> getRoles() {
+		if (roles == null) {
+			roles = new ArrayList<Role>();
+		}
 		return roles;
 	}
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getHasError() {
+		return hasError;
+	}
+
+	public void setHasError(String hasError) {
+		this.hasError = hasError;
 	}
 	
 }
