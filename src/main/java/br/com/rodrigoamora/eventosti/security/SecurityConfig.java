@@ -36,8 +36,8 @@ public class SecurityConfig {
 			.sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			.authorizeHttpRequests(req -> {
 				req.requestMatchers(HttpMethod.GET, "/").permitAll();
-				//req.requestMatchers(HttpMethod.GET, "/login").permitAll();
-				req.requestMatchers(HttpMethod.POST, "/usuario").permitAll();
+				req.requestMatchers(HttpMethod.GET, "/login").permitAll();
+				req.requestMatchers(HttpMethod.GET, "/api/evento/**").permitAll();
 				req.anyRequest().authenticated();
 			}).formLogin(
                     form -> form
@@ -56,7 +56,7 @@ public class SecurityConfig {
 	
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().requestMatchers("/ignore2", "/swagger-ui/**","/swagger-ui.html", "/v3/api-docs/**", "/v2/api-docs/**", "/redoc.html", "css/**", "js/**");
+		return (web) -> web.ignoring().requestMatchers("/ignore2", "/swagger-ui/**","/swagger-ui.html", "/v3/api-docs/**", "/v2/api-docs/**", "/redoc.html", "css/**", "js/**", "assets/**");
 	}
 
 	@Bean
@@ -69,7 +69,7 @@ public class SecurityConfig {
 	static PasswordEncoder passwordEncoder() {
 	    return new BCryptPasswordEncoder();
 	}
-
+	
 	@Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(this.userDetailsService)
