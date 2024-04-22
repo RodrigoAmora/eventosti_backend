@@ -1,36 +1,51 @@
 <html>
-	<head th:replace="~{base :: head}"></head>
+<head th:replace="~{base :: head}"></head>
 	
-	<body>
-		<head th:replace="~{base :: header}"></head>
-		
-		<div class="container">
-			<div class="row text-center">
-				<div class="clock"></div>
-			</div>
-			
-			<div id="listEventos" class="row">
-				<h3 class="main-title text-center">Lista de Eventos</h3>
-				
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th class="text-center" scope="col">Nome</th>
-							<th class="text-center" scope="col">Dt. Início</th>
-							<th class="text-center" scope="col">Tipo Evento</th>
-						</tr>
-					</thead>
-					<tr th:each="evento : ${eventos}">
-						<td style="text-align: center;"><span th:text="${evento.nome}"></span></td>
-						<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataInicio, 'dd/MM/yyyy')}"></span></td>
-						<td style="text-align: center;"><span th:text="${evento.tipoEvento}"></span></td>
-					</tr>
-				</table>
-			</div>
-			<!-- Fim da lista de eventos -->
-			
+<body>
+	<head th:replace="~{base :: header}"></head>
+	
+	<div class="container">
+		<div class="row text-center">
+			<div class="md-3"></div>
+			<div class="md-3 clock"></div>
+			<div class="md-3"></div>
 		</div>
 		
-		<footer th:replace="~{base ::footer}"></footer>
-	</body>
+		<div id="listEventos" class="row">
+			<h3 class="main-title text-center">Lista de Eventos</h3>
+			
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="text-center" scope="col">Nome</th>
+						<th class="text-center" scope="col">Dt. Início</th>
+						<th class="text-center" scope="col">Tipo Evento</th>
+					</tr>
+				</thead>
+				<tr th:each="evento : ${eventos}">
+					<td style="text-align: center;"><span th:text="${evento.nome}"></span></td>
+					<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataInicio, 'dd/MM/yyyy')}"></span></td>
+					<td style="text-align: center;"><span th:text="${evento.tipoEvento}"></span></td>
+				</tr>
+			</table>
+		</div>
+		<!-- Fim da lista de eventos -->
+		
+		<div class="row">
+			<ul class="pagination pagination-md justify-content-center">
+				<nav th:if="${eventos.totalPages > 0}" aria-label="Page navigation example"
+				     th:each="pageNumber : ${pageNumbers}">
+					<li class="page-item">
+						<a th:href="@{/(size=${eventos.size}, page=${pageNumber})}"
+					        th:text=${pageNumber}
+							class="page-link"></a>
+					</li>
+				</nav>
+			</ul>
+		</div>
+		<!-- Fim da pafinação -->
+	</div>
+	
+	<footer th:replace="~{base ::footer}"></footer>
+</body>
 </html>

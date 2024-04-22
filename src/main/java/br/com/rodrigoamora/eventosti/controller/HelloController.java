@@ -1,10 +1,14 @@
 package br.com.rodrigoamora.eventosti.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
@@ -15,10 +19,16 @@ public class HelloController {
 	@Autowired
 	private EventoServiceImpl eventoService;
 	
-	@GetMapping("/")
-	public String index(Model model) {
-		Page<Evento> eventos = this.eventoService.listarTodos(0, 20);
-		model.addAttribute("eventos", eventos);
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Model model,
+		      			@RequestParam("page") Optional<Integer> page,
+		      			@RequestParam("size") Optional<Integer> size) {
+		int currentPage = page.orElse(1);
+        int pageSize = size.orElse(5);
+
+		Page<Evento> eventos = this.eventoService.listarTodos(currentPage-1, pageSize);
+		model = this.eventoService.setModel(model, eventos);
+		
 		return "index";
 	}
 	
