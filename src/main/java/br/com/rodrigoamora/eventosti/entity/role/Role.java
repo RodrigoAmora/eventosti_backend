@@ -2,6 +2,8 @@ package br.com.rodrigoamora.eventosti.entity.role;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import br.com.rodrigoamora.eventosti.entity.Usuario;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +35,7 @@ public class Role {
 		this.id = id;
 	}
 
+	@JsonValue
 	public String getName() {
 		return name;
 	}
