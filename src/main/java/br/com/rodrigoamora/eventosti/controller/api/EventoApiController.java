@@ -27,6 +27,6 @@ public class EventoApiController {
 	@GetMapping
 	public Page<Evento> listarTodos(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
 			   				  @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
-		return this.eventoService.listarTodos(page, size);
+		return this.eventoService.listarEventosAprovados(page, size);
 	}
 }

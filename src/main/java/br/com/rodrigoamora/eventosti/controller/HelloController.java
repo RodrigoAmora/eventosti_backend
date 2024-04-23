@@ -26,7 +26,7 @@ public class HelloController {
 		int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
 
-		Page<Evento> eventos = this.eventoService.listarTodos(currentPage-1, pageSize);
+		Page<Evento> eventos = this.eventoService.listarEventosAprovados(currentPage-1, pageSize);
 		model = this.eventoService.setModel(model, eventos);
 		
 		return "index";
