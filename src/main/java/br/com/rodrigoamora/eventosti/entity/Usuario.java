@@ -31,12 +31,12 @@ public class Usuario {
 	@Transient
 	private String hasError;
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
             name="users_roles",
             joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList<>();
 	
 	public Long getId() {
 		return id;
@@ -72,9 +72,6 @@ public class Usuario {
 	}
 
 	public List<Role> getRoles() {
-		if (roles == null) {
-			roles = new ArrayList<Role>();
-		}
 		return roles;
 	}
 
