@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +35,7 @@ public class EventoController {
 	}
 	
 	@GetMapping("/evento/aprovar")
+	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
 	public String aprovar(Model model,
   						  @RequestParam("page") Optional<Integer> page,
   						  @RequestParam("size") Optional<Integer> size) {
@@ -47,6 +49,7 @@ public class EventoController {
 	}
 	
 	@GetMapping("/evento/{id}/aprovar")
+	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
 	public String aprovar(@PathVariable Long id){
 		this.eventoService.aprovarEvento(id);
 		return "redirect:/evento/aprovar";
