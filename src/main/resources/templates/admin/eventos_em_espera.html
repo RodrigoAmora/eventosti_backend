@@ -1,0 +1,71 @@
+<html>
+<head th:replace="~{base :: head}"></head>
+	
+<body>
+<div class="container">
+	<div class="row col-12">
+		<div th:unless="${session.isEmpty()}">
+			<a class="navbar-brand" href="/logout">
+				<button type="button" class="btn btn-primary">Sair</button>
+			</a>
+		</div>
+	</div>
+	
+	<hr>
+	
+	<div class="row text-center">
+		<div class="md-3"></div>
+		<div class="md-3 clock"></div>
+		<div class="md-3"></div>
+	</div>
+	
+	<div id="listEventos" class="row">
+		<h3 class="main-title text-center" th:text="#{message.event.waiting_events}"></h3>
+		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="text-center" scope="col"	th:text="#{message.event.name}"></th>
+					<th class="text-center" scope="col"	th:text="#{message.event.date_start}"></th>
+					<th class="text-center" scope="col"	th:text="#{message.event.date_end}"></th>
+					<th class="text-center" scope="col"	th:text="#{message.event.type_event}"></th>
+					<th class="text-center" scope="col"	th:text="#{message.event.site}"></th>
+					<th class="text-center" scope="col"	th:text="#{message.event.aprove}"></th>
+				</tr>
+			</thead>
+			<tr th:each="evento : ${eventos}">
+				<td style="text-align: center;"><span th:text="${evento.nome}"></span></td>
+				<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataInicio, 'dd/MM/yyyy')}"></span></td>
+				<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataFim, 'dd/MM/yyyy')}"></span></td>
+				<td style="text-align: center;"><span th:text="${evento.tipoEvento}"></span></td>
+				<td style="text-align: center;">
+					<a th:href="${evento.site}" target="_blank">
+						<span th:text="${evento.site}"></span>
+					</a>
+				</td>
+				<td style="text-align: center;">
+					<a th:href="@{/evento/{id}/aprovar(id=${evento.id})}">
+						<img src="../assets/img/ic_aprove.svg" width="25" height="25" />
+					</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!-- Fim da lista de eventos -->
+	
+	<div class="row">
+		<ul class="pagination pagination-md justify-content-center">
+			<nav th:if="${eventos.totalPages > 0}" aria-label="Page navigation example"
+			     th:each="pageNumber : ${pageNumbers}">
+				<li class="page-item">
+					<a th:href="@{/evento/aprovar(size=${eventos.size}, page=${pageNumber})}"
+				        th:text=${pageNumber}
+						class="page-link"></a>
+				</li>
+			</nav>
+		</ul>
+	</div>
+	<!-- Fim da pafinação -->
+</div>
+</body>
+</html>

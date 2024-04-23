@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
@@ -34,23 +33,23 @@ public class EventoController {
 		return "redirect:/";
 	}
 	
-	@PostMapping("/evento/aprovar")
+	@GetMapping("/evento/aprovar")
 	public String aprovar(Model model,
-  			@RequestParam("page") Optional<Integer> page,
-  			@RequestParam("size") Optional<Integer> size) {
+  						  @RequestParam("page") Optional<Integer> page,
+  						  @RequestParam("size") Optional<Integer> size) {
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(5);
 		
 		Page<Evento> eventos = this.eventoService.listarEventosEmEspera(currentPage-1, pageSize);
 		model = this.eventoService.setModel(model, eventos);
 		
-		return "redirect:admin/eventos_em_espera";
+		return "admin/eventos_em_espera";
 	}
 	
-	@PutMapping("/evento/{id}/aprovar")
+	@GetMapping("/evento/{id}/aprovar")
 	public String aprovar(@PathVariable Long id){
 		this.eventoService.aprovarEvento(id);
-		return "redirect:admin/eventos_em_espera";
+		return "redirect:/evento/aprovar";
 	}
 	
 }
