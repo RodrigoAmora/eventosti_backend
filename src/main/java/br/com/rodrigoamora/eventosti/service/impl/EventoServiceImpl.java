@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
+import br.com.rodrigoamora.eventosti.entity.StatusEvento;
 import br.com.rodrigoamora.eventosti.repository.EventoRepository;
 import br.com.rodrigoamora.eventosti.service.EventoService;
 
@@ -23,6 +24,7 @@ public class EventoServiceImpl implements EventoService {
 	
 	@Override
 	public Evento salvarEvento(Evento evento) {
+		evento.setStatus(StatusEvento.EM_ESPERA);
 		return this.eventoRepository.save(evento);
 	}
 

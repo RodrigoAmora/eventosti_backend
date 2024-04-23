@@ -3,6 +3,7 @@ package br.com.rodrigoamora.eventosti.entity;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +33,9 @@ public class Evento {
 
 	private TipoEvento tipoEvento;
 
+	@JsonIgnore
+	private StatusEvento status;
+	
 	public Long getId() {
 		return id;
 	}
@@ -86,6 +90,14 @@ public class Evento {
 
 	public void setTipoEvento(TipoEvento tipoEvento) {
 		this.tipoEvento = tipoEvento;
+	}
+
+	public StatusEvento getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusEvento status) {
+		this.status = status;
 	}
 	
 }
