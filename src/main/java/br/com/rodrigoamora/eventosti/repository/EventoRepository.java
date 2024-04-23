@@ -14,4 +14,7 @@ public interface EventoRepository extends JpaRepository<Evento, Long> {
 	@Query("FROM Evento e WHERE e.dataInicio >= CURDATE() AND e.status=APROVADO")
 	Page<Evento> listarEventosAprovados(Pageable pageable);
 	
+	@Query("FROM Evento e WHERE e.dataInicio >= CURDATE() AND e.status=EM_ESPERA")
+	Page<Evento> listarEventosEmEspera(Pageable pageable);
+	
 }

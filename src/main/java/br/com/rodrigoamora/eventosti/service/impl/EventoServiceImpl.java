@@ -29,14 +29,27 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
+	public Evento aprovarEvento(Long id) {
+		Evento evento = this.eventoRepository.findById(id).get();
+		evento.setStatus(StatusEvento.APROVADO);
+		return this.eventoRepository.save(evento);
+	}
+	
+	@Override
 	public void apagarEventoPorId(Long id) {}
 
 	@Override
-	public Page<Evento> listarTodos(int page, int size) {
+	public Page<Evento> listarEventosAprovados(int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
 		return this.eventoRepository.listarEventosAprovados(pageRequest);
 	}
 
+	@Override
+	public Page<Evento> listarEventosEmEspera(int page, int size) {
+		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
+		return this.eventoRepository.listarEventosEmEspera(pageRequest);
+	}
+	
 	@Override
 	public Page<Evento> buscarEventoPorNome(String nome) {
 		return null;
