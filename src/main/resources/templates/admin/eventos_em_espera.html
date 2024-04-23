@@ -1,71 +1,86 @@
 <html>
-<head th:replace="~{base :: head}"></head>
+<head th:replace="~{base :: head-amin}"></head>
 	
 <body>
-<div class="container">
-	<div class="row col-12">
-		<div th:unless="${session.isEmpty()}">
-			<a class="navbar-brand" href="/logout">
-				<button type="button" class="btn btn-primary">Sair</button>
-			</a>
-		</div>
-	</div>
+	<!-- Header Admin -->
+	<header id="headerAdmin" class="masthead" th:fragment="header-admin">
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNavAdmin">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Eventos TI</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" th:href="@{/}" th:text="#{message.navbar.home}"></a>
+						</li>
+						
+						<li th:unless="${session.isEmpty()}">
+							<a class="navbar-brand" href="/logout">
+								<button type="button" class="btn btn-primary">Sair</button>
+							</a>
+						</li>
+					</ul>
+					
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" aria-label="Search" th:placeholder="#{message.navbar.search_event}">
+						<button class="btn btn-outline-success" type="submit" th:text="#{message.navbar.search}"></button>
+					</form>
+		  		</div>
+			</div>
+		</nav>
+	</header>
 	
-	<hr>
-	
-	<div class="row text-center">
-		<div class="md-3"></div>
-		<div class="md-3 clock"></div>
-		<div class="md-3"></div>
-	</div>
-	
-	<div id="listEventos" class="row">
-		<h3 class="main-title text-center" th:text="#{message.event.waiting_events}"></h3>
-		
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th class="text-center" scope="col"	th:text="#{message.event.name}"></th>
-					<th class="text-center" scope="col"	th:text="#{message.event.date_start}"></th>
-					<th class="text-center" scope="col"	th:text="#{message.event.date_end}"></th>
-					<th class="text-center" scope="col"	th:text="#{message.event.type_event}"></th>
-					<th class="text-center" scope="col"	th:text="#{message.event.site}"></th>
-					<th class="text-center" scope="col"	th:text="#{message.event.aprove}"></th>
+	<div class="container">	
+		<div id="listEventos" class="row">
+			<h3 class="main-title text-center" th:text="#{message.event.waiting_events}"></h3>
+			
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="text-center" scope="col"	th:text="#{message.event.name}"></th>
+						<th class="text-center" scope="col"	th:text="#{message.event.date_start}"></th>
+						<th class="text-center" scope="col"	th:text="#{message.event.date_end}"></th>
+						<th class="text-center" scope="col"	th:text="#{message.event.type_event}"></th>
+						<th class="text-center" scope="col"	th:text="#{message.event.site}"></th>
+						<th class="text-center" scope="col"	th:text="#{message.event.aprove}"></th>
+					</tr>
+				</thead>
+				<tr th:each="evento : ${eventos}">
+					<td style="text-align: center;"><span th:text="${evento.nome}"></span></td>
+					<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataInicio, 'dd/MM/yyyy')}"></span></td>
+					<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataFim, 'dd/MM/yyyy')}"></span></td>
+					<td style="text-align: center;"><span th:text="${evento.tipoEvento}"></span></td>
+					<td style="text-align: center;">
+						<a th:href="${evento.site}" target="_blank">
+							<span th:text="${evento.site}"></span>
+						</a>
+					</td>
+					<td style="text-align: center;">
+						<a th:href="@{/evento/{id}/aprovar(id=${evento.id})}">
+							<img src="../assets/img/ic_aprove.svg" width="25" height="25" />
+						</a>
+					</td>
 				</tr>
-			</thead>
-			<tr th:each="evento : ${eventos}">
-				<td style="text-align: center;"><span th:text="${evento.nome}"></span></td>
-				<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataInicio, 'dd/MM/yyyy')}"></span></td>
-				<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataFim, 'dd/MM/yyyy')}"></span></td>
-				<td style="text-align: center;"><span th:text="${evento.tipoEvento}"></span></td>
-				<td style="text-align: center;">
-					<a th:href="${evento.site}" target="_blank">
-						<span th:text="${evento.site}"></span>
-					</a>
-				</td>
-				<td style="text-align: center;">
-					<a th:href="@{/evento/{id}/aprovar(id=${evento.id})}">
-						<img src="../assets/img/ic_aprove.svg" width="25" height="25" />
-					</a>
-				</td>
-			</tr>
-		</table>
+			</table>
+		</div>
+		<!-- Fim da lista de eventos -->
+		
+		<div class="row">
+			<ul class="pagination pagination-md justify-content-center">
+				<nav th:if="${eventos.totalPages > 0}" aria-label="Page navigation example"
+				     th:each="pageNumber : ${pageNumbers}">
+					<li class="page-item">
+						<a th:href="@{/evento/aprovar(size=${eventos.size}, page=${pageNumber})}"
+					        th:text=${pageNumber}
+							class="page-link"></a>
+					</li>
+				</nav>
+			</ul>
+		</div>
+		<!-- Fim da pafinação -->
 	</div>
-	<!-- Fim da lista de eventos -->
-	
-	<div class="row">
-		<ul class="pagination pagination-md justify-content-center">
-			<nav th:if="${eventos.totalPages > 0}" aria-label="Page navigation example"
-			     th:each="pageNumber : ${pageNumbers}">
-				<li class="page-item">
-					<a th:href="@{/evento/aprovar(size=${eventos.size}, page=${pageNumber})}"
-				        th:text=${pageNumber}
-						class="page-link"></a>
-				</li>
-			</nav>
-		</ul>
-	</div>
-	<!-- Fim da pafinação -->
-</div>
 </body>
 </html>
