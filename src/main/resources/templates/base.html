@@ -71,8 +71,42 @@
 
 
 <!-- Footer -->
-<footer th:fragment="footer" class="bg-black text-center py-5">
-	<div class="container px-5">
+<footer th:fragment="footer" class="bg-black">
+	<div class="container px-5 text-white-50 small" style="padding-top: 5px;">
+		<div class="row gx-5 align-items-center">
+			<div class="col-lg-6">
+				<ul class="list-group text-justify">
+					<li class="list-group-item list-group-item-dark" >Contato</li>
+					
+					<li class="list-group-item list-group-item-action">
+						<span class="col-6"><img src="assets/img/email.png" alt="E-mail" width="35" height="35"></span>
+						<span class="col-6">rodrigo.amora.freitas@gmail.com</span>
+					</li>
+					
+					<li class="list-group-item list-group-item-action">
+						<span class="col-6"><img src="assets/img/icon_x.svg" alt="E-mail" width="35" height="35"></span>
+						<span class="col-6">@eventos_ti</span>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="col-lg-6">
+				<p class="lead fw-normal text-muted mb-5">Baixa também o app do EventoTI no seu smart phone!</p>							
+				<a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/google-play-badge.svg" alt="PlaySotre" /></a>
+	            <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="AppStore" /></a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container text-center" 	style="padding-top: 10px;">
+	  	<div class="col-12">
+			<h5 class="text-white-50 small">Cirado por Rodrigo Amora</h5>
+		</div>
+	</div>
+	
+	<hr class="border border-primary border-3 opacity-75">
+	
+	<div class="container px-5 text-center">
         <div class="text-white-50 small">
             <div class="mb-2">&copy; Your Website 2023. All Rights Reserved.</div>
             <a href="#!">Privacy</a>
