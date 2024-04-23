@@ -55,4 +55,11 @@ public class EventoController {
 		return "redirect:/evento/aprovar";
 	}
 	
+	@GetMapping("/evento/{id}/apagar")
+	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
+	public String apagar(@PathVariable Long id){
+		this.eventoService.apagarEventoPorId(id);
+		return "redirect:/evento/aprovar";
+	}
+	
 }
