@@ -40,7 +40,9 @@ public class EventoServiceImpl implements EventoService {
 	}
 	
 	@Override
-	public void apagarEventoPorId(Long id) {}
+	public void apagarEventoPorId(Long id) {
+		this.eventoRepository.deleteById(id);
+	}
 
 	@Override
 	public Page<Evento> listarEventosAprovados(int page, int size) {
