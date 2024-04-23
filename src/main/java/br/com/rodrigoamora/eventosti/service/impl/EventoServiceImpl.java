@@ -24,7 +24,11 @@ public class EventoServiceImpl implements EventoService {
 	
 	@Override
 	public Evento salvarEvento(Evento evento) {
+		String site = this.verificarSite(evento.getSite());
+		evento.setSite(site);
+		
 		evento.setStatus(StatusEvento.EM_ESPERA);
+		
 		return this.eventoRepository.save(evento);
 	}
 
@@ -67,6 +71,13 @@ public class EventoServiceImpl implements EventoService {
 		model.addAttribute("eventos", eventos);
         
 		return model;
+	}
+	
+	private String verificarSite(String siteEvento) {
+		if (!siteEvento.contains("www.") || !siteEvento.contains("http")) {
+			return "http://"+siteEvento;
+		}
+		return siteEvento;
 	}
 	
 }
