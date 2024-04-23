@@ -11,7 +11,7 @@ import br.com.rodrigoamora.eventosti.entity.Evento;
 @Repository
 public interface EventoRepository extends JpaRepository<Evento, Long> {
 
-	@Query("FROM Evento e")
-	Page<Evento> listarTodos(Pageable pageable);
+	@Query("FROM Evento e WHERE e.dataInicio >= CURDATE() AND e.status=APROVADO")
+	Page<Evento> listarEventosAprovados(Pageable pageable);
 	
 }
