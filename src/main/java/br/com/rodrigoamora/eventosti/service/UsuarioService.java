@@ -1,5 +1,7 @@
 package br.com.rodrigoamora.eventosti.service;
 
+import org.springframework.data.domain.Page;
+
 import br.com.rodrigoamora.eventosti.entity.Usuario;
 
 public interface UsuarioService {
@@ -8,5 +10,7 @@ public interface UsuarioService {
 	public void apagarUsuario(Usuario usuario);
 	
 	public Usuario buscarUsuarioPorId(Long id);
+	
+	public Page<Usuario> listarTodos(int page, int size);
 	
 }
