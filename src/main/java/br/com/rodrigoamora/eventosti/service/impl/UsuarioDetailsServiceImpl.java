@@ -10,12 +10,13 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import br.com.rodrigoamora.eventosti.entity.Usuario;
+import br.com.rodrigoamora.eventosti.entity.role.Role;
 import br.com.rodrigoamora.eventosti.repository.UsuarioRepository;
 
-@Service
+@Component
 public class UsuarioDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
@@ -23,22 +24,22 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
 
 	@Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		Usuario userLogado = this.repository.findByEmail(email);
-		UserDetailsImpl user = UserDetailsImpl.build(userLogado);
+		Usuario user = this.repository.findByEmail(email);
+//		UserDetailsImpl user = UserDetailsImpl.build(userLogado);
         if (user != null) {
-            return new User(user.getUsername(),
-                    user.getPassword(),
-                    mapRolesToAuthorities(user.getAuthorities()));
+            return new User(user.getEmail(),
+                    user.getSenha(),
+                    mapRolesToAuthorities(user.getRoles()));
         }else{
             throw new UsernameNotFoundException("Invalid username or password.");
         }
     }
 
-    private Collection < ? extends GrantedAuthority> mapRolesToAuthorities(Collection<? extends GrantedAuthority> collection) {
-        Collection < ? extends GrantedAuthority> mapRoles = collection.stream()
-                .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
+	private Collection < ? extends GrantedAuthority> mapRolesToAuthorities(Collection <Role> roles) {
+        Collection < ? extends GrantedAuthority> mapRoles = roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
         return mapRoles;
     }
-	
+    
 }
