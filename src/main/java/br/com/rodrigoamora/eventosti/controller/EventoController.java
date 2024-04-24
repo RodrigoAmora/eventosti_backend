@@ -31,7 +31,7 @@ public class EventoController {
 	@PostMapping("/evento/cadastrar")
 	public String salvar(@ModelAttribute Evento evento){
 		this.eventoService.salvarEvento(evento);
-		return "redirect:/";
+		return "redirect:/evento/cadastrar?result=success";
 	}
 	
 	@GetMapping("/evento/aprovar")

@@ -8,9 +8,11 @@
 	</div>
 	
 	<div class="container">
+		<div class="alert alert-success text-center" role="alert" th:if="${param.result}" th:text="#{message.event.event_sent}"></div>
+			
 		<div class="row text-center">
 			<h3>Enviar Evento</h3>
-			<form th:action="@{/formLogin}" method="post" class="row g-3">
+			<form th:action="@{/evento/cadastrar}" method="post" class="row g-3">
 				<div class="mb-3">
 					<input type="text" name="nome" th:placeholder="#{message.event.type_name_evento}" class="form-control" />
 				</div>
