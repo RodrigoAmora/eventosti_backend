@@ -1,5 +1,5 @@
 <html>
-<head th:replace="~{base :: head-amin}"></head>
+<head th:replace="~{base :: head-admin}"></head>
 	
 <body>
 	<!-- Header Admin -->
@@ -46,6 +46,7 @@
 						<th class="text-center" scope="col"	th:text="#{message.event.type_event}"></th>
 						<th class="text-center" scope="col"	th:text="#{message.event.site}"></th>
 						<th class="text-center" scope="col"	th:text="#{message.event.aprove}"></th>
+						<th class="text-center" scope="col"	th:text="#{message.event.delete}"></th>
 					</tr>
 				</thead>
 				<tr th:each="evento : ${eventos}">
@@ -61,6 +62,11 @@
 					<td style="text-align: center;">
 						<a th:href="@{/evento/{id}/aprovar(id=${evento.id})}">
 							<img src="../assets/img/ic_aprove.svg" width="25" height="25" />
+						</a>
+					</td>
+					<td style="text-align: center;">
+						<a th:href="@{/evento/{id}/apagar(id=${evento.id})}">
+							<img src="../assets/img/ic_delete.svg" width="25" height="25" />
 						</a>
 					</td>
 				</tr>
