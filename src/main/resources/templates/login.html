@@ -22,15 +22,15 @@
 				
 				<form th:action="@{/formLogin}" method="post" class="row g-3">
 					<div class="mb-3">
-						<input type="email" name="username" placeholder="Username" class="form-control" />
+						<input type="email" name="email" th:placeholder="#{message.type_email}" class="form-control" />
 					</div>
 					
 					<div class="mb-3">
-						<input type="password" name="password" placeholder="Password" class="form-control" />
+						<input type="password" name="password" th:placeholder="#{message.type_password}" class="form-control" />
 					</div>
 					
 					<div class="mb-12">
-						<button type="submit" class="btn btn-primary" />Log in</button>
+						<button type="submit" class="btn btn-primary" th:text="#{message.log_in}" /></button>
 					</div>
 				</form>
 			</div>
