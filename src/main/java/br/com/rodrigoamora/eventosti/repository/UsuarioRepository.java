@@ -11,7 +11,7 @@ import br.com.rodrigoamora.eventosti.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-	public Usuario findByEmail(String email);
+	public Usuario findByLogin(String login);
 	
 	@Query("FROM Usuario")
 	Page<Usuario> listarTodos(Pageable pageable);

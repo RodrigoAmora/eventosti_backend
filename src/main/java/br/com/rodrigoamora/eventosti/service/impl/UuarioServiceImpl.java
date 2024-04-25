@@ -24,16 +24,16 @@ public class UuarioServiceImpl implements UsuarioService {
 	private RoleRepository roleRepository;
 	
 	public Usuario salvarUsuario(Usuario usuario) {
-		Role rolaAdmin = this.roleRepository.findByName(ERole.ROLE_USER.name());
+		Role rolaAdmin = this.roleRepository.findByName(ERole.ROLE_ADMIN.name());
 		usuario.getRoles().add(rolaAdmin);
 		
-		if (this.userRepository.findByEmail(usuario.getEmail()) != null) {
+		if (this.userRepository.findByLogin(usuario.getLogin()) != null) {
 			usuario.setHasError("user.with.email.already.created");
 			return usuario;
 		}
 		
-		String senhaUsuario = usuario.getSenha();
-		usuario.setSenha(this.encryptPassword(senhaUsuario));
+		String senhaUsuario = usuario.getPassword();
+		usuario.setPassword(this.encryptPassword(senhaUsuario));
 		
 		return this.userRepository.save(usuario);
 	}
