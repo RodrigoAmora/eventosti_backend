@@ -1,0 +1,10 @@
+.error {
+	background-color: red;
+	border: solid 2px brown;
+	border-radius: 5px;
+	color: aliceblue;
+	font-style: bold;
+	opacity: 70%;
+	margin-top: 7px;
+	text-align: center;
+}
