@@ -1,35 +1,34 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{admin/base :: head-admin}"></head>
 <body>
 	<head th:replace="~{admin/base :: header-admin}"></head>
-	
-	<div class="container">
-		<div class="row text-center">		<h3></h3></div>
-	</div>
 	
 	<div class="container">
 		<div class="alert alert-success text-center" role="alert" th:if="${param.result}" th:text="#{message.event.event_sent}"></div>
 			
 		<div class="row text-center">
 			<h3>Enviar Evento</h3>
-			<form th:action="@{/evento/cadastrar}" method="post" class="row g-3">
+			<form action="#" th:action="@{/evento/cadastrar}" th:object="${evento}" method="post" class="row g-3">
 				<div class="mb-3">
-					<input type="text" name="nome" th:placeholder="#{message.event.type_name_evento}" class="form-control" />
+					<input id="nome" type="text" th:field="*{nome}" th:placeholder="#{message.event.name_evento}" class="form-control" />
+					<p th:if="${#fields.hasErrors('nome')}" th:errorclass="error" th:errors="*{nome}" />
 				</div>
 				
 				<div class="col-md-6">
 					<label for="dataInicio" th:text="#{message.event.date_start}"></label>
-					<input type="date" id="dataInicio" name="dataInicio" class="form-control" />
+					<input type="date" id="dataInicio" th:field="*{dataInicio}" class="form-control" />
+					<p th:if="${#fields.hasErrors('dataInicio')}" th:errorclass="error" th:errors="*{dataInicio}" />
 				</div>
 				
 				<div class="col-md-6">
 					<label for="dataFim" th:text="#{message.event.date_end}"></label>
-					<input type="date" id="dataFim" name="dataFim" class="form-control" />
+					<input type="date" id="dataFim" th:field="*{dataFim}" class="form-control" />
+					<p th:if="${#fields.hasErrors('dataFim')}" th:errorclass="error" th:errors="*{dataFim}" />
 				</div>
 				
 				<div class="mb-3">
-					<label for="dataInicio" th:text="#{message.event.type_event}"></label>
-					<select class="form-select" aria-label="Default select example">
+					<label for="tipoEvento" th:text="#{message.event.type_event}"></label>
+					<select class="form-select" id="tipoEvento" th:field="*{tipoEvento}" aria-label="Default select example">
 						<option value="PRESENCIAL" th:text="#{message.event.type_presencial}"></option>
 						<option value="ON_LINE" th:text="#{message.event.type_online}"></option>
 						<option value="HIBRIDO" th:text="#{message.event.type_hibrid}"></option>
@@ -37,7 +36,8 @@
 				</div>
 				
 				<div class="mb-3">
-					<input type="text" id="site" name="site" th:placeholder="#{message.event.type_site_evento}" class="form-control" />
+					<input type="text" id="site" th:field="*{site}" th:placeholder="#{message.event.type_site_evento}" class="form-control" />
+					<p th:if="${#fields.hasErrors('site')}" th:errorclass="error" th:errors="*{site}" />
 				</div>
 				
 				<div class="mb-12">

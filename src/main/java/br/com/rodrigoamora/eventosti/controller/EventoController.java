@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
+import br.com.rodrigoamora.eventosti.entity.dto.EventoDTO;
 import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
+import jakarta.validation.Valid;
 
 @Controller
 public class EventoController {
@@ -29,8 +32,13 @@ public class EventoController {
 	}
 	
 	@PostMapping("/evento/cadastrar")
-	public String salvar(@ModelAttribute Evento evento){
-		this.eventoService.salvarEvento(evento);
+	public String salvar(@ModelAttribute("evento") @Valid EventoDTO evento, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			return "evento/enviar_evento";
+		}
+		
+		Evento event = evento.converterParaEvento();
+		this.eventoService.salvarEvento(event);
 		return "redirect:/evento/cadastrar?result=success";
 	}
 	
