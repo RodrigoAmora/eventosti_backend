@@ -127,6 +127,29 @@
 		    <artifactId>json</artifactId>
 		    <version>20201115</version>
 		</dependency>
+		
+		<!-- io.jsonwebtoken -->
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt</artifactId>
+		    <version>0.7.0</version>
+		</dependency>
+		
+		<!-- 
+			Dependencies to solve the problem:
+			java.lang.classnotfoundexception javax.xml.bind.datatypeconverter
+		 -->
+		<dependency>
+		    <groupId>javax.xml.bind</groupId>
+		    <artifactId>jaxb-api</artifactId>
+		    <version>2.3.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.eclipse.persistence</groupId>
+		    <artifactId>eclipselink</artifactId>
+		    <version>2.7.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
