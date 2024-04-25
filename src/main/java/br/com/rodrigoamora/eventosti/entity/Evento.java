@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,6 +33,7 @@ public class Evento {
 	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataFim;
 
+	@Enumerated(EnumType.STRING)
 	private TipoEvento tipoEvento;
 
 	@JsonIgnore
