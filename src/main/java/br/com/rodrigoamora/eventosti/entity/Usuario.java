@@ -25,8 +25,8 @@ public class Usuario {
 	private Long id;
 	
 	private String nome;
-	private String email;
-	private String senha;
+	private String login;
+	private String password;
 	
 	@Transient
 	private String hasError;
@@ -55,20 +55,20 @@ public class Usuario {
 	}
 	
 	
-	public String getEmail() {
-		return email;
+	public String getLogin() {
+		return login;
 	}
 	
-	public void setEmail(String email) {
-		this.email = email;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
 	
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String login) {
+		this.password = login;
 	}
 
 	public List<Role> getRoles() {
