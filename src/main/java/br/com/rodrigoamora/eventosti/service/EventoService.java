@@ -1,5 +1,7 @@
 package br.com.rodrigoamora.eventosti.service;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
@@ -14,6 +16,7 @@ public interface EventoService {
 	public Page<Evento> listarEventosAprovados(int page, int size);
 	public Page<Evento> listarEventosEmEspera(int page, int size);
 	
-	public Page<Evento> buscarEventoPorNome(String nome);
+	public Page<Evento> buscarEventoPorNome(String nome, int page, int size);
+	public Optional<Evento> buscarEventoPorId(Long id);
 
 }

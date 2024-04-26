@@ -1,6 +1,7 @@
 package br.com.rodrigoamora.eventosti.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -57,8 +58,14 @@ public class EventoServiceImpl implements EventoService {
 	}
 	
 	@Override
-	public Page<Evento> buscarEventoPorNome(String nome) {
-		return null;
+	public Optional<Evento> buscarEventoPorId(Long id) {
+		return this.eventoRepository.findById(id);
+	}
+	
+	@Override
+	public Page<Evento> buscarEventoPorNome(String nome, int page, int size) {
+		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
+		return this.eventoRepository.buscarEventoPorNome(nome, pageRequest);
 	}
 
 	public Model setModel(Model model, Page<Evento> eventos) {
