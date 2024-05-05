@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,10 +27,12 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService {
 		Usuario user = this.repository.findByLogin(email);
 //		UserDetailsImpl user = UserDetailsImpl.build(userLogado);
         if (user != null) {
-//            return new User(user.getEmail(),
-//                    user.getSenha(),
-//                    mapRolesToAuthorities(user.getRoles()));
-        	return UserDetailsImpl.build(user);
+            return new User(user.getLogin(),
+                    user.getPassword(),
+                    mapRolesToAuthorities(user.getRoles()));
+        	
+        	
+        	//return UserDetailsImpl.build(user);
         } else {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
