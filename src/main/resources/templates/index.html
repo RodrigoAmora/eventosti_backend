@@ -10,7 +10,7 @@
 			<div class="md-3"></div>
 		</div>
 		
-		<div id="listEventos" class="row">
+		<div id="listaEventos" class="row">
 			<h3 class="main-title text-center" th:text="#{message.event.events}"></h3>
 			
 			<table class="table table-striped">
@@ -24,10 +24,12 @@
 					</tr>
 				</thead>
 				<tr th:each="evento : ${eventos}">
-					<td style="text-align: center;"><span th:text="${evento.nome}"></span></td>
+					<td style="text-align: center;">
+						<a th:href="@{/verEvento(id=${evento.id})}"><span th:text="${evento.nome}"></span></a>
+					</td>
 					<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataInicio, 'dd/MM/yyyy')}"></span></td>
 					<td style="text-align: center;"><span th:text="${#temporals.format(evento.dataFim, 'dd/MM/yyyy')}"></span></td>
-					<td style="text-align: center;"><span th:text="${evento.tipoEvento}"></span></td>
+					<td style="text-align: center;"><span th:text="${evento.tipoEvento.tipoEvento}"></span></td>
 					<td style="text-align: center;">
 						<a th:href="${evento.site}" target="_blank">
 							<span th:text="${evento.site}"></span>

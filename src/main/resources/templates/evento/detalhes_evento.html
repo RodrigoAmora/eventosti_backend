@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/base :: head-admin}"></head>
+<body>
+	<head th:replace="~{admin/base :: header-admin}"></head>
+	
+	<div class="container">
+		<div id="listaEventos" class="row text-center">
+			<div class="col-12">
+				<span class="alert alert-success text-center" th:text="${evento.nome}"></span>
+			</div>
+			
+			<div class="col-6">
+				<div class="row">
+					<strong><span th:text="#{message.event.date_start}"></span></strong>
+				</div>
+				
+				<div class="row">
+					<span th:text="${evento.dataInicio}"></span>
+				</div>
+			</div>
+			
+			<div class="col-6">
+				<div class="row">
+					<strong><span th:text="#{message.event.date_end}"></span></strong>
+				</div>
+				
+				<div class="row">
+					<span th:text="${evento.dataFim}"></span>
+				</div>
+			</div>
+			
+			<div class="col-12">
+				<div class="row">
+					<strong><span th:text="#{message.event.description}"></span></strong>
+				</div>
+				
+				<div class="row">
+					<span th:text="${evento.descricao}"></span>
+				</div>
+			</div>
+			
+			<div class="col-12">
+				<div class="row">
+					<strong><span th:text="#{message.event.type_event}"></span></strong>
+				</div>
+				
+				<div class="row">
+					<span th:text="${evento.tipoEvento.tipoEvento}"></span>
+				</div>
+			</div>
+						
+			<hr>
+			
+			<div class="col-12">
+				<a th:href="${evento.site}" th:text="${evento.site}" target="_blank"></a>
+			</div>
+			
+			<hr>
+		</div>
+	</div>
+	
+	<head th:replace="~{admin/base :: footer-admin}"></head>
+</body>
+</html>

@@ -56,6 +56,14 @@ public class EventoController {
 		return "admin/eventos_em_espera";
 	}
 	
+	@GetMapping("/verEvento")
+	public String verEvento(Model model,
+			  				@RequestParam("id") Long id){
+		Evento evento = this.eventoService.buscarEventoPorId(id).get();
+		model.addAttribute("evento", evento);
+		return "evento/detalhes_evento";
+	}
+	
 	@GetMapping("/evento/{id}/aprovar")
 	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
 	public String aprovar(@PathVariable Long id){
