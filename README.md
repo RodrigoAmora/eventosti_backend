@@ -47,4 +47,9 @@ Para iniciar a aplicação via terminal, execute o comando no terminal na raiz d
 mvn spring-boot:run
 ```
 
+# Autor
+<b>Rodrigo Amora</b>
+
+LinkedIn: https://linkedin.com/in/rodrigoamora
+E-mail: rodrigo.amora.freitas@gmail.com
 <hr>
