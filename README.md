@@ -41,6 +41,7 @@ O projeto possui testes de API.
 Rodando o projeto:
 ------------------
 Para iniciar a aplicação via IDE, execute a classe `EventostiApplication`
+
 Para iniciar a aplicação via terminal, execute o comando no terminal na raiz do projeto:
 
 ```shell script
@@ -51,5 +52,6 @@ mvn spring-boot:run
 <b>Rodrigo Amora</b>
 
 LinkedIn: https://linkedin.com/in/rodrigoamora
+
 E-mail: rodrigo.amora.freitas@gmail.com
 <hr>
