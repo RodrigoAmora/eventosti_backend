@@ -18,7 +18,7 @@ Caso prefira usar o Postman, na pasta collections tem o arquivo com a collection
 
 Dependências:
 -------------
-Este projeto usa o Java 21 e as seguintes dependências:
+Este projeto usa o Java 17 e as seguintes dependências:
 * Spring Boot 3.1.5
 * Spring Security
 * Swagger
@@ -40,6 +40,11 @@ O projeto possui testes de API.
 
 Rodando o projeto:
 ------------------
-O porjeto usa o Spring Boot, para rodá-lo basta executar a classe `EventostiApplication`
+Para iniciar a aplicação via IDE, execute a classe `EventostiApplication`
+Para iniciar a aplicação via terminal, execute o comando no terminal na raiz do projeto:
+
+```shell script
+mvn spring-boot:run
+```
 
 <hr>
