@@ -15,11 +15,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import br.com.rodrigoamora.eventosti.security.jwt.JWTAuthenticationFilter;
-import br.com.rodrigoamora.eventosti.security.jwt.JWTLoginFilter;
 import br.com.rodrigoamora.eventosti.security.jwt.TokenAuthenticationService;
 import br.com.rodrigoamora.eventosti.service.BlackListAccessTokenService;
 import br.com.rodrigoamora.eventosti.service.impl.UsuarioDetailsServiceImpl;
@@ -114,11 +111,4 @@ public class SecurityConfig {
         return new TokenAuthenticationService(this.userDetailsService, this.blackListTokenService);
     }
     
-	
-	
-	
-	
-	
-	
-
 }
