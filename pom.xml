@@ -135,6 +135,10 @@
 		    <version>0.7.0</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+		</dependency>
 		<!-- 
 			Dependencies to solve the problem:
 			java.lang.classnotfoundexception javax.xml.bind.datatypeconverter
