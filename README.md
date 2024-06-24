@@ -29,10 +29,6 @@ Banco de dados:
 O projeto usa o MySQL para os ambientes de desenvolvimento e produção e o H2 para o ambiente de teste.<br>
 Para acessar o painel do H2: `<URL_DO_PORJETO>/h2-console`
 
-Testes:
--------
-O projeto possui testes de API.
-
 Gerando o arquivo .jar:
 -----------------------
 Para gerar o arquivo <b>.jar</b>, execute o comando via terminal no diretório raiz do projeto:
