@@ -20,7 +20,7 @@ public class UsuarioApiController {
 	private UuarioServiceImpl usuarioService;
 	
 	@PostMapping
-	public Usuario salvarEvento(@RequestBody Usuario usuario) {
+	public Usuario salvarUsuario(@RequestBody Usuario usuario) {
 		return this.usuarioService.salvarUsuario(usuario);
 	}
 	
