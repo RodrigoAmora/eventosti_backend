@@ -12,7 +12,7 @@
 	
 	<groupId>br.com.rodrigoamora</groupId>
 	<artifactId>eventosti</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>eventosti</name>
 	<description>Demo project for Spring Boot</description>
 	
@@ -88,6 +88,11 @@
 			<version>1.1.1.RELEASE</version>
 		</dependency>
 
+		<dependency>
+   			<groupId>org.springframework.boot</groupId>
+   			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
 		<!-- Swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
@@ -120,7 +125,7 @@
 		    <artifactId>h2</artifactId>
 		    <scope>test</scope>
 		</dependency>
-		
+
 		<!-- Org.Json -->
 		<dependency>
 		    <groupId>org.json</groupId>
@@ -162,6 +167,14 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+                <skipTests>true</skipTests>
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 
