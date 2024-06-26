@@ -21,7 +21,7 @@ services:
   web-service:
     build:
       context: .
-      dockerfile: eventosti-dockerfile
+      dockerfile: Dockerfile
     image: rodrigoamora/rodrigo-springboot
     ports:
       - "80:8080"
