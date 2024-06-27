@@ -19,7 +19,7 @@
 						
 						<li th:unless="${session.isEmpty()}">
 							<a class="navbar-brand" href="/logout">
-								<button type="button" class="btn btn-primary">Sair</button>
+								<button class="btn btn-outline-success" type="button" th:text="#{message.navbar.search}"></button>
 							</a>
 						</li>
 					</ul>
@@ -45,7 +45,7 @@
 						<th class="text-center" scope="col"	th:text="#{message.event.date_end}"></th>
 						<th class="text-center" scope="col"	th:text="#{message.event.type_event}"></th>
 						<th class="text-center" scope="col"	th:text="#{message.event.site}"></th>
-						<th class="text-center" scope="col"	th:text="#{message.event.aprove}"></th>
+						<th class="text-center" scope="col"	th:text="#{message.event.approve}"></th>
 						<th class="text-center" scope="col"	th:text="#{message.event.delete}"></th>
 					</tr>
 				</thead>
