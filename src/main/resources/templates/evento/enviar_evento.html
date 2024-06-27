@@ -7,7 +7,10 @@
 		<div class="alert alert-success text-center" role="alert" th:if="${param.result}" th:text="#{message.event.event_sent}"></div>
 			
 		<div class="row text-center">
-			<h3>Enviar Evento</h3>
+			<h3>
+				<p th:text="#{message.navbar.send_event}"></p>
+			</h3>
+			
 			<form action="#" th:action="@{/evento/cadastrar}" th:object="${evento}" method="post" class="row g-3">
 				<div class="mb-3">
 					<input id="nome" type="text" th:field="*{nome}" th:placeholder="#{message.event.name_evento}" class="form-control" />
