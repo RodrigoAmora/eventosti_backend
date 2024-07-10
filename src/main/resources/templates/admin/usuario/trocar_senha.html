@@ -1,0 +1,21 @@
+
+<html>
+	<head th:replace="~{admin/base :: head-admin}"></head>	
+<body>
+	<head th:replace="~{admin/base :: header-admin}"></head>
+	
+	<div class="container">
+		<div class="row">
+			<div class="text-center">
+				<form method="post" th:action="@{/usuario/{id}/trocarSenha(id=${usuarioId})}">
+					<input type="password" th:placeholder="#{message.user.change_password}" /> <br>
+					<input type="submit" th:txet="#{message.event.send}" />
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+</body>
+</html>

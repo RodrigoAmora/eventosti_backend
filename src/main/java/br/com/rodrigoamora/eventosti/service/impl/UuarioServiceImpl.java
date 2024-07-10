@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import br.com.rodrigoamora.eventosti.entity.Usuario;
@@ -54,6 +56,27 @@ public class UuarioServiceImpl implements UsuarioService {
 		return this.userRepository.findById(id).get();
 	}
 
+	public Usuario buscarUsuarioPorLogin(String login) {
+		return this.userRepository.findByLogin(login);
+	}
+	
+	public void trocarSenha(Usuario usuario) {
+		this.userRepository.save(usuario);
+	}
+	
+	public Usuario getUsuarioLogado() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		String nome;
+		if (principal instanceof UserDetails) {
+		    nome = ((UserDetails)principal).getUsername();
+		} else {
+		    nome = principal.toString();
+		}
+		
+		return this.buscarUsuarioPorLogin(nome);
+	}
+	
 	private String encryptPassword(String password) {
 		return SenhaValidador.encryptPassword(password);
 	}

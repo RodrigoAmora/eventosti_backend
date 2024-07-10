@@ -10,7 +10,12 @@ public interface UsuarioService {
 	public void apagarUsuario(Usuario usuario);
 	
 	public Usuario buscarUsuarioPorId(Long id);
+	public Usuario buscarUsuarioPorLogin(String login);
 	
 	public Page<Usuario> listarTodos(int page, int size);
+
+	public void trocarSenha(Usuario usuario);
+	
+	public Usuario getUsuarioLogado();
 	
 }
