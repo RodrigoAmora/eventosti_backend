@@ -26,8 +26,8 @@ public class EventoController {
 	private EventoServiceImpl eventoService;
 	
 	@GetMapping("/evento/cadastrar")
-	public String cadastrar(Model model){
-		model.addAttribute("evento", new Evento()); 
+	public String cadastrar(Model model) {
+		model.addAttribute("evento", new Evento());
 		return "evento/enviar_evento";
 	}
 	
@@ -39,6 +39,7 @@ public class EventoController {
 		
 		Evento event = evento.converterParaEvento();
 		this.eventoService.salvarEvento(event);
+		
 		return "redirect:/evento/cadastrar?result=success";
 	}
 	
@@ -58,7 +59,7 @@ public class EventoController {
 	
 	@GetMapping("/verEvento")
 	public String verEvento(Model model,
-			  				@RequestParam("id") Long id){
+			  				@RequestParam("id") Long id) {
 		Evento evento = this.eventoService.buscarEventoPorId(id).get();
 		model.addAttribute("evento", evento);
 		return "evento/detalhes_evento";
@@ -66,14 +67,14 @@ public class EventoController {
 	
 	@GetMapping("/evento/{id}/aprovar")
 	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
-	public String aprovar(@PathVariable Long id){
+	public String aprovar(@PathVariable Long id) {
 		this.eventoService.aprovarEvento(id);
 		return "redirect:/evento/aprovar";
 	}
 	
 	@GetMapping("/evento/{id}/apagar")
 	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
-	public String apagar(@PathVariable Long id){
+	public String apagar(@PathVariable Long id) {
 		this.eventoService.apagarEventoPorId(id);
 		return "redirect:/evento/aprovar";
 	}
