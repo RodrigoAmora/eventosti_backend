@@ -8,8 +8,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
+import jakarta.transaction.Transactional;
 
 @Repository
+@Transactional
 public interface EventoRepository extends JpaRepository<Evento, Long> {
 
 	@Query("FROM Evento e WHERE e.dataInicio >= CURDATE() AND e.status=APROVADO")
