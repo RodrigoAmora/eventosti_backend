@@ -1,39 +1,40 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-		<head th:replace="~{base :: head}"></head>
-	<body>
-		<head th:replace="~{base :: header}"></head>
-		
-		<div class="container">
-			<div class="row text-center">
-				<h1>Log In</h1>
-				
-				<hr class="border border-primary border-3 opacity-75">
-				
-				<div th:if="${param.error}" class="mb-12">
-					Invalid username and password.
-				</div>
-				
-				<div th:if="${param.logout}" class="mb-12">
-					You have been logged out.
-				</div>
-				
-				<form th:action="@{/formLogin}" method="post" class="row g-3">
-					<div class="mb-3">
-						<input type="email" name="username" th:placeholder="#{message.type_email}" class="form-control" />
-					</div>
-					
-					<div class="mb-3">
-						<input type="password" name="password" th:placeholder="#{message.type_password}" class="form-control" />
-					</div>
-					
-					<div class="mb-12">
-						<button type="submit" class="btn btn-primary" th:text="#{message.log_in}" /></button>
-					</div>
-				</form>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{base :: head}"></head>
+<body>
+	<head th:replace="~{base :: header}"></head>
+	
+	<div class="container">
+		<div class="row text-center">
+			<h1>Log In</h1>
+			
+			<hr class="border border-primary border-3 opacity-75">
+			
+			<div th:if="${param.error}" class="mb-12">
+				<p class="errorMessage" th:text="#{message.error.login_invalid}"></p>
 			</div>
+			
+			<div th:if="${param.logout}" class="mb-12">
+				<p class="successMessage" th:text="#{message.log_out}"></p>
+			</div>
+			
+			<form th:action="@{/formLogin}" method="post" class="row g-3">
+				<div class="mb-3">
+					<input type="email" name="username" th:placeholder="#{message.type_email}" class="form-control" />
+				</div>
+				
+				<div class="mb-3">
+					<input type="password" name="password" th:placeholder="#{message.type_password}" class="form-control" />
+				</div>
+				
+				<div class="mb-12">
+					<button type="submit" class="btn btn-primary" th:text="#{message.log_in}" /></button>
+				</div>
+			</form>
 		</div>
-		
-		<head th:replace="~{base :: footer}"></head>
-	</body>
+	</div>
+	
+	<head th:replace="~{base :: footer}"></head>
+</body>
 </html>
