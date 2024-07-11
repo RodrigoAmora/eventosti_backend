@@ -83,7 +83,10 @@ public class EventoServiceImpl implements EventoService {
 	}
 	
 	private String verificarSite(String siteEvento) {
-		if (!siteEvento.contains("www.") || !siteEvento.contains("http")) {
+		if (siteEvento == null) {
+			return "";
+		}
+		if (!siteEvento.contains("www.") && !siteEvento.contains("http")) {
 			return "http://"+siteEvento;
 		}
 		return siteEvento;
