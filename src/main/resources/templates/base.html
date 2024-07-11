@@ -6,10 +6,10 @@
 	<!-- CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	
-	<link th:href="@{/css/form.css}" type="text/css" rel="stylesheet">
-	<link th:href="@{/css/relogio.css}" type="text/css" rel="stylesheet">
-	<link th:href="@{/css/neon.css}" type="text/css" rel="stylesheet">
-	<link th:href="@{/css/styles.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/assets/css/form.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/assets/css/relogio.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/assets/css/neon.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/assets/css/styles.css}" type="text/css" rel="stylesheet">
 	
 	<title>Eventos TI</title>
 </head>
@@ -17,7 +17,7 @@
 <!-- Header -->
 <header id="header" class="masthead" th:fragment="header">
 	<!--<nav class="navbar bg-primary border-bottom border-body navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">-->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="#">Eventos TI</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,24 +34,25 @@
 						<a class="nav-link" th:href="@{/evento/cadastrar}" th:text="#{message.navbar.send_event}"></a>
 					</li>
 					
-					<div th:if="${session.isEmpty()}">
-					<li class="nav-item">
-						<a class="nav-link" href="/formLogin" th:text="#{message.log_in}"></a>
-					</li>
+					
+					<div sec:authorize="!isAuthenticated()">
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/formLogin}" th:text="#{message.log_in}"></a>
+						</li>
 					</div>
 					
-					<div th:unless="${session.isEmpty()}">
-					<li class="nav-item">
-						<a class="nav-link" th:href="@{/evento/aprovar}" th:text="#{message.event.approve}"></a>
-					</li>
+					<div sec:authorize="isAuthenticated()">
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/evento/aprovar}" th:text="#{message.event.approve}"></a>
+						</li>
+
+						
 					</div>
 					
-					<div th:unless="${session.isEmpty()}">			
-					<li class="nav-item">
-						<a class="navbar-brand" href="/logout">
-							<button type="button" class="btn btn-primary">Sair</button>
-						</a>
-					</li>
+					<div sec:authorize="isAuthenticated()">
+						<li class="nav-item">
+							<a class="nav-link" href="/logout" th:text="#{message.log_out}"></a>
+						</li>
 					</div>
 				</ul>
 				
@@ -63,7 +64,7 @@
 		</div>
 	</nav>
 	
-	<div class="ovrerlay" style="padding-top: 5px;">
+	<div class="row" style="padding-top: 5px;">
 		<div class="intro text-center">
 	    	<div class="container container-header">
 				<div class="row gx-5 align-items-center">
@@ -80,8 +81,8 @@
 						<div class="col-lg-12">
 							<p class="lead fw-normal text-muted mb-5">Baixa também o app do EventoTI no seu smart phone!</p>
 							
-							<a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" th:src="@{/assets/img/google-play-badge.svg}" alt="PlaySotre" /></a>
-			                <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" th:src="@{/assets/img/app-store-badge.svg}" alt="AppStore" /></a>
+							<a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" th:src="@{/assets/img/google-play-badge.svg}" width="150" height="70" alt="PlaySotre" /></a>
+			                <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" th:src="@{/assets/img/app-store-badge.svg}" width="150" height="70" alt="AppStore" /></a>
 						</div>
 					</div>
 				</div>
@@ -100,21 +101,22 @@
 					<li class="list-group-item list-group-item-dark" >Contato</li>
 					
 					<li class="list-group-item list-group-item-action">
-						<span class="col-6"><img src="assets/img/email.png" alt="E-mail" width="35" height="35"></span>
+						<span class="col-6"><img th:src="@{/assets/img/email.png}" alt="E-mail" width="35" height="35"></span>
 						<span class="col-6">rodrigo.amora.freitas@gmail.com</span>
 					</li>
 					
 					<li class="list-group-item list-group-item-action">
-						<span class="col-6"><img src="assets/img/icon_x.svg" alt="E-mail" width="35" height="35"></span>
+						<span class="col-6"><img th:src="@{/assets/img/icon_x.svg}" alt="E-mail" width="35" height="35"></span>
 						<span class="col-6">@eventos_ti</span>
 					</li>
 				</ul>
 			</div>
 			
 			<div class="col-lg-6">
-				<p class="lead fw-normal text-muted mb-5" th:text="#{message.footer.download_apps}"></p>							
-				<a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/google-play-badge.svg" alt="PlaySotre" /></a>
-	            <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="AppStore" /></a>
+				<p class="lead fw-normal text-muted mb-5" th:text="#{message.footer.download_apps}" style="color: white;"></p>
+				
+				<a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" th:src="@{/assets/img/google-play-badge.svg}" width="120" height="60" alt="PlaySotre" /></a>
+				<a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" th:src="@{/assets/img/app-store-badge.svg}" width="120" height="60" alt="AppStore" /></a>
 			</div>
 		</div>
 	</div>
@@ -140,6 +142,7 @@
 	
 	<!-- JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
-	<script src="js/relogio.js"></script>
-	<script src="js/scripts.js"></script>
+	<script th:src="@{/assets/js/relogio.js}"></script>
+	<script th:src="@{/assets/js/scripts.js}"></script>
 </footer>
+
