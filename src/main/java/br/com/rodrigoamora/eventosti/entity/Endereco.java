@@ -31,8 +31,8 @@ public class Endereco {
 	
 	private Double lng;
 	
-	@OneToOne(optional=false)
-	private Evento evento;
+//	@OneToOne(optional=false)
+//	private Evento evento;
 	
 	public Long getId() {
 		return id;
@@ -90,13 +90,13 @@ public class Endereco {
 		this.estado = estado;
 	}
 
-	public Evento getEvento() {
-		return evento;
-	}
-
-	public void setEvento(Evento evento) {
-		this.evento = evento;
-	}
+//	public Evento getEvento() {
+//		return evento;
+//	}
+//
+//	public void setEvento(Evento evento) {
+//		this.evento = evento;
+//	}
 
 	public Double getLat() {
 		return lat;
