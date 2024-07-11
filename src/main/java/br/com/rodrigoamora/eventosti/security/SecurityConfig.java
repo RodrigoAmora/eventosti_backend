@@ -15,9 +15,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 
+import br.com.rodrigoamora.eventosti.security.filter.CustomHeaderFilter;
+import br.com.rodrigoamora.eventosti.security.jwt.JWTLoginFilter;
 import br.com.rodrigoamora.eventosti.security.jwt.TokenAuthenticationService;
 import br.com.rodrigoamora.eventosti.service.BlackListAccessTokenService;
 import br.com.rodrigoamora.eventosti.service.impl.UsuarioDetailsServiceImpl;
@@ -57,17 +60,21 @@ public class SecurityConfig {
 				req.requestMatchers(HttpMethod.POST, "/login").permitAll();
 				
 				req.requestMatchers(HttpMethod.GET, "/api/evento/**").permitAll();
-				
+				req.requestMatchers("/api/usuario/**").permitAll();
 				req.anyRequest().authenticated();
 			})
+			// filtra requisições de login
+	        .addFilterBefore(new JWTLoginFilter("/login", this.authenticationManager(), this.tokenAuthorizationFilter()),
+	                UsernamePasswordAuthenticationFilter.class)
+	        // filtra outras requisições para verificar a presença do JWT no header
+			.authenticationProvider(this.authenticationProvider())
+			.addFilterBefore(this.customHeaderFilter(), UsernamePasswordAuthenticationFilter.class)
+//			.addFilterBefore(new JWTAuthenticationFilter(this.tokenAuthorizationFilter()), UsernamePasswordAuthenticationFilter.class)
 			.formLogin(
                 form -> form
                 .loginPage("/formLogin")
-//                    .loginProcessingUrl("/formLogin")
+                .loginProcessingUrl("/formLogin")
                 .defaultSuccessUrl("/")
-                
-//                    .usernameParameter("username")
-//                    .passwordParameter("password")
                 .permitAll()
             )
 			.logout(
@@ -92,12 +99,15 @@ public class SecurityConfig {
 	
 	@Bean
   	DaoAuthenticationProvider authenticationProvider() {
-		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-	       
+		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();		
 		authProvider.setUserDetailsService(this.userDetailsService);
 		authProvider.setPasswordEncoder(passwordEncoder());
-	   
 		return authProvider;
+	}
+	
+	@Bean
+	static PasswordEncoder passwordEncoder() {
+	    return new BCryptPasswordEncoder();
 	}
 	
 	@Bean
@@ -106,8 +116,8 @@ public class SecurityConfig {
 	}
 	
 	@Bean
-	static PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
+	CustomHeaderFilter customHeaderFilter() {
+		return new CustomHeaderFilter(this.tokenAuthorizationFilter());
 	}
 	
 	@Autowired
