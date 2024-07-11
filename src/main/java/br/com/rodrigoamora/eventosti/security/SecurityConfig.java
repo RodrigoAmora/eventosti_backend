@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 
 import br.com.rodrigoamora.eventosti.security.jwt.TokenAuthenticationService;
 import br.com.rodrigoamora.eventosti.service.BlackListAccessTokenService;
@@ -47,12 +48,15 @@ public class SecurityConfig {
 		http.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests(req -> {
 				req.requestMatchers(HttpMethod.GET, "/").permitAll();
+				
+				// Endpoint de monitoramento
+				req.requestMatchers("/actuator/**").permitAll();
+				
 				req.requestMatchers("/evento/cadastrar").permitAll();
 				req.requestMatchers("/verEvento").permitAll();
 				req.requestMatchers(HttpMethod.POST, "/login").permitAll();
-				req.requestMatchers(HttpMethod.GET, "/api/evento/**").permitAll();
 				
-				req.requestMatchers("/api/evento").permitAll();
+				req.requestMatchers(HttpMethod.GET, "/api/evento/**").permitAll();
 				
 				req.anyRequest().authenticated();
 			})
@@ -60,7 +64,7 @@ public class SecurityConfig {
                 form -> form
                 .loginPage("/formLogin")
 //                    .loginProcessingUrl("/formLogin")
-//                    .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/")
                 
 //                    .usernameParameter("username")
 //                    .passwordParameter("password")
@@ -94,6 +98,11 @@ public class SecurityConfig {
 		authProvider.setPasswordEncoder(passwordEncoder());
 	   
 		return authProvider;
+	}
+	
+	@Bean
+	SpringSecurityDialect securityDialect() {
+	    return new SpringSecurityDialect();
 	}
 	
 	@Bean
