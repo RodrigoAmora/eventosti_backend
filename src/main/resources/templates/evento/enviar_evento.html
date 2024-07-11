@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{admin/base :: head-admin}"></head>
+<head th:replace="~{base :: head}"></head>
 <body>
-	<head th:replace="~{admin/base :: header-admin}"></head>
+	<head th:replace="~{base :: header}"></head>
 	
 	<div class="container">
 		<div class="alert alert-success text-center" role="alert" th:if="${param.result}" th:text="#{message.event.event_sent}"></div>
@@ -32,6 +32,7 @@
 				<div class="mb-3">
 					<label for="tipoEvento" th:text="#{message.event.type_event}"></label>
 					<select class="form-select" id="tipoEvento" th:field="*{tipoEvento}" aria-label="Default select example">
+						<option value=""></option>
 						<option value="PRESENCIAL" th:text="#{message.event.type_presencial}"></option>
 						<option value="ON_LINE" th:text="#{message.event.type_online}"></option>
 						<option value="HIBRIDO" th:text="#{message.event.type_hibrid}"></option>
@@ -42,7 +43,67 @@
 					<input type="text" id="site" th:field="*{site}" th:placeholder="#{message.event.type_site_evento}" class="form-control" />
 					<p th:if="${#fields.hasErrors('site')}" th:errorclass="error" th:errors="*{site}" />
 				</div>
+				<!--
+				<hr>
 				
+				<div id="addressFields">
+					<b>Endereço:</b>
+					<div class="row">
+						<div class="col-12">
+							<input type="text" th:field="*{endereco.logradouro}" th:placeholder="#{message.event.type_site_evento}" class="form-control" />
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-6">
+							<input type="text" th:field="*{endereco.numero}" th:placeholder="#{message.event.type_site_evento}" class="form-control" />
+						</div>
+						
+						<div class="col-6">
+							<input type="text" th:field="*{endereco.complemento}" th:placeholder="#{message.event.type_site_evento}" class="form-control" />
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-9">
+							<input type="text" th:field="*{endereco.cidade}" th:placeholder="#{message.event.type_site_evento}" class="form-control" />
+						</div>
+						
+						<div class="col-3">
+							<select class="form-select" th:field="*{endereco.estado}" aria-label="Default select example">
+								<option value="AC" th:text="AC"></option>
+								<option value="AL" th:text="AL"></option>
+								<option value="AP" th:text="AP"></option>
+								<option value="AM" th:text="AM"></option>
+								<option value="BA" th:text="BA"></option>
+								<option value="CE" th:text="CE"></option>
+								<option value="Df" th:text="DF"></option>
+								<option value="ES" th:text="ES"></option>
+								<option value="GO" th:text="GO"></option>
+								<option value="MA" th:text="MA"></option>
+								<option value="MT" th:text="MT"></option>
+								<option value="MS" th:text="MS"></option>
+								<option value="MG" th:text="MG"></option>
+								<option value="PA" th:text="PA"></option>
+								<option value="PE" th:text="PE"></option>
+								<option value="PB" th:text="PB"></option>
+								<option value="PI" th:text="PI"></option>
+								<option value="RJ" th:text="RJ"></option>
+								<option value="RN" th:text="RN"></option>
+								<option value="RS" th:text="RS"></option>
+								<option value="RR" th:text="RR"></option>
+								<option value="RO" th:text="RO"></option>
+								<option value="SC" th:text="SC"></option>
+								<option value="SP" th:text="SP"></option>
+								<option value="SE" th:text="SE"></option>
+								<option value="TO" th:text="TO"></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				-->
+				<hr>
+							
 				<div class="mb-12">
 					<button type="submit" class="btn btn-primary" th:text="#{message.event.send}" /></button>
 				</div>
