@@ -60,7 +60,7 @@ public class SecurityConfig {
 				req.requestMatchers(HttpMethod.POST, "/login").permitAll();
 				
 				req.requestMatchers(HttpMethod.GET, "/api/evento/**").permitAll();
-				req.requestMatchers("/api/usuario/**").permitAll();
+				
 				req.anyRequest().authenticated();
 			})
 			// filtra requisições de login
@@ -69,7 +69,6 @@ public class SecurityConfig {
 	        // filtra outras requisições para verificar a presença do JWT no header
 			.authenticationProvider(this.authenticationProvider())
 			.addFilterBefore(this.customHeaderFilter(), UsernamePasswordAuthenticationFilter.class)
-//			.addFilterBefore(new JWTAuthenticationFilter(this.tokenAuthorizationFilter()), UsernamePasswordAuthenticationFilter.class)
 			.formLogin(
                 form -> form
                 .loginPage("/formLogin")
