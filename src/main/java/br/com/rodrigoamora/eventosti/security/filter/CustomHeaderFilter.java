@@ -28,14 +28,14 @@ public class CustomHeaderFilter extends OncePerRequestFilter {
 		String requestURI = request.getRequestURI();
 		if (!requestURI.startsWith("/api")) {
 			response.setHeader("Authorization", null);
-			filterChain.doFilter(request, response);
 		} else {
 			Authentication authentication = this.tokenAuthenticationService
-					.getAuthentication(request, response);
+												.getAuthentication(request, response);
 			
 			SecurityContextHolder.getContext().setAuthentication(authentication);
-			filterChain.doFilter(request, response);
 		}
+		
+		filterChain.doFilter(request, response);
 	}
 
 }
