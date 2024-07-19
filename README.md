@@ -34,7 +34,7 @@ mvn spring-boot:run
 
 Docker:
 -------
-Para rodar o projeto em um container Docker, primeiro deve-se gerar o .jar de cada um dos projetos.<br>
+Para rodar o projeto em um container Docker, primeiro deve-se gerar o .jar do projeto.<br>
 Após isso, deve-se gerar o build e subir os containers do Docker.<br><br>
 <b>Fazendo o build dos containers do Docker:</b>
 ```shell script
