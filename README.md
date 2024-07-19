@@ -23,15 +23,6 @@ Para gerar o arquivo <b>.jar</b>, execute o comando via terminal no diretório r
 mvn clean install
 ```
 
-Docker:
--------
-Para gerar os containers do Docker, execute os comandos via terminal no diretório raiz do projeto: 
-```shell script
-docker-compose build
-
-docker-compose up -d
-```
-
 Rodando o projeto:
 ------------------
 Para iniciar a aplicação localmente via IDE, execute a classe `EventostiApplication`
@@ -39,6 +30,21 @@ Para iniciar a aplicação localmente via IDE, execute a classe `EventostiApplic
 Para iniciar a aplicação localmente via terminal, execute o comando no diretório raiz do projeto:
 ```shell script
 mvn spring-boot:run
+```
+
+Docker:
+-------
+Para rodar o projeto em um container Docker, primeiro deve-se gerar o .jar de cada um dos projetos.<br>
+Após isso, deve-se gerar o build e subir os containers do Docker.<br><br>
+<b>Fazendo o build dos containers do Docker:</b>
+```shell script
+docker-compose build
+
+```
+
+<b>Subindo os containers do Docker:</b>
+```shell script
+docker-compose up -d
 ```
 
 Autor:
