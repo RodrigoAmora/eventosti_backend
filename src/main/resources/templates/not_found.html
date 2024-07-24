@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head th:replace="~{base :: head}"></head>
+
+<body>
+	<head th:replace="~{base :: header}"></head>
+	
+	<div class="container">
+		<div class="row text-center">
+			<p th:text="#{message.evento.not_found}" class="errorMessage"></p>
+			
+			<figure class="figure">
+				<img th:src="@{/assets/img/not-found.gif}" class="figure-img" />
+			</figure>
+		</div>
+	</div>
+	
+	<footer th:replace="~{base ::footer}"></footer>
+</body>
+</html>
