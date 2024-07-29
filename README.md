@@ -47,6 +47,12 @@ docker-compose build
 docker-compose up -d
 ```
 
+##
+Para automatizar esse processo, basta executar o Shellscript <b>`docker_build_and_run.sh`</b>:
+```shell script
+./docker_build_and_run.sh
+```
+
 Autor:
 ------
 <b>Rodrigo Amora</b>
