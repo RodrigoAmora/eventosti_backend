@@ -11,6 +11,7 @@ Este projeto usa o Java 17 e as seguintes dependências:
 * Spring Data JPA
 * Devtools
 * Thymeleaf
+* MySQL
 
 Banco de dados:
 ---------------
