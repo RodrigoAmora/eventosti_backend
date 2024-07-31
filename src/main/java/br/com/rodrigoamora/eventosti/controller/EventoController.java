@@ -60,8 +60,11 @@ public class EventoController {
 	@GetMapping("/verEvento")
 	public String verEvento(Model model,
 			  				@RequestParam("id") Long id) {
-		Evento evento = this.eventoService.buscarEventoPorId(id).get();
-		model.addAttribute("evento", evento);
+		Optional<Evento> evento = this.eventoService.buscarEventoPorId(id);
+		if (!evento.isPresent()) {
+			return "not_found";
+		}
+		model.addAttribute("evento", evento.get());
 		return "evento/detalhes_evento";
 	}
 	
