@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Use Maven to build your project
-                dir('') {
+                dir('.') {
                     sh 'mvn -f pom.xml clean package'
                 }
             }
