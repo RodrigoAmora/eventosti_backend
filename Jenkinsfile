@@ -27,9 +27,8 @@ pipeline {
                     sh 'cp target/*.jar $WORKSPACE'
                     
                     // Upload the JAR file to S3 bucket
-                    sh 'aws s3 cp $WORKSPACE/*.jar s3://portfolio-madhura/'
+                    sh 'aws s3 cp $WORKSPACE/*.jar s3://eventosti/'
                 }
             }
         }
     }
-}
