@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Checkout your source code from your repository
                 script {
-                    git branch: 'main', url: 'https://github.com/madhurajayashanka/ci-cd-portfolio.git'
+                    git branch: 'main', url: 'https://github.com/RodrigoAmora/eventosti_backend.git'
                 }
             }
         }
