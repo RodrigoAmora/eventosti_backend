@@ -14,9 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Use Maven to build your project
-                dir('eventosti_backend') {
-                    sh 'mvn -f pom.xml clean package'
-                }
+                 sh 'mvn -f pom.xml clean package'
             }
         }
         
