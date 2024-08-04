@@ -62,3 +62,8 @@ LinkedIn: https://linkedin.com/in/rodrigoamora <br>
 E-mail: rodrigo.amora.freitas@gmail.com
 
 <hr>
+
+Disponível em:
+```shell script
+http://eventosti.com.br/
+```
