@@ -63,7 +63,4 @@ E-mail: rodrigo.amora.freitas@gmail.com
 
 Acesso ao projeto:
 ------------------
-Disponível em:
-```shell script
-<a href="http://eventosti.com.br/" target="_blank">http://eventosti.com.br/</a>
-```
+Disponível em: <a href="http://eventosti.com.br/" target="_blank">http://eventosti.com.br/</a>
