@@ -65,5 +65,5 @@ Acesso ao projeto:
 ------------------
 Disponível em:
 ```shell script
-http://eventosti.com.br/
+<a href="http://eventosti.com.br/" target="_blank">http://eventosti.com.br/</a>
 ```
