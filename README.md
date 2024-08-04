@@ -61,8 +61,8 @@ Autor:
 LinkedIn: https://linkedin.com/in/rodrigoamora <br>
 E-mail: rodrigo.amora.freitas@gmail.com
 
-<hr>
-
+Acesso ao projeto:
+------------------
 Disponível em:
 ```shell script
 http://eventosti.com.br/
