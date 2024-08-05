@@ -1,4 +1,6 @@
- the directory to save the JAR file (e.g., in the home directory)
+#!/bin/bash
+
+# the directory to save the JAR file (e.g., in the home directory)
 LOCAL_DIR="/home/ubuntu"
 
 # Ensure the local directory exists
