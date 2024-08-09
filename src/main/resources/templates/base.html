@@ -56,10 +56,14 @@
 					</div>
 				</ul>
 				
-				<form class="d-flex" role="search" th:action="@{/evento/buscar}" th:object="${evento}" method="get">
-					<input name="nome" class="form-control me-2" type="search" aria-label="Search" field="*{nome}" th:placeholder="#{message.navbar.search_event}">
+				<form class="d-flex" role="search" th:action="@{/evento/buscar}" th:object="${evento}" method="get" id="buscaPorNome">
+					<input id="nomeEvento" name="nome" class="form-control me-2" type="search" aria-label="Search" field="*{nome}" th:placeholder="#{message.navbar.search_event}">
 					<button class="btn btn-outline-success" type="submit" th:text="#{message.navbar.search}"></button>
 				</form>
+				
+				<div id="erroNomeVazio">
+					<p class="errorMessage">Nome do evento vazio</p>
+				</div>
 	  		</div>
 		</div>
 	</nav>	
@@ -120,5 +124,6 @@
 	<script th:src="@{/js/login.js}"></script>
 	<script th:src="@{/js/relogio.js}"></script>
 	<script th:src="@{/js/scripts.js}"></script>
+	<script th:src="@{/js/validacoes.js}"></script>
 </footer>
 
