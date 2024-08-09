@@ -43,6 +43,20 @@ public class EventoController {
 		return "redirect:/evento/cadastrar?result=success";
 	}
 	
+	@GetMapping("/evento/buscar")
+	public String buscarEventoPorNome(@RequestParam("nome") String nome,
+									  Model model,
+			  						  @RequestParam("page") Optional<Integer> page,
+			  						  @RequestParam("size") Optional<Integer> size) {
+		int currentPage = page.orElse(1);
+		int pageSize = size.orElse(5);
+		
+		Page<Evento> eventos = this.eventoService.buscarEventoPorNome(nome, currentPage-1, pageSize);
+		model = this.eventoService.setModel(model, eventos);
+		
+		return "index";
+	}
+
 	@GetMapping("/evento/aprovar")
 	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
 	public String aprovar(Model model,

@@ -28,6 +28,10 @@ public class EventoServiceImpl implements EventoService {
 		String site = this.verificarSite(evento.getSite());
 		evento.setSite(site);
 		
+		if (evento.getDescricao() == null) {
+			evento.setDescricao("");
+		}
+		
 		evento.setStatus(StatusEvento.EM_ESPERA);
 		
 		return this.eventoRepository.save(evento);
