@@ -8,8 +8,10 @@ public class DateConverter {
 	public static String converterDateWithMonthName(String date) {
 		String pattern = "dd/MMM/yyy";
 		
+		String dateVireiyed = verifyMonthName(date);
+		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern, new Locale("pt","BR"));
-		LocalDate localDate = LocalDate.parse(date, formatter);
+		LocalDate localDate = LocalDate.parse(dateVireiyed, formatter);
 		
 		return localDate.toString();
 	}
