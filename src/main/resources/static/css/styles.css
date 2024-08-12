@@ -20,6 +20,17 @@
 	text-align: center;
 }
 
+.alertMessage {
+	background-color: yellow;
+	border: solid 2px darkgoldenrod;
+	border-radius: 5px;
+	color: black;
+	font-style: bold;
+	opacity: 70%;
+	margin-top: 7px;
+	text-align: center;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -47,6 +58,6 @@ body {
 .footer {
 	background: black;
 	width: 100%;
-	height: 300px;
+	height: auto;
 	margin-top: auto;
 }
