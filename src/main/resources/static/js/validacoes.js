@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$("#erroNomeVazio").hide();
 	
 	$("#buscaPorNome").submit(function( event ) {	
-	  	var nomeEvento = $( "#nomeEvento").val();
+	  	var nomeEvento = $("#nomeEvento").val();
 	  	if (nomeEvento == "") {
 			event.preventDefault();
 			$("#erroNomeVazio").show();
@@ -19,8 +19,8 @@ $(document).ready(function() {
 	$("#passwordEmpty").hide();
 	
 	$("#formLogin").submit(function( event ) {	
-	  	var username = $( "#username").val();
-	  	var password = $( "#password").val();
+	  	var username = $("#username").val();
+	  	var password = $("#password").val();
 	  	
 	  	if (username == "") {
 			event.preventDefault();
