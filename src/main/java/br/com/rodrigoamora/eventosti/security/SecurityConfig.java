@@ -43,9 +43,6 @@ public class SecurityConfig {
 	@Autowired
 	private AuthenticationConfiguration authConfig;
 	
-//	@Autowired
-//    private UserDetailsService userDetailsService;
-	
 	@Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable())
@@ -55,11 +52,17 @@ public class SecurityConfig {
 				// Endpoint de monitoramento
 				req.requestMatchers("/actuator/**").permitAll();
 				
+				// Eventps
 				req.requestMatchers("/evento/cadastrar").permitAll();
+				req.requestMatchers("/evento/buscar").permitAll();
 				req.requestMatchers("/verEvento").permitAll();
+				
+				// Login
 				req.requestMatchers(HttpMethod.POST, "/login").permitAll();
 				
+				// API
 				req.requestMatchers(HttpMethod.GET, "/api/evento/**").permitAll();
+				
 				
 				req.anyRequest().authenticated();
 			})
