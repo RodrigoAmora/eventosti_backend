@@ -11,7 +11,27 @@ Este projeto usa o Java 17 e as seguintes dependências:
 * Spring Data JPA
 * Devtools
 * Thymeleaf
+* Actuator
+* Swagger
+* OpenAPI
 * MySQL
+
+Endpoints:
+----------
+A documentação dos endpoints pode ser vista através do Swagger e do Redoc.<br>
+
+<b>Documentação dos endpoints via Swagger:</b>
+```shell script
+http://localhost:8082/swagger-ui.html
+```
+
+<b>Documentação dos endpoints via Redoc:</b>
+```shell script
+http://localhost:8082/redoc.html
+```
+
+##
+Na pasta <b>`Postman`</b> contém a collection para usar os endpoints via Postman.
 
 Banco de dados:
 ---------------
