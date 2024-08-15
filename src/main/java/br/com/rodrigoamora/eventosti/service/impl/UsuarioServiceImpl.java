@@ -1,5 +1,7 @@
 package br.com.rodrigoamora.eventosti.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,7 +19,7 @@ import br.com.rodrigoamora.eventosti.service.UsuarioService;
 import br.com.rodrigoamora.eventosti.validador.SenhaValidador;
 
 @Component
-public class UuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
 	private UsuarioRepository userRepository;
@@ -51,6 +53,10 @@ public class UuarioServiceImpl implements UsuarioService {
 		this.userRepository.delete(usuario);
 	}
 
+	@Override
+	public Optional<Usuario> buscarUsurioPorId(Long id) {
+		return this.userRepository.findById(id);
+	}
 	
 	public Usuario buscarUsuarioPorId(Long id) {
 		return this.userRepository.findById(id).get();
