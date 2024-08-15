@@ -32,7 +32,7 @@ public class EventoApiController {
 		return ResponseEntity.ok(evento);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value = { "/{id}" })
 	public ResponseEntity<Evento> buscarEventoPorId(@PathVariable(name = "id") Long id) {
 		Optional<Evento> evento = this.eventoService.buscarEventoPorId(id);
 
@@ -43,11 +43,11 @@ public class EventoApiController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@GetMapping("/{nome}")
+	@GetMapping(value = { "/{nome}/buscarPorNome" })
 	public ResponseEntity<Page<Evento>> buscarEventoPorNome(@PathVariable(name = "nome") String nome,
 														    @RequestParam(value = "page", required = false, defaultValue = "0") int page,
 														    @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
-		Page<Evento> eventos = this.eventoService.buscarEventoPorNome(nome, page, size);
+		Page<Evento> eventos= this.eventoService.buscarEventoPorNome(nome, page, size);
 
 		if (!eventos.isEmpty()) {
 			return ResponseEntity.ok(eventos);
