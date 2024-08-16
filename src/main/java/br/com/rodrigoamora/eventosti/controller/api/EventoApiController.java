@@ -43,8 +43,8 @@ public class EventoApiController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@GetMapping(value = { "/{nome}/buscarPorNome" })
-	public ResponseEntity<Page<Evento>> buscarEventoPorNome(@PathVariable(name = "nome") String nome,
+	@GetMapping("/buscarPorNome")
+	public ResponseEntity<Page<Evento>> buscarEventoPorNome(@RequestParam(name = "nome") String nome,
 														    @RequestParam(value = "page", required = false, defaultValue = "0") int page,
 														    @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
 		Page<Evento> eventos= this.eventoService.buscarEventoPorNome(nome, page, size);

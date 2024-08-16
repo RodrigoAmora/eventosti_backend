@@ -63,7 +63,7 @@ public class EventoServiceImpl implements EventoService {
 	
 	@Override
 	public Optional<Evento> buscarEventoPorId(Long id) {
-		return this.eventoRepository.findById(id);
+		return this.eventoRepository.buscarEventoPorId(id);
 	}
 	
 	@Override
