@@ -223,7 +223,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/evento/IA/buscarPorNome",
+					"raw": "http://localhost:8080/api/evento/buscarPorNome?nome=teste",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -232,8 +232,13 @@
 					"path": [
 						"api",
 						"evento",
-						"IA",
 						"buscarPorNome"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "teste"
+						}
 					]
 				}
 			},
