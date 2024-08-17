@@ -1,7 +1,7 @@
 # eventosti_backend
 Descrição:
 ----------
-Projeto para divlugação de eventos de tecnologia, feito em Java e Spring Boot.
+Projeto para divulgação de eventos de tecnologia, feito em Java e Spring Boot.
 
 Dependências:
 -------------
