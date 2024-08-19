@@ -1,7 +1,10 @@
 #!/bin/bash
 
+USER=$(whoami)
+echo "${USER}"
+
 # the directory to save the JAR file (e.g., in the home directory)
-LOCAL_DIR="/home/ubuntu"
+LOCAL_DIR="/home/${USER}"
 
 # Ensure the local directory exists
 mkdir -p "$LOCAL_DIR"
