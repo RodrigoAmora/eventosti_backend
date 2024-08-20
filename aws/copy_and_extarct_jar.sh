@@ -14,7 +14,7 @@ read presignedURL;
 wget -O $nameJar "$presignedURL"
 
 ## Redireciona a porta.
-sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8081
 
 ## Extrai o jar e excetua a aplicação em segubdo plano.
 nohup java -jar $nameJar
