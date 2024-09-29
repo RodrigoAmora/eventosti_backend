@@ -36,7 +36,12 @@ Na pasta <b>`Postman`</b> contém a collection para usar os endpoints via Postma
 
 Banco de dados:
 ---------------
-O projeto usa o MySQL.
+O projeto usa o MySQL para os ambientes de desenvolvimento e produção e o H2 para os testes.<br>
+Para acessar o painel do H2:
+```shell script
+http://localhost:8080/h2-console
+```
+<b>OBS:</b> Para acessar o paineldo h2 é preciso rodar a aplicação com properties de test.
 
 Gerando o arquivo .jar:
 -----------------------
