@@ -95,10 +95,7 @@ http://localhost:3000/
 
 Acesso ao projeto:
 ------------------
-O projeto está disponível através do endereço:
-```shell script
-<a href="http://eventosti.com.br" target="_blank">http://eventosti.com.br</a>
-```
+O projeto está disponível através do endereço: <a href="http://eventosti.com.br" target="_blank">http://eventosti.com.br</a>
 
 Autor:
 ------
