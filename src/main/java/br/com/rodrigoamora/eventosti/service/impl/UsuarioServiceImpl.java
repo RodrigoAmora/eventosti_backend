@@ -27,13 +27,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	private RoleRepository roleRepository;
 	
-	public Usuario salvarUsuario(Usuario usuario) {
-		Role rolaAdmin = this.roleRepository.findByName(ERole.ROLE_ADMIN.name());
-		usuario.getRoles().add(rolaAdmin);
-		
-		if (this.userRepository.findByLogin(usuario.getLogin()) != null) {
-			usuario.setHasError("user.with.email.already.created");
-			return usuario;
+	public Usuario salvar(Usuario usuario) {
+		var usuarioChecado = this.checarUsuario(usuario);
+		if (!usuarioChecado.getHasError().isEmpty()) {
+			return usuarioChecado;
 		}
 		
 		String senhaUsuario = usuario.getPassword();
@@ -42,6 +39,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return this.userRepository.save(usuario);
 	}
 
+	public Usuario editar(Usuario usuario) {
+		var usuarioChecado = this.checarUsuario(usuario);
+		if (!usuarioChecado.getHasError().isEmpty()) {
+			return usuarioChecado;
+		}
+		
+		return this.userRepository.save(usuarioChecado);
+	}
+	
 	@Override
 	public Page<Usuario> listarTodos(int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
@@ -81,6 +87,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 		
 		return this.buscarUsuarioPorLogin(nome);
+	}
+	
+	private Usuario checarUsuario(Usuario usuario) {
+		Role rolaAdmin = this.roleRepository.findByName(ERole.ROLE_ADMIN.name());
+		usuario.getRoles().add(rolaAdmin);
+		
+		if (this.userRepository.findByLogin(usuario.getLogin()) != null) {
+			usuario.setHasError("user.with.email.already.created");
+			return usuario;
+		}
+		
+		return usuario;
 	}
 	
 	private String encryptPassword(String password) {
