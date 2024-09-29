@@ -41,7 +41,7 @@ Para acessar o painel do H2:
 ```shell script
 http://localhost:8080/h2-console
 ```
-<b>OBS:</b> Para acessar o paineldo h2 é preciso rodar a aplicação com properties de test.
+<b>OBS:</b> Para acessar o painel do h2 é preciso rodar a aplicação com properties de test.
 
 Gerando o arquivo .jar:
 -----------------------
