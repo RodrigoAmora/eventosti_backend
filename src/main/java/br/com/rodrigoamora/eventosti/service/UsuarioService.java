@@ -8,7 +8,7 @@ import br.com.rodrigoamora.eventosti.entity.Usuario;
 
 public interface UsuarioService {
 
-	public Usuario salvarUsuario(Usuario usuario);
+	public Usuario salvar(Usuario usuario);
 	public void apagarUsuario(Usuario usuario);
 	
 	public Usuario buscarUsuarioPorId(Long id);

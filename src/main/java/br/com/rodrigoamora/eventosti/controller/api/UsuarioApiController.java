@@ -25,7 +25,7 @@ public class UsuarioApiController {
 	
 	@PostMapping
 	public Usuario salvarUsuario(@RequestBody Usuario usuario) {
-		return this.usuarioService.salvarUsuario(usuario);
+		return this.usuarioService.salvar(usuario);
 	}
 	
 	@GetMapping
