@@ -89,13 +89,16 @@ Acesse o Grafana através do endereço:
 http://localhost:3000/
 ```
 
-<u><b>Usuário padrão:</u></b> <br>
+<u><b>Usuário padrão</b></u> <br>
 <b>Username:</b> admin <br>
 <b>Password:</b> admin
 
 Acesso ao projeto:
 ------------------
-O projeto está disponível através do endereço: <a href="http://eventosti.com.br" target="_blank">http://eventosti.com.br</a>
+O projeto está disponível através do endereço:
+```shell script
+http://eventosti.com.br
+```
 
 Autor:
 ------
