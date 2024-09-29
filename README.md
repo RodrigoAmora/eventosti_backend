@@ -1,7 +1,7 @@
 # eventosti_backend
 Descrição:
 ----------
-Projeto para divulgação de eventos de tecnologia, feito em Java e Spring Boot.
+Projeto para divulgação de eventos de tecnologia, feito em Java e Spring Boot e hospedado no AWS.
 
 Dependências:
 -------------
@@ -22,12 +22,12 @@ A documentação dos endpoints pode ser vista através do Swagger e do Redoc.<br
 
 <b>Documentação dos endpoints via Swagger:</b>
 ```shell script
-http://localhost:8082/swagger-ui.html
+http://localhost:8080/swagger-ui.html
 ```
 
 <b>Documentação dos endpoints via Redoc:</b>
 ```shell script
-http://localhost:8082/redoc.html
+http://localhost:8080/redoc.html
 ```
 
 ##
@@ -41,7 +41,7 @@ Gerando o arquivo .jar:
 -----------------------
 Para gerar o arquivo <b>.jar</b>, execute o comando via terminal no diretório raiz do projeto:
 ```shell script
-mvn clean install
+mvn clean install -P{profile}
 ```
 
 Rodando o projeto:
@@ -74,13 +74,16 @@ Para automatizar esse processo, basta executar o Shellscript <b>`docker_build_an
 ./docker_build_and_run.sh
 ```
 
+Acesso ao projeto:
+------------------
+Disponível em:
+```shell script
+http://eventosti.com.br
+```
+
 Autor:
 ------
 <b>Rodrigo Amora</b>
 
 LinkedIn: https://linkedin.com/in/rodrigoamora <br>
 E-mail: rodrigo.amora.freitas@gmail.com
-
-Acesso ao projeto:
-------------------
-Disponível em: http://eventosti.com.br/
