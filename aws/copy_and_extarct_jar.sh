@@ -1,5 +1,9 @@
 #!/bin/bash
 
+###################################################
+## Shell script to download and extract JAR file ##
+###################################################
+
 USER=$(whoami)
 
 # the directory to save the JAR file (e.g., in the home directory)
@@ -57,5 +61,4 @@ else
 fi
 
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
-
 nohup java -jar $jar_file
