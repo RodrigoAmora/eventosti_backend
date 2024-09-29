@@ -15,6 +15,7 @@ Este projeto usa o Java 17 e as seguintes dependências:
 * Swagger
 * OpenAPI
 * MySQL
+* Micrometer
 
 Endpoints:
 ----------
@@ -74,11 +75,29 @@ Para automatizar esse processo, basta executar o Shellscript <b>`docker_build_an
 ./docker_build_and_run.sh
 ```
 
+Prometheus:
+-----------
+Acesse o Prometheus através do endereço:
+```shell script
+http://localhost:9090/
+```
+
+Grafana:
+--------
+Acesse o Grafana através do endereço:
+```shell script
+http://localhost:3000/
+```
+
+<u><b>Usuário padrão:</u></b> <br>
+<b>Username:</b> admin <br>
+<b>Password:</b> admin
+
 Acesso ao projeto:
 ------------------
-Disponível em:
+O projeto está disponível através do endereço:
 ```shell script
-http://eventosti.com.br
+<a href="http://eventosti.com.br" target="_blank">http://eventosti.com.br</a>
 ```
 
 Autor:
