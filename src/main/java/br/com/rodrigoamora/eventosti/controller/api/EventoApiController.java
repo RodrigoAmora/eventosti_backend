@@ -65,6 +65,11 @@ public class EventoApiController {
 	@DeleteMapping(value = { "/{id}" })
 	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
 	public HttpStatus apagarEventoPorId(@PathVariable(name = "id") Long id) {
+		var eventoEncontrado = this.eventoService.buscarEventoPorId(id);
+		if (!eventoEncontrado.isPresent()) {
+			return HttpStatus.NOT_FOUND;
+		}
+		
 		this.eventoService.apagarEventoPorId(id);
 		return HttpStatus.OK;
 	}
