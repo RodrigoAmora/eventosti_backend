@@ -12,10 +12,12 @@ Este projeto usa o Java 17 e as seguintes dependências:
 * Devtools
 * Thymeleaf
 * Actuator
+* Micrometer
 * Swagger
 * OpenAPI
 * MySQL
-* Micrometer
+* H2
+* jUnit
 
 Endpoints:
 ----------
@@ -37,17 +39,27 @@ Na pasta <b>`Postman`</b> contém a collection para usar os endpoints via Postma
 Banco de dados:
 ---------------
 O projeto usa o MySQL para os ambientes de desenvolvimento e produção e o H2 para os testes.<br>
+
+##
 Para acessar o painel do H2:
 ```shell script
 http://localhost:8080/h2-console
 ```
-<b>OBS:</b> Para acessar o painel do h2 é preciso rodar a aplicação com properties de test.
+
+<b>OBS:</b> Para acessar o painel do H2 é preciso rodar a aplicação com properties de test.
 
 Gerando o arquivo .jar:
 -----------------------
 Para gerar o arquivo <b>.jar</b>, execute o comando via terminal no diretório raiz do projeto:
 ```shell script
 mvn clean install -P{profile}
+```
+
+Rodando os testes:
+------------------
+Para rodar os testes, exceute o comando:
+```shell script
+mvn test
 ```
 
 Rodando o projeto:
@@ -100,10 +112,8 @@ http://localhost:3000/
 
 Acesso ao projeto:
 ------------------
-O projeto está disponível através do endereço:
-```shell script
+O projeto está disponível através do endereço:<br>
 http://eventosti.com.br
-```
 
 Autor:
 ------
