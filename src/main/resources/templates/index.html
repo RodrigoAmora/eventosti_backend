@@ -9,17 +9,15 @@
 		    	<div class="container container-header">
 					<div class="row gx-5 align-items-center">
 						<div class="intro-text">
-							<h1>Eventos TI</h1>
-							<p class="lead fw-normal text-muted mb-5">
-								Site para divulgação de eventos de technologia.<br>
-								Aqui você encontra eventos, palestras e workshops de TI
-								para se manter atualizado e fazer networking.
-							</p>
+							<h1 th:text="#{message.app_name}"></h1>
+							
+							<span class="lead fw-normal text-muted mb-5" th:text="#{message.description}"></span><br>
+							<span class="lead fw-normal text-muted mb-5" th:text="#{message.description2}"></span>
 						</div>
 						
 						<div class="row gx-5 align-items-center">
 							<div class="col-lg-12">
-								<p class="lead fw-normal text-muted mb-5">Baixa também o app do EventoTI no seu smart phone!</p>
+								<p class="lead fw-normal text-muted mb-5" th:text="#{message.download_app}"></p>
 								
 								<a class="me-lg-3 mb-4 mb-lg-0" href="https://play.google.com/store/apps/details?id=br.com.rodrigoamora.eventosti" target="_blank"><img class="app-badge" th:src="@{/assets/img/google-play-badge.svg}" width="150" height="70" alt="PlaySotre" /></a>
 				                <a class="me-lg-3 mb-4 mb-lg-0" href="https://apps.apple.com/us/app/eventos-ti/id6630363975" target="_blank"><img class="app-badge" th:src="@{/assets/img/app-store-badge.svg}" width="150" height="70" alt="AppStore" /></a>

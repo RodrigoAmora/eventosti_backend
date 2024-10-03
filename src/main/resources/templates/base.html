@@ -19,7 +19,7 @@
 	<!--<nav class="navbar bg-primary border-bottom border-body navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">-->
 	<nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Eventos TI</a>
+			<a class="navbar-brand" th:href="@{/}" th:text="#{message.app_name}"></a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -62,7 +62,7 @@
 				</form>
 				
 				<div id="erroNomeVazio">
-					<p class="errorMessage">Nome do evento vazio</p>
+					<p class="errorMessage" th:text="#{message.evento.name_empty}"></p>
 				</div>
 	  		</div>
 		</div>
@@ -76,7 +76,7 @@
 		<div class="row gx-5 align-items-center">
 			<div class="col-lg-6">
 				<ul class="list-group text-justify">
-					<li class="list-group-item list-group-item-dark" >Contato</li>
+					<li class="list-group-item list-group-item-dark" th:text="#{message.footer.contact}"></li>
 					
 					<li class="list-group-item list-group-item-action">
 						<span class="col-6"><img th:src="@{/assets/img/email.png}" alt="E-mail" width="35" height="35"></span>
