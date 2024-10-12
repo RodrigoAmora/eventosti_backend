@@ -52,7 +52,7 @@ Gerando o arquivo .jar:
 -----------------------
 Para gerar o arquivo <b>.jar</b>, execute o comando via terminal no diretório raiz do projeto:
 ```shell script
-mvn clean install -P{profile}
+mvn clean install -P{profile} -DskipTests
 ```
 
 Rodando os testes:
