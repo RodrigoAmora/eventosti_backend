@@ -5,7 +5,23 @@
 #############################################
 
 rm -rf target/
-mvn clean install -Pprod
+mvn clean install -Pprod -DskipTests
+
+
+echo -e "\n\n"
+echo -e "\033[01;32m##############\033[01;32m"
+echo -e "\033[01;32m### Docker ###\033[01;32m"
+echo -e "\033[01;32m##############\033[01;32m"
+echo -e "\n"
+
+docker_image=$(docker images rodrigoamora/rodrigo-springboot)
+
+if [[ ! -z "${docker_image}" ]]; then
+	echo "Apagando imagem que roda a aplicação...."
+	echo -e "\n"
+	docker rmi -f rodrigoamora/rodrigo-springboot
+	echo -e "\n"
+fi
 
 echo -e "\n\n"
 echo -e "\033[01;32m###########################\033[01;32m"
