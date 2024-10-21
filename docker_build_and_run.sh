@@ -17,7 +17,7 @@ echo -e "\n"
 docker_image=$(docker images rodrigoamora/rodrigo-springboot)
 
 if [[ ! -z "${docker_image}" ]]; then
-	echo "Apagando imagem que roda a aplicação...."
+	echo "\033[01;32mApagando imagem que roda a aplicação....\033[01;32m"
 	echo -e "\n"
 	docker rmi -f rodrigoamora/rodrigo-springboot
 	echo -e "\n"
