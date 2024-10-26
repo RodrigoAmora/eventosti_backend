@@ -5,7 +5,7 @@ Projeto para divulgação de eventos de tecnologia, feito em Java e Spring Boot 
 
 Dependências:
 -------------
-Este projeto usa o Java 17 e as seguintes dependências:
+O projeto usa o Java 17 e as seguintes dependências:
 * Spring Boot 3.1.5
 * Spring Security
 * Spring Data JPA
