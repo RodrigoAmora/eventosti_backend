@@ -38,7 +38,7 @@ Na pasta <b>`Postman`</b> contém a collection para usar os endpoints via Postma
 
 Banco de dados:
 ---------------
-O projeto usa o MySQL para os ambientes de desenvolvimento e produção e o H2 para os testes.<br>
+O projeto usa o MySQL para os ambientes de desenvolvimento e produção e o H2 para os testes.
 
 ##
 Para acessar o painel do H2:
