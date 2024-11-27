@@ -74,11 +74,10 @@ mvn spring-boot:run
 Docker:
 -------
 Para rodar o projeto em um container Docker, primeiro deve-se gerar o .jar do projeto.<br>
-Após isso, deve-se gerar o build e subir os containers do Docker.<br><br>
-<b>Fazendo o build dos containers do Docker:</b>
+Após isso, deve-se gerar o build das imagens e subir os containers do Docker.<br><br>
+<b>Fazendo o build das imagens:</b>
 ```shell script
 docker-compose build
-
 ```
 
 <b>Subindo os containers do Docker:</b>
@@ -91,24 +90,6 @@ Para automatizar esse processo, basta executar o Shellscript <b>`docker_build_an
 ```shell script
 ./docker_build_and_run.sh
 ```
-
-Prometheus:
------------
-Acesse o Prometheus através do endereço:
-```shell script
-http://localhost:9090/
-```
-
-Grafana:
---------
-Acesse o Grafana através do endereço:
-```shell script
-http://localhost:3000/
-```
-
-<u><b>Usuário padrão</b></u> <br>
-<b>Username:</b> admin <br>
-<b>Password:</b> admin
 
 Acesso ao projeto:
 ------------------
