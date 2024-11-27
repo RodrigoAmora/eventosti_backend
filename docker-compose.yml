@@ -19,12 +19,13 @@ services:
       - "3306:3306"
     expose:
       - '3306'
-  spring:
+  
+  eventos-ti:
     build:
       context: .
       dockerfile: Dockerfile
     image: rodrigoamora/rodrigo-springboot
-    container_name: 'spring'
+    container_name: 'eventos-ti'
     ports:
       - "80:8080"
     environment:
@@ -36,6 +37,7 @@ services:
       - spring-boot-mysql-network
     depends_on:
       - mysql-service
+
 networks:
   spring-boot-mysql-network:
     driver: bridge
