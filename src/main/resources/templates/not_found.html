@@ -7,11 +7,25 @@
 	
 	<div class="container">
 		<div class="row text-center">
-			<p th:text="#{message.evento.not_found}" class="errorMessage"></p>
+
+			<h1 th:text="#{message.app_name}"></h1>
+			<br><br>
 			
-			<figure class="figure">
-				<img th:src="@{/assets/img/not-found.gif}" class="figure-img" />
-			</figure>
+			<div class="row text-center">
+				<div class="md-3"></div>
+				<div class="md-3 clock"></div>
+				<div class="md-3"></div>
+			</div>
+			
+			<br><br>
+			
+			<div class="row text-center">
+				<p th:text="#{message.evento.not_found}" class="errorMessage"></p>
+				
+				<figure class="figure">
+					<img th:src="@{/assets/img/not-found.gif}" class="figure-img" />
+				</figure>
+			</div>
 		</div>
 	</div>
 	
