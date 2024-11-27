@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.entity.StatusEvento;
+import br.com.rodrigoamora.eventosti.entity.TipoEvento;
 import br.com.rodrigoamora.eventosti.repository.EventoRepository;
 import br.com.rodrigoamora.eventosti.service.EventoService;
 
@@ -30,6 +31,10 @@ public class EventoServiceImpl implements EventoService {
 		
 		if (evento.getDescricao() == null) {
 			evento.setDescricao("");
+		}
+		
+		if (evento.getTipoEvento() == null || evento.getTipoEvento().name().isEmpty()) {
+			evento.setTipoEvento(TipoEvento.PRESENCIAL);
 		}
 		
 		evento.setStatus(StatusEvento.EM_ESPERA);
