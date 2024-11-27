@@ -54,6 +54,10 @@ public class EventoController {
 		Page<Evento> eventos = this.eventoService.buscarEventoPorNome(nome, currentPage-1, pageSize);
 		model = this.eventoService.setModel(model, eventos);
 		
+		if (eventos.isEmpty()) {
+			return "not_found";
+		}
+		
 		return "index";
 	}
 
