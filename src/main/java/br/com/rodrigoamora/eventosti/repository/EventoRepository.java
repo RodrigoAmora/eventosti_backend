@@ -16,16 +16,16 @@ import jakarta.transaction.Transactional;
 @Transactional
 public interface EventoRepository extends JpaRepository<Evento, Long> {
 
-	@Query("FROM Evento e WHERE e.dataInicio >= CURDATE() AND e.status=APROVADO")
+	@Query("FROM Evento e WHERE e.dataFim >= CURDATE() AND e.status=APROVADO")
 	Page<Evento> listarEventosAprovados(Pageable pageable);
 	
-	@Query("FROM Evento e WHERE e.dataInicio >= CURDATE() AND e.status=EM_ESPERA")
+	@Query("FROM Evento e WHERE e.dataFim >= CURDATE() AND e.status=EM_ESPERA")
 	Page<Evento> listarEventosEmEspera(Pageable pageable);
 	
-	@Query("FROM Evento e WHERE e.id = :id AND e.dataInicio >= CURDATE() AND e.status=APROVADO")
+	@Query("FROM Evento e WHERE e.id = :id AND e.dataFim >= CURDATE() AND e.status=APROVADO")
 	Optional<Evento>  buscarEventoPorId(@Param("id") Long id);
 	
-	@Query("FROM Evento e WHERE e.nome like %:nome% AND e.dataInicio >= CURDATE() AND e.status=APROVADO")
+	@Query("FROM Evento e WHERE e.nome like %:nome% AND e.dataFim >= CURDATE() AND e.status=APROVADO")
 	Page<Evento> buscarEventoPorNome(@Param("nome") String nome, Pageable pageable);
 	
 }
