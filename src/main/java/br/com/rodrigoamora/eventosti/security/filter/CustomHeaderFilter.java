@@ -23,8 +23,7 @@ public class CustomHeaderFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request,
 									HttpServletResponse response,
-									FilterChain filterChain)
-			throws ServletException, IOException {
+									FilterChain filterChain) throws ServletException, IOException {
 		String requestURI = request.getRequestURI();
 		if (!requestURI.startsWith("/api")) {
 			response.setHeader("Authorization", null);

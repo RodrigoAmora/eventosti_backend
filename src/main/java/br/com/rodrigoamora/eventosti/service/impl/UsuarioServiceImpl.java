@@ -77,9 +77,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 	
 	public Usuario getUsuarioLogado() {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
 		String nome;
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails) {
 		    nome = ((UserDetails)principal).getUsername();
 		} else {
