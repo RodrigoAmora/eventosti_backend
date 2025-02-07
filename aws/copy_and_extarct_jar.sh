@@ -33,6 +33,8 @@ then
 	  	jar_file+=".jar";
 	fi
 
+    rm -rf $jar_file
+    
 	echo -e "\n\n\n"
 	echo -e "\033[01;32m############################\033[01;32m"
 	echo -e "\033[01;32m### Downloading JAR file ###\033[01;32m"
@@ -47,6 +49,8 @@ else
 	if ! [[ $jar_file =~ ".jar" ]]; then
 	  	jar_file+=".jar";
 	fi
+
+	rm -rf $jar_file
 
 	echo "Type the presigned URL: " 
 	read presignedURL;
