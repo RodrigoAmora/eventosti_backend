@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Package
-        run: mvn -B package --file pom.xml
+        run: mvn package
   publish:
     runs-on: ubuntu-latest
     needs: build
