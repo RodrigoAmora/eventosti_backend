@@ -29,9 +29,7 @@ jobs:
         with:
           generate-branches-badge: true
           jacoco-csv-file: >
-            module1/target/site/jacoco/jacoco.csv
-            module2/target/site/jacoco/jacoco.csv
-            module3/target/site/jacoco/jacoco.csv
+            src/target/site/jacoco/jacoco.csv
       
       - name: Log coverage percentage
         run: |
