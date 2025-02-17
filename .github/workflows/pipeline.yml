@@ -28,7 +28,7 @@ jobs:
         uses: cicirello/jacoco-badge-generator@v2.0.1
       - name: Log converga percentage
         run: |
-            echo "coverage = ${{ steps.jacoco.outputs.converage }}"
+            echo "coverage = ${{ steps.jacoco.outputs.coverage }}"
             echo "branch coverage = ${{ steps.jacoco.outputs.branches }}"
       
       - name: Upload JaCoCo coverage report
