@@ -38,16 +38,12 @@ resource "aws_security_group" "securitygroup" {
   }
 }
 
-resource "aws_instance" "eventosti" {
+resource "aws_instance" "eventosti2" {
   ami                    = "ami-0ba9883b710b05ac6"
   instance_type          = "t2.micro"
   
   user_data              = file("~/aws/aws_configure_enviroment.sh")
   vpc_security_group_ids = ["${aws_security_group.principal_sg.id}"]
-
-  tags = {
-    name = "Demo VM One"
-  }
 }
 
 output "instance_id" {
