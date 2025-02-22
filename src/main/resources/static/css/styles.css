@@ -32,6 +32,7 @@
 }
 
 body {
+	background-color: gray;
   margin: 0;
   padding: 0;
 }
@@ -59,5 +60,5 @@ body {
 	background: black;
 	width: 100%;
 	height: auto;
-	margin-top: auto;
+	margin-bottom: 0px;
 }
