@@ -53,8 +53,11 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "eventosti" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.micro"
-  vpc_security_group_ids = [aws_security_group.vpc-063bdf5f611fafc07.id]
-  key_name               = aws_key_pair.keypair.key_name
+  
   user_data              = file("~/aws/aws_configure_enviroment.sh")
-  vpc_security_group_ids = ["${aws_security_group.securitygroup.id}"]
+  vpc_security_group_ids = ["${aws_security_group.vpc-063bdf5f611fafc07.id}"]
+}
+
+output "public_ip" {
+  value = aws_instance.ec2.public_ip
 }
