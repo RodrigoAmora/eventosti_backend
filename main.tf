@@ -1,3 +1,13 @@
+terraform {
+  required_provider {
+    aws = {
+      source = "hashicorp/aws"
+      verson = "~> 4.16"
+    }
+  }
+  required_version = ">= 1.2.0"
+}
+
 provider "aws" {
   region = "us-east-1"
 }
@@ -41,6 +51,12 @@ resource "aws_instance" "eventosti" {
   }
 }
 
-output "public_ip" {
-  value = aws_instance.ec2.public_ip
+output "instance_id" {
+  description = "ID of the EC2 instance"
+  value = aws_instance.app_server.id
+}
+
+output "instance_public_ip" {
+  description = "Public IP of the EC2 instance"
+  value = aws_instance.app_server.public_ip
 }
