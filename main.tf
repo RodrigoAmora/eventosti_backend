@@ -29,22 +29,6 @@ resource "aws_security_group" "securitygroup" {
 }
 
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
 resource "aws_instance" "eventosti" {
   ami                    = "ami-0ba9883b710b05ac6"
   instance_type          = "t2.micro"
@@ -52,7 +36,7 @@ resource "aws_instance" "eventosti" {
   user_data              = file("~/aws/aws_configure_enviroment.sh")
   vpc_security_group_ids = ["${aws_security_group.principal_sg.id}"]
 
-  tags {
+  tags = {
     name = "Demo VM One"
   }
 }
