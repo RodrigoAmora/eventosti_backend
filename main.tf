@@ -1,25 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.52.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "3.4.3"
-    }
-  }
-  required_version = ">= 1.1.0"
-
-  cloud {
-    organization = "Rodrigo"
-
-    workspaces {
-      name = "gh-actions"
-    }
-  }
-}
-
 provider "aws" {
   region = "us-east-1"
 }
@@ -67,12 +45,16 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "eventosti222" {
+resource "aws_instance" "eventosti" {
   ami                    = "ami-0ba9883b710b05ac6"
   instance_type          = "t2.micro"
   
   user_data              = file("~/aws/aws_configure_enviroment.sh")
   vpc_security_group_ids = ["${aws_security_group.principal_sg.id}"]
+
+  tags = {
+    name = "Demo VM One"
+  }
 }
 
 output "public_ip" {
