@@ -48,6 +48,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: Set output 
+        run: echo "{name}={value}" >> $GITHUB_OUTPUT
+      
       - name: Checkout
         uses: actions/checkout@v2
   
