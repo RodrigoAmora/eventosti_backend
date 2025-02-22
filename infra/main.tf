@@ -67,7 +67,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "eventosti" {
+resource "aws_instance" "eventosti222" {
   ami                    = "ami-0ba9883b710b05ac6"
   instance_type          = "t2.micro"
   
