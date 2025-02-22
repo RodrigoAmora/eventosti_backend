@@ -46,7 +46,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "eventosti" {
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = "ami-0ba9883b710b05ac6"
   instance_type          = "t2.micro"
   
   user_data              = file("~/aws/aws_configure_enviroment.sh")
