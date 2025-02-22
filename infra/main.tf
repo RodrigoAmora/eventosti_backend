@@ -28,11 +28,6 @@ resource "aws_security_group" "securitygroup" {
   }
 }
 
-resource "aws_key_pair" "keypair" {
-  key_name   = "terraform-keypair"
-  public_key = file("~/.ssh/id_rsa.pub")
-}
-
 
 data "aws_ami" "ubuntu" {
   most_recent = true
