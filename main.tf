@@ -52,7 +52,7 @@ resource "aws_instance" "eventosti" {
   user_data              = file("~/aws/aws_configure_enviroment.sh")
   vpc_security_group_ids = ["${aws_security_group.principal_sg.id}"]
 
-  tags = {
+  tags {
     name = "Demo VM One"
   }
 }
