@@ -38,7 +38,6 @@ resource "aws_security_group" "securitygroup" {
   }
 }
 
-
 resource "aws_instance" "eventosti" {
   ami                    = "ami-0ba9883b710b05ac6"
   instance_type          = "t2.micro"
