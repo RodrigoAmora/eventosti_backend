@@ -43,7 +43,7 @@ resource "aws_instance" "eventosti2" {
   instance_type          = "t2.micro"
   key_name               = "${aws_key_pair.auth.id}"
   vpc_security_group_ids = ["${aws_security_group.securitygroup.id}"]
-  user_data              = "${file("aws/aws_configure_enviroment.sh")}"
+  
   user_data_replace_on_change = true 
 }
 
