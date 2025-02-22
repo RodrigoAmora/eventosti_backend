@@ -42,8 +42,23 @@ resource "aws_instance" "eventosti2" {
   ami                    = "${data.aws_ami.ubuntu.id}"
   instance_type          = "t2.micro"
   key_name               = "${aws_key_pair.auth.id}"
-  user_data              = "${file("~/aws/aws_configure_enviroment.sh")}"
   vpc_security_group_ids = ["${aws_security_group.securitygroup.id}"]
+  
+  user_data              = <<-EOF
+                          #!/bin/bash
+                          apt-get update
+                          sudo yum install iptables
+                          sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8081
+                          sudo yum install java-17-amazon-corretto-devel
+                          sudo yum install -y maven
+                          sudo dnf install mariadb105-server
+                          sudo mysql_secure_installation
+                          sudo systemctl start mariadb
+                          sudo systemctl enable mariadb
+                          sudo mysql_secure_installation
+                          sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+                          mvn spring-boot:run
+                          EOF
 }
 
 output "instance_id" {
