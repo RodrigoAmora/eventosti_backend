@@ -13,7 +13,7 @@
 }
 
 .clock {
-	border: lightslategray;
+	border: red;
   	border-radius: 5px;
   	border-style: double;
   	border-width: 3px;
