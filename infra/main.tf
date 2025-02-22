@@ -55,7 +55,7 @@ resource "aws_instance" "eventosti" {
   instance_type          = "t2.micro"
   
   user_data              = file("~/aws/aws_configure_enviroment.sh")
-  vpc_security_group_ids = ["${aws_security_group.vpc-063bdf5f611fafc07.id}"]
+  vpc_security_group_ids = ["${aws_security_group.launch-wizard-2.id}"]
 }
 
 output "public_ip" {
