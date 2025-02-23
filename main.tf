@@ -39,9 +39,8 @@ resource "aws_security_group" "securitygroup" {
 }
 
 resource "aws_instance" "eventosti2" {
-  ami                    = "${data.aws_ami.ubuntu.id}"
+  ami                    = "ami-0ba9883b710b05ac6"
   instance_type          = "t2.micro"
-  key_name               = "${aws_key_pair.auth.id}"
   vpc_security_group_ids = ["${aws_security_group.securitygroup.id}"]
   user_data              = "${file("./aws/aws_configure_enviroment.sh")}"
 
