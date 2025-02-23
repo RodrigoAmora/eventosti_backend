@@ -63,12 +63,12 @@ jobs:
       - name: Set output
         run: echo "{name}={value}" >> $GITHUB_OUTPUT
 
+      - name: Terraform Init
+        run: terraform init
+        
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
-        
-      - name: Terraform Init
-        run: terraform init
 
       - name: Terraform Validate
         id: validate
