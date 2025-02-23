@@ -60,9 +60,11 @@ output "instance_public_ip" {
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
-  default = var.AWS_SECRET_ACCESS_KEY
+  type      = string
+  sensitive = true
 }
 
 variable "AWS_ACCESS_KEY_ID" {
-  default = var.AWS_ACCESS_KEY_ID
+  type      = string
+  sensitive = true
 }
