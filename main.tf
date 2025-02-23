@@ -60,9 +60,9 @@ output "instance_public_ip" {
 }
 
 variable "AWS_SECRET_ACCESS_KEY" {
-  default = "AKIAXYKJQC664RGDIGDS"
+  default = "AKIAXYKJQC66VKYR5MT3"
 }
 
 variable "AWS_ACCESS_KEY_ID" {
-  default = "NN9tchataxq9uxC1cLUZhHjeivxjD9H0FNKqjoA/"
+  default = "wEAmQ+L0CpLBsh6GBO7DgRyRbmhT6nO6L+Ry65nW"
 }
