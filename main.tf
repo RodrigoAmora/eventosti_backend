@@ -44,15 +44,15 @@ resource "aws_instance" "eventosti2" {
   key_name               = "${aws_key_pair.auth.id}"
   vpc_security_group_ids = ["${aws_security_group.securitygroup.id}"]
   user_data              = "${file("./aws/aws_configure_enviroment.sh")}"
-  user_data_replace_on_change = true 
+
 }
 
 output "instance_id" {
   description = "ID of the EC2 instance"
-  value = aws_instance.app_server.id
+  value       = aws_instance.app_server.id
 }
 
 output "instance_public_ip" {
   description = "Public IP of the EC2 instance"
-  value = aws_instance.app_server.public_ip
+  value       = aws_instance.app_server.public_ip
 }
