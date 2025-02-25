@@ -30,7 +30,8 @@ public class UsuarioApiController {
 	}
 	
 	@PatchMapping(value = { "/{id}" })
-	public Usuario salvarUsuario(@PathVariable(name = "id") String id, @RequestBody Usuario usuario) {
+	public Usuario salvarUsuario(@PathVariable(name = "id") String id,
+								 @RequestBody Usuario usuario) {
 		return this.usuarioService.editar(usuario);
 	}
 	
