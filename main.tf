@@ -8,11 +8,13 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
+import {
+  to = aws_secretsmanager_secret.rodrigo-freitas
+  id = "arn:aws:iam:us-east-1:533266962365:user/rodrigo-freitas"
+}
+
 provider "aws" {
   region = "us-east-1"
-  
-  access_key = var.accesskey_value
-  secret_key = var.secret_value
 }
 
 resource "aws_security_group" "securitygroup" {
@@ -57,22 +59,4 @@ output "instance_id" {
 output "instance_public_ip" {
   description = "Public IP of the EC2 instance"
   value       = aws_instance.eventosti2.public_ip
-}
-
-variable "aws_access_key_id" {
- sensitive = true
-}
-
-variable "aws_secret_access_key" {
- sensitive = true
-}
-
-output "accesskey_value" {
- value = var.aws_access_key_id
- sensitive = true
-}
-
-output "secret_value" {
- value = var.aws_secret_access_key
- sensitive = true
 }
