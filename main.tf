@@ -11,8 +11,8 @@ terraform {
 provider "aws" {
   region = "us-east-1"
   
-  access_key = var.aws_access_key_id
-  secret_key = var.aws_secret_access_key
+  access_key = "${var.aws_access_key_id}"
+  secret_key = "${var.aws_secret_access_key}"
 }
 
 resource "aws_security_group" "securitygroup" {
@@ -57,14 +57,4 @@ output "instance_id" {
 output "instance_public_ip" {
   description = "Public IP of the EC2 instance"
   value       = aws_instance.eventosti2.public_ip
-}
-
-variable "aws_secret_access_key" {
-  type      = string
-  sensitive = true
-}
-
-variable "aws_access_key_id" {
-  type      = string
-  sensitive = true
 }
