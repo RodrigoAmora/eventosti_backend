@@ -8,11 +8,6 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
-import {
-  to = aws_secretsmanager_secret.rodrigo-freitas
-  id = "arn:aws:iam:us-east-1:533266962365:user/rodrigo-freitas"
-}
-
 provider "aws" {
   region = "us-east-1"
 }
