@@ -78,4 +78,5 @@ jobs:
         run: terraform plan
         
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -input=flase \
+	     -var="aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}" \             -var="aws_access_key_id=${{ secrets.AWS_ACCESS_KEY_ID }}"
