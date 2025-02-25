@@ -8,9 +8,7 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
-provider "aws" {
-  region = "us-east-1"
-}
+
 
 resource "aws_security_group" "securitygroup" {
   name        = "ec2-securitygroup"
