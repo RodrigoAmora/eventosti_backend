@@ -49,6 +49,8 @@ public class SecurityConfig {
 			.authorizeHttpRequests(req -> {
 				req.requestMatchers(HttpMethod.GET, "/").permitAll();
 				
+				req.requestMatchers("/download").permitAll();
+				
 				// Endpoint de monitoramento
 				req.requestMatchers("/actuator/**").permitAll();
 				
