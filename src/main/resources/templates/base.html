@@ -34,7 +34,12 @@
 						<a class="nav-link" th:href="@{/evento/cadastrar}" th:text="#{message.navbar.send_event}"></a>
 					</li>
 					
-					
+					<div sec:authorize="!isAuthenticated()">
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/download}" th:text="Download"></a>
+						</li>
+					</div>
+										
 					<div sec:authorize="!isAuthenticated()">
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/formLogin}" th:text="#{message.log_in}"></a>

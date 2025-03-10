@@ -32,4 +32,8 @@ public class HelloController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	public String download() {
+		return "download";
+	}
 }
