@@ -11,7 +11,7 @@
 				<p th:text="#{message.navbar.send_event}"></p>
 			</h3>
 			
-			<form action="#" th:action="@{/evento/cadastrar}" th:object="${evento}" method="post" class="row g-3">
+			<form th:action="@{/evento/cadastrar}" th:object="${evento}" method="post" class="row g-3">
 				<div class="mb-3">
 					<input id="nome" type="text" th:field="*{nome}" th:placeholder="#{message.event.name_evento}" class="form-control" />
 					<p th:if="${#fields.hasErrors('nome')}" th:errorclass="error" th:errors="*{nome}" />
@@ -32,10 +32,9 @@
 				<div class="mb-3">
 					<label for="tipoEvento" th:text="#{message.event.type_event}"></label>
 					<select class="form-select" id="tipoEvento" th:field="*{tipoEvento}" aria-label="Default select example">
-						<option value=""></option>
 						<option value="PRESENCIAL" th:text="#{message.event.type_presencial}"></option>
-						<option value="ON-LINE" th:text="#{message.event.type_online}"></option>
-						<option value="HIBRIDO" th:text="#{message.event.type_hibrid}"></option>
+						<option value="ON_LINE" th:text="#{message.event.type_online}"></option>
+						<option value="HIBIRDO" th:text="#{message.event.type_hibrid}"></option>
 					</select>
 				</div>
 				
