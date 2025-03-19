@@ -27,7 +27,7 @@ public class EventoController {
 	
 	@GetMapping("/evento/cadastrar")
 	public String cadastrar(Model model) {
-		model.addAttribute("evento", new Evento());
+		model.addAttribute("evento", new EventoDTO());
 		return "evento/enviar_evento";
 	}
 	
@@ -43,7 +43,7 @@ public class EventoController {
 		return "redirect:/evento/cadastrar?result=success";
 	}
 	
-	@GetMapping("/evento/buscar")
+	@PostMapping("/evento/buscar")
 	public String buscarEventoPorNome(@RequestParam("nome") String nome,
 									  Model model,
 			  						  @RequestParam("page") Optional<Integer> page,
