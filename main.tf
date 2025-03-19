@@ -1,60 +1,71 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "~> 4.16"
-    }
-  }
-  required_version = ">= 1.2.0"
-}
+data "aws_ami" "ubuntu" {
+  most_recent = true
 
-provider "aws" {
-  region = "us-east-1"
-
-  access_key = var.aws_access_key_id
-  secret_key = var.aws_secret_access_key
-}
-
-resource "aws_security_group" "securitygroup" {
-  name        = "ec2-securitygroup"
-  description = "Ingress Http and SSH and Egress to anywhere "
-
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
   }
 
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "tcb_blog_ec2" {
+  ami           = data.aws_ami.ubuntu.id
+  instance_type = "t2.micro"
+  key_name = "tcb-blog" # Insira o nome da chave criada antes.
+  subnet_id = var.tcb_blog_subnet_public_id
+  vpc_security_group_ids = [aws_security_group.permitir_ssh_http.id]
+  associate_public_ip_address = true
+
+  tags = {
+    Name = "blogserver01"
+ # Insira o nome da instância de sua preferência.
+  }
+}
+
+variable "tcb_blog_vpc_id" {
+  default = "vpc-044a05c74d46127b6" # Orientações para copia da VPC ID abaixo.
+}
+
+variable "tcb_blog_subnet_public_id" {
+  default = "subnet-0f001d93c9e954103" # Orientações para copia da Subnet ID abaixo.
+}
+
+
+resource "aws_security_group" "permitir_ssh_http" {
+  name        = "permitir_ssh"
+  description = "Permite SSH e HTTP na instancia EC2"
+  vpc_id      = var.tcb_blog_vpc_id
+
   ingress {
+    description = "SSH to EC2"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  egress {
-    from_port   = 0
-    to_port     = 8080
+  ingress {
+    description = "HTTP to EC2"
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
 
-resource "aws_instance" "eventosti2" {
-  ami                    = "ami-0ba9883b710b05ac6"
-  instance_type          = "t2.micro"
-  vpc_security_group_ids = ["${aws_security_group.securitygroup.id}"]
-  user_data              = "${file("./aws/aws_configure_enviroment.sh")}"
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
-}
-
-output "instance_id" {
-  description = "ID of the EC2 instance"
-  value       = aws_instance.eventosti2.id
-}
-
-output "instance_public_ip" {
-  description = "Public IP of the EC2 instance"
-  value       = aws_instance.eventosti2.public_ip
+  tags = {
+    Name = "permitir_ssh_e_http"
+  }
 }
