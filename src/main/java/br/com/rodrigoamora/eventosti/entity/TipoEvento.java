@@ -6,15 +6,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum TipoEvento {
 
-	PRESENCIAL("PRESENCIAL"),
-	ON_LINE("ON-LINE"),
-	HIBIRDO("HIBRIDO");
+	PRESENCIAL,
+	ON_LINE,
+	HIBIRDO;
 	
-	private String tipoEvento;
-	
-	TipoEvento(String tipoEvento) {
-		this.tipoEvento = tipoEvento;
-	}
+	private String tipoEvento;	
 
 	@JsonValue
 	public String getTipoEvento() {
