@@ -22,11 +22,12 @@ public class HelloController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model,
 		      			@RequestParam("page") Optional<Integer> page,
-		      			@RequestParam("size") Optional<Integer> size) {
+		      			@RequestParam("size") Optional<Integer> size,
+		      			@RequestParam(value = "order", required = false, defaultValue = "dataInicio") String order) {
 		int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
 
-		Page<Evento> eventos = this.eventoService.listarEventosAprovados(currentPage-1, pageSize);
+		Page<Evento> eventos = this.eventoService.listarEventosAprovados(currentPage-1, pageSize, order);
 		model = this.eventoService.setModel(model, eventos);
 		
 		return "index";

@@ -58,8 +58,9 @@ public class EventoApiController {
 	
 	@GetMapping
 	public Page<Evento> listarTodos(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-			   				        @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
-		return this.eventoService.listarEventosAprovados(page, size);
+			   				        @RequestParam(value = "size", required = false, defaultValue = "20") int size,
+			   				        @RequestParam(value = "order", required = false, defaultValue = "dataInicio") String order) {
+		return this.eventoService.listarEventosAprovados(page, size, order);
 	}
 	
 	@DeleteMapping(value = { "/{id}" })

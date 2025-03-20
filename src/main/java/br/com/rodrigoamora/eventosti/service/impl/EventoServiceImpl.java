@@ -55,8 +55,8 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
-	public Page<Evento> listarEventosAprovados(int page, int size) {
-		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
+	public Page<Evento> listarEventosAprovados(int page, int size, String order) {
+		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, order);
 		return this.eventoRepository.listarEventosAprovados(pageRequest);
 	}
 

@@ -13,7 +13,7 @@ public interface EventoService {
 	
 	public void apagarEventoPorId(Long id);
 	
-	public Page<Evento> listarEventosAprovados(int page, int size);
+	public Page<Evento> listarEventosAprovados(int page, int size, String order);
 	public Page<Evento> listarEventosEmEspera(int page, int size);
 	
 	public Page<Evento> buscarEventoPorNome(String nome, int page, int size);
