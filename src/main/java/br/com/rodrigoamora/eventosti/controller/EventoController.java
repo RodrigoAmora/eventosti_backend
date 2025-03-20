@@ -43,8 +43,8 @@ public class EventoController {
 		return "redirect:/evento/cadastrar?result=success";
 	}
 	
-	@PostMapping("/evento/buscar")
-	public String buscarEventoPorNome(@RequestParam("nome") String nome,
+	@GetMapping("/evento/buscar")
+	public String buscarEventoPorNome(@RequestParam("nomeEvento") String nome,
 									  Model model,
 			  						  @RequestParam("page") Optional<Integer> page,
 			  						  @RequestParam("size") Optional<Integer> size) {
