@@ -12,6 +12,7 @@ public interface EventoService {
 	public Evento aprovarEvento(Long id);
 	
 	public void apagarEventoPorId(Long id);
+	public void apagarTodosEvento();
 	
 	public Page<Evento> listarEventosAprovados(int page, int size, String order);
 	public Page<Evento> listarEventosEmEspera(int page, int size);

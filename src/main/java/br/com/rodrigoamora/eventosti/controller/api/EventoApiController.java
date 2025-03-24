@@ -75,4 +75,11 @@ public class EventoApiController {
 		return HttpStatus.OK;
 	}
 	
+	@DeleteMapping
+	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
+	public HttpStatus apagarTodosEvento() {
+		this.eventoService.apagarTodosEvento();
+		return HttpStatus.OK;
+	}
+	
 }
