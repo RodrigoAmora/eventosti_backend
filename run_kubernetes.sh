@@ -4,6 +4,10 @@
 ### Shellscript to run Pods and Service on Kubernetes ###
 #########################################################
 
+rm -rf target/
+mvn clean install -Pprod -DskipTests
+
+
 cd kubernetes/
 
 kubectl apply -f secrets.yaml
