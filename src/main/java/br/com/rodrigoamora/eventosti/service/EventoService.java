@@ -9,6 +9,7 @@ import br.com.rodrigoamora.eventosti.entity.Evento;
 public interface EventoService {
 	
 	public Evento salvarEvento(Evento evento);
+	public Evento editarEvento(Evento evento);
 	public Evento aprovarEvento(Long id);
 	
 	public void apagarEventoPorId(Long id);

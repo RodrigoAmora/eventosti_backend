@@ -43,6 +43,13 @@ public class EventoServiceImpl implements EventoService {
 	}
 
 	@Override
+	public Evento editarEvento(Evento evento) {
+		String site = this.verificarSite(evento.getSite());
+		evento.setSite(site);
+		return this.eventoRepository.save(evento);
+	}
+	
+	@Override
 	public Evento aprovarEvento(Long id) {
 		Evento evento = this.eventoRepository.findById(id).get();
 		evento.setStatus(StatusEvento.APROVADO);
