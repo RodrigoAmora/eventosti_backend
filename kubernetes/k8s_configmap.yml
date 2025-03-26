@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: db-config
 data:
-  MYSQL_URL: jdbc:mysql://mysql-service:3306/eventos_ti?createDatabaseIfNotExist=true
+  MYSQL_URL: jdbc:mysql://mysql-service:3306/eventos-ti?createDatabaseIfNotExist=true
   MYSQL_HOST: mysql-service
   MYSQL_PORT: 3306
-  MYSQL_DATABASE: eventos_ti
+  MYSQL_DATABASE: eventos-ti
