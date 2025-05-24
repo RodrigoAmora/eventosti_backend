@@ -63,17 +63,15 @@ Para rodar os testes, exceute o comando:
 mvn test
 ```
 
-Rodando o projeto:
-------------------
-Para iniciar a aplicação localmente via IDE, execute a classe `EventostiApplication`
-
-Para iniciar a aplicação localmente via terminal, execute o comando no diretório raiz do projeto:
+Rodando o projeto localmente:
+-----------------------------
+Para iniciar a aplicação localmente, execute o comando no diretório raiz do projeto via terminal:
 ```shell script
 mvn spring-boot:run
 ```
 
-Docker:
--------
+Rodando o projeto no Docker:
+----------------------------
 Para rodar o projeto em um container Docker, primeiro deve-se gerar o .jar do projeto.<br>
 Após isso, deve-se gerar o build das imagens e subir os containers do Docker.<br><br>
 <b>Fazendo o build das imagens:</b>
