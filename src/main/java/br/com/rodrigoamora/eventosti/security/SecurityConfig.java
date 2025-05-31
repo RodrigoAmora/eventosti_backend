@@ -50,6 +50,8 @@ public class SecurityConfig {
 				req.requestMatchers(HttpMethod.GET, "/").permitAll();
 				
 				req.requestMatchers("/download").permitAll();
+				req.requestMatchers("/swagger").permitAll();
+				req.requestMatchers("/redoc").permitAll();
 				
 				// Endpoint de monitoramento
 				req.requestMatchers("/actuator/**").permitAll();
