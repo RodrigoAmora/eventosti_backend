@@ -25,6 +25,9 @@ RUN ./mvnw dependency:go-offline -B
 
 COPY src src
 
+RUN mkdir -p /var/log/mysql
+RUN chmod -R 0755 /var/lib/mysql /var/log/mysql /etc/mysql
+
 RUN ./mvnw package -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
