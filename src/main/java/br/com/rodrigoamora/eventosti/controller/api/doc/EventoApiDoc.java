@@ -8,18 +8,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
-@OpenAPIDefinition(info = @Info(
-        title = "Eventos",
-        description = "Ednpoint de eventos",
-        version = "1.0.0"))
+
 public interface EventoApiDoc {
 
 	@Operation(summary = "Cadastro de evento")
@@ -41,8 +36,8 @@ public interface EventoApiDoc {
 	
 	@Operation(summary = "Listagem de eventos")
 	public Page<Evento> listarTodos(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-		        @RequestParam(value = "size", required = false, defaultValue = "20") int size,
-		        @RequestParam(value = "order", required = false, defaultValue = "dataInicio") String order);
+		        					@RequestParam(value = "size", required = false, defaultValue = "20") int size,
+		        					@RequestParam(value = "order", required = false, defaultValue = "dataInicio") String order);
 	
 	@Operation(summary = "Apagar evento pelo id")
 	public HttpStatus apagarEventoPorId(@PathVariable(name = "id") Long id);
