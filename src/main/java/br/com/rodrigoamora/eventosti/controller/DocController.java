@@ -9,7 +9,7 @@ public class DocController {
 
 	@GetMapping("/swagger")
     public RedirectView redirectToSwagger() {
-        return new RedirectView("/swagger-ui/index.html");
+        return new RedirectView("/swagger-ui.html");
     }
     
     
