@@ -17,22 +17,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.rodrigoamora.eventosti.controller.api.doc.EventoApiDoc;
 import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
 
 @RestController
 @RequestMapping("/api/evento")
-public class EventoApiController {
+public class EventoApiController implements EventoApiDoc {
 
 	@Autowired
 	private EventoServiceImpl eventoService;
 	
+	@Override
 	@PostMapping
 	public ResponseEntity<Evento> salvarEvento(@RequestBody Evento evento) {
 		evento = this.eventoService.salvarEvento(evento);
 		return ResponseEntity.ok(evento);
 	}
 	
+	@Override
 	@GetMapping(value = { "/{id}" })
 	public ResponseEntity<Evento> buscarEventoPorId(@PathVariable(name = "id") Long id) {
 		Optional<Evento> evento = this.eventoService.buscarEventoPorId(id);
@@ -44,6 +47,7 @@ public class EventoApiController {
 		return ResponseEntity.notFound().build();
 	}
 
+	@Override
 	@PutMapping(value = { "/{id}" })
 	public ResponseEntity<Evento> editarEvento(@PathVariable(name = "id") Long id,
 											   @RequestBody Evento evento) {
@@ -58,6 +62,7 @@ public class EventoApiController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@Override
 	@GetMapping("/buscarPorNome")
 	public ResponseEntity<Page<Evento>> buscarEventoPorNome(@RequestParam(name = "nome") String nome,
 														    @RequestParam(value = "page", required = false, defaultValue = "0") int page,
@@ -71,6 +76,7 @@ public class EventoApiController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@Override
 	@GetMapping
 	public Page<Evento> listarTodos(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
 			   				        @RequestParam(value = "size", required = false, defaultValue = "20") int size,
@@ -78,6 +84,7 @@ public class EventoApiController {
 		return this.eventoService.listarEventosAprovados(page, size, order);
 	}
 	
+	@Override
 	@DeleteMapping(value = { "/{id}" })
 	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
 	public HttpStatus apagarEventoPorId(@PathVariable(name = "id") Long id) {
@@ -90,6 +97,7 @@ public class EventoApiController {
 		return HttpStatus.OK;
 	}
 	
+	@Override
 	@DeleteMapping
 	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
 	public HttpStatus apagarTodosEvento() {
