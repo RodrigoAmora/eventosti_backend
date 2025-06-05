@@ -12,6 +12,7 @@ public interface UsuarioService {
 	public Usuario editar(Usuario usuario);
 	
 	public void apagarUsuario(Usuario usuario);
+	public void apagarUsuarioPorId(Long id);
 	
 	public Usuario buscarUsuarioPorId(Long id);
 	public Usuario buscarUsuarioPorLogin(String login);

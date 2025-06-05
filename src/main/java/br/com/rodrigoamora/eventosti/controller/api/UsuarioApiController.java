@@ -4,15 +4,10 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
 import br.com.rodrigoamora.eventosti.controller.api.doc.UsuarioApiDoc;
 import br.com.rodrigoamora.eventosti.entity.Usuario;
@@ -53,7 +48,7 @@ public class UsuarioApiController implements UsuarioApiDoc {
 	
 	@Override
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> buscarEventoPorId(@PathVariable(name = "id") Long id) {
+	public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable(name = "id") Long id) {
 		Optional<Usuario> usuario = this.usuarioService.buscarUsurioPorId(id);
 
 		if (usuario.isPresent()) {
@@ -62,5 +57,18 @@ public class UsuarioApiController implements UsuarioApiDoc {
 		
 		return ResponseEntity.notFound().build();
 	}
-	
+
+	@Override
+	@DeleteMapping(value = { "/{id}" })
+	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
+	public HttpStatus apagarUsuarioPorId(@PathVariable(name = "id") Long id) {
+		var eventoEncontrado = this.usuarioService.buscarUsurioPorId(id);
+		if (!eventoEncontrado.isPresent()) {
+			return HttpStatus.NOT_FOUND;
+		}
+
+		this.usuarioService.apagarUsuarioPorId(id);
+		return HttpStatus.OK;
+	}
+
 }

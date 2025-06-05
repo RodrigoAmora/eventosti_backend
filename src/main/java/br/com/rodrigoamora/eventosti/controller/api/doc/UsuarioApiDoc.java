@@ -1,6 +1,7 @@
 package br.com.rodrigoamora.eventosti.controller.api.doc;
 
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +33,9 @@ public interface UsuarioApiDoc {
 		  		 					 @RequestParam(value = "size", required = false, defaultValue = "20") int size);
 	
 	
+	@Operation(summary = "Buscar usário pelo id")
+	public ResponseEntity<Usuario> buscarUsuarioPorId(@PathVariable(name = "id") Long id);
+
 	@Operation(summary = "Apagar usário pelo id")
-	public ResponseEntity<Usuario> buscarEventoPorId(@PathVariable(name = "id") Long id);
-	
+	public HttpStatus apagarUsuarioPorId(@PathVariable(name = "id") Long id);
 }

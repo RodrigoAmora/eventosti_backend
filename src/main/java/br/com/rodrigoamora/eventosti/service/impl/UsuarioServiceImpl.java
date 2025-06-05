@@ -54,9 +54,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return this.userRepository.listarTodos(pageRequest);
 	}
 
-	
+	@Override
 	public void apagarUsuario(Usuario usuario) {
 		this.userRepository.delete(usuario);
+	}
+
+	@Override
+	public void apagarUsuarioPorId(Long id) {
+		this.userRepository.deleteById(id);
 	}
 
 	@Override
