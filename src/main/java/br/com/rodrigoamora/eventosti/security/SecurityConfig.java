@@ -48,11 +48,12 @@ public class SecurityConfig {
 		http.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests(req -> {
 				req.requestMatchers(HttpMethod.GET, "/").permitAll();
-				
+
 				req.requestMatchers("/download").permitAll();
-				req.requestMatchers("/swagger").permitAll();
+				req.requestMatchers("/privacy").permitAll();
 				req.requestMatchers("/redoc").permitAll();
-				
+				req.requestMatchers("/swagger").permitAll();
+
 				// Endpoint de monitoramento
 				req.requestMatchers("/actuator/**").permitAll();
 				
@@ -94,9 +95,10 @@ public class SecurityConfig {
 	
 	@Bean
 	WebSecurityCustomizer webSecurityCustomizer() {
-		return (web) -> web.ignoring().requestMatchers("/ignore2", "/swagger-ui/**","/swagger-ui.html", "/v3/api-docs/**", "/v2/api-docs/**", "/redoc.html", "css/**", "js/**", "assets/**");
+		return (web) -> web.ignoring().requestMatchers("/ignore2", "/swagger-ui/**", "/swagger-ui.html",
+																	"/v3/api-docs/**", "/v2/api-docs/**", "/redoc.html",
+																	"css/**", "js/**", "assets/**");
 	}
-
 
 	@Bean
 	AuthenticationManager authenticationManager() throws Exception {

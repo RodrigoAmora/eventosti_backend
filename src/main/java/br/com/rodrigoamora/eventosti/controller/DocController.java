@@ -12,10 +12,14 @@ public class DocController {
         return new RedirectView("/swagger-ui.html");
     }
     
-    
     @GetMapping("/redoc")
     public RedirectView redirectRedoc() {
         return new RedirectView("/redoc.html");
     }
-    
+
+    @GetMapping("/privacy")
+    public String privacy() {
+        return "privacy.html";
+    }
+
 }

@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{base :: head}"></head>
+<body>
+    <head th:replace="~{base :: header}"></head>
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="card" style="margin-bottom: 7px;">
+                <div class="card-header">
+                    <h5>
+                        <b th:text="#{message.privacy.title}"></b>
+                    </h5>
+                </div>
+
+                <div class="card-body">
+                    <p class="card-text">
+                        <h5 th:text="#{message.privacy.text}"></h5>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <footer th:replace="~{base ::footer}"></footer>
+</body>
+</html>
