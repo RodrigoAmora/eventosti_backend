@@ -33,32 +33,32 @@
 					<li class="nav-item">
 						<a class="nav-link" th:href="@{/evento/cadastrar}" th:text="#{message.navbar.send_event}"></a>
 					</li>
-					
+
+					<!--
 					<div sec:authorize="!isAuthenticated()">
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/download}" th:text="Download"></a>
 						</li>
 					</div>
-										
+
 					<div sec:authorize="!isAuthenticated()">
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/formLogin}" th:text="#{message.log_in}"></a>
 						</li>
 					</div>
-					
+
 					<div sec:authorize="isAuthenticated()">
 						<li class="nav-item">
 							<a class="nav-link" th:href="@{/evento/aprovar}" th:text="#{message.event.approve}"></a>
 						</li>
-
-						
 					</div>
-					
+
 					<div sec:authorize="isAuthenticated()">
 						<li class="nav-item">
 							<a class="nav-link" href="/logout" th:text="#{message.log_out}"></a>
 						</li>
 					</div>
+					-->
 				</ul>
 				
 				<form class="d-flex" role="search" th:action="@{/evento/buscar}" th:object="${evento}" method="get" id="buscaPorNome">
