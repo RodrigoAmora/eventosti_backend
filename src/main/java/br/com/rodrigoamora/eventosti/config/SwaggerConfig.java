@@ -12,7 +12,7 @@ public class SwaggerConfig {
 	@Bean
 	OpenAPI custonOpenAPI() {
 		return new OpenAPI()
-				.info(new Info()
+						.info(new Info()
 						.title("API Eventos TI")
 						.description("Documentação da API")
 						.version("1.0"));
