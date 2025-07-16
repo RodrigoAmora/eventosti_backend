@@ -22,14 +22,14 @@ O projeto usa o Java 17 e as seguintes dependências:
 
 📌 Documentação dos Endpoints:
 ------------------------------
-A documentação dos endpoints pode ser vista através do Swagger e do Redoc.<br>
+A API conta com documentação automática via Swagger e Redoc:<br>
 
-<b>Documentação dos endpoints via Swagger:</b>
+<b>Documentação via Swagger:</b>
 ```shell script
 http://localhost:8080/swagger-ui.html
 ```
 
-<b>Documentação dos endpoints via Redoc:</b>
+<b>Documentação via Redoc:</b>
 ```shell script
 http://localhost:8080/redoc.html
 ```
