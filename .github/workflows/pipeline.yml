@@ -61,7 +61,7 @@ jobs:
             - job_name: 'spring-actuator'
               metrics_path: '/actuator/prometheus'
               static_configs:
-                - targets: ['fiap-videos:8082']
+                - targets: ['eventos-ti:8080']
           EOF
           
           # Preparar ambiente na EC2
@@ -71,7 +71,7 @@ jobs:
           
           # Copiar arquivos
           scp -o StrictHostKeyChecking=no -i private_key.pem \
-            docker-compose.yml prometheus.yml \
+            docker-compose.yml \
             ${USERNAME}@${HOST}:~/app/
           
           # Deploy
