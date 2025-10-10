@@ -132,7 +132,7 @@ public class SecurityConfig {
     }
 
 	private TokenAuthenticationService tokenAuthorizationFilter() {
-        return new TokenAuthenticationService(this.userDetailsService, this.blackListTokenService);
+        return new TokenAuthenticationService(this.userDetailsService, null);
     }
     
 }
