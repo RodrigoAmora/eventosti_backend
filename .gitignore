@@ -35,5 +35,11 @@ data/
 ### VS Code ###
 .vscode/
 
+### .env ###
+.env
+
+### log ###
+log/
+
 ### MacOS ###
 .DS_Store
