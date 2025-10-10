@@ -22,7 +22,7 @@ services:
     image: rodrigoamora/rodrigo-springboot:latest
     container_name: 'eventos-ti'
     ports:
-      - "80:8080"
+      - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
       - SPRING_DATASOURCE_URL=${DB_URL}
