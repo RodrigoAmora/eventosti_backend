@@ -22,7 +22,6 @@ import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 import br.com.rodrigoamora.eventosti.security.filter.CustomHeaderFilter;
 import br.com.rodrigoamora.eventosti.security.jwt.JWTLoginFilter;
 import br.com.rodrigoamora.eventosti.security.jwt.TokenAuthenticationService;
-import br.com.rodrigoamora.eventosti.service.BlackListAccessTokenService;
 import br.com.rodrigoamora.eventosti.service.impl.UsuarioDetailsServiceImpl;
 
 @Configuration
@@ -34,8 +33,6 @@ import br.com.rodrigoamora.eventosti.service.impl.UsuarioDetailsServiceImpl;
 )
 public class SecurityConfig {
 
-	@Autowired
-	private BlackListAccessTokenService blackListTokenService;
 	
 	@Autowired
 	private UsuarioDetailsServiceImpl userDetailsService;
