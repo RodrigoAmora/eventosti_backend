@@ -8,15 +8,19 @@ services:
       - ./log/mysql:/var/log/mysql:rw
     networks:
       - spring-boot-mysql-network
-    restart: always
+    restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
       - MYSQL_DATABASE=eventos_ti
       - MYSQL_ROOT_HOST=%
     ports:
       - "3306:3306"
-    expose:
-      - '3306'
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prodrigo@1988" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
   
   eventos-ti:
     image: rodrigoamora/rodrigo-springboot:latest
