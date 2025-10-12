@@ -4,8 +4,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     container_name: 'mysql-service'
     volumes:
-      - mysql-data:/var/lib/mysql:rw
-      - ./log/mysql:/var/log/mysql:rw
+      - mysql-data:/var/lib/mysql
       - ./src/main/resources/sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     networks:
       - spring-boot-mysql-network
