@@ -6,6 +6,7 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql:rw
       - ./log/mysql:/var/log/mysql:rw
+      - ./src/main/resources/sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     networks:
       - spring-boot-mysql-network
     restart: unless-stopped
