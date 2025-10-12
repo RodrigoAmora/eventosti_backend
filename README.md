@@ -49,6 +49,13 @@ http://localhost:8080/h2-console
 
 <b>OBS:</b> Para acessar o painel do H2 é preciso rodar a aplicação com properties de test.
 
+🔧Configurações do projeto:
+---------------------------
+Crie o arquivo <b>`.env`</b> na raiz do projeto e adicione as seguinte variáveis nele:<br>
+DB_URL=URL do bando de dados <br>
+DB_USERNAME=usuário do bando da dados <br>
+DB_PASSWORD=senha do bando da dados <br>
+
 🔧Gerando o arquivo .jar:
 -------------------------
 Para gerar o arquivo <b>.jar</b>, execute o comando via terminal no diretório raiz do projeto:
