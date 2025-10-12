@@ -10,7 +10,7 @@ services:
       - spring-boot-mysql-network
     restart: unless-stopped
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=rodrigo@1988
       - MYSQL_DATABASE=eventos_ti
       - MYSQL_ROOT_HOST=%
     ports:
