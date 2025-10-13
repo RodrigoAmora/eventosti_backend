@@ -22,7 +22,7 @@ import org.thymeleaf.extras.springsecurity6.dialect.SpringSecurityDialect;
 import br.com.rodrigoamora.eventosti.security.filter.CustomHeaderFilter;
 import br.com.rodrigoamora.eventosti.security.jwt.JWTLoginFilter;
 import br.com.rodrigoamora.eventosti.security.jwt.TokenAuthenticationService;
-import br.com.rodrigoamora.eventosti.service.impl.UsuarioDetailsServiceImpl;
+import br.com.rodrigoamora.eventosti.service.UsuarioDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity

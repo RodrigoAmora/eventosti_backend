@@ -1,4 +1,4 @@
-package br.com.rodrigoamora.eventosti.service.impl;
+package br.com.rodrigoamora.eventosti.service;
 
 import java.util.Collection;
 import java.util.List;

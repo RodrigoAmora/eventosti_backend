@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
-import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
+import br.com.rodrigoamora.eventosti.service.EventoService;
 import jakarta.validation.Valid;
 
 @Controller
 public class EventoController {
 
 	@Autowired
-	private EventoServiceImpl eventoService;
+	private EventoService eventoService;
 	
 	@GetMapping("/evento/cadastrar")
 	public String cadastrar(Model model) {
