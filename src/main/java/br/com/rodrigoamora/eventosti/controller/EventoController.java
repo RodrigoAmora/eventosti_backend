@@ -23,24 +23,24 @@ public class EventoController {
 	
 	@GetMapping("/evento/cadastrar")
 	public String cadastrar(Model model) {
-		model.addAttribute("evento", null);
+		model.addAttribute("evento", new Evento());
 		return "evento/enviar_evento";
 	}
 	
 	@PostMapping("/evento/cadastrar")
-	public String salvar(@ModelAttribute("evento") @Valid EventoResponseDTO evento, BindingResult bindingResult) {
+	public String salvar(@ModelAttribute("evento") @Valid Evento evento, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "evento/enviar_evento";
 		}
 		
 		Evento event = new Evento();
-		event.setNome(evento.nome());
-		event.setDescricao(evento.descricao());
-		event.setTipoEvento(evento.tipoEvento());
-		event.setSite(evento.site());
+		event.setNome(evento.getNome());
+		event.setDescricao(evento.getDescricao());
+		event.setTipoEvento(evento.getTipoEvento());
+		event.setSite(evento.getSite());
 		event.setStatus(StatusEvento.EM_ESPERA);
-		event.setDataInicio(evento.dataInicio());
-		event.setDataFim(evento.dataFim());
+		event.setDataInicio(evento.getDataInicio());
+		event.setDataFim(evento.getDataFim());
 
 		this.eventoService.salvarEvento(event);
 		
