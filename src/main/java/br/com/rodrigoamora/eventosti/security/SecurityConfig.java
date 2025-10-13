@@ -64,6 +64,8 @@ public class SecurityConfig {
 				
 				// API
 				req.requestMatchers(HttpMethod.GET, "/api/evento/**").permitAll();
+
+				req.requestMatchers(HttpMethod.POST, "/api/usuario").permitAll();
 				
 				
 				req.anyRequest().authenticated();
