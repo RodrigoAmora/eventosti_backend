@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
-import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
+import br.com.rodrigoamora.eventosti.service.EventoService;
 
 @Controller
 public class HelloController {
 
 	@Autowired
-	private EventoServiceImpl eventoService;
+	private EventoService eventoService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model,

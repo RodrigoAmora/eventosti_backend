@@ -8,7 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import br.com.rodrigoamora.eventosti.service.BlackListAccessTokenService;
-import br.com.rodrigoamora.eventosti.service.impl.UsuarioDetailsServiceImpl;
+import br.com.rodrigoamora.eventosti.service.UsuarioDetailsServiceImpl;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;

@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodrigoamora.eventosti.entity.Usuario;
-import br.com.rodrigoamora.eventosti.service.impl.UsuarioServiceImpl;
+import br.com.rodrigoamora.eventosti.service.UsuarioService;
 
 @Controller
 public class UsuarioController {
 
 	@Autowired
-	private UsuarioServiceImpl usuarioService;
+	private UsuarioService usuarioService;
 	
 	@PostMapping("/usuario/{id}/trocarSenha")
 	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")

@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rodrigoamora.eventosti.controller.api.doc.EventoApiDoc;
 import br.com.rodrigoamora.eventosti.entity.Evento;
-import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
+import br.com.rodrigoamora.eventosti.service.EventoService;
 
 @RestController
 @RequestMapping("/api/evento")
 public class EventoApiController implements EventoApiDoc {
 
 	@Autowired
-	private EventoServiceImpl eventoService;
+	private EventoService eventoService;
 	
 	@Override
 	@PostMapping
