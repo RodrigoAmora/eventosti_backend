@@ -1,5 +1,6 @@
 package br.com.rodrigoamora.eventosti.security;
 
+import br.com.rodrigoamora.eventosti.service.BlackListAccessTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +34,9 @@ import br.com.rodrigoamora.eventosti.service.UsuarioDetailsServiceImpl;
 )
 public class SecurityConfig {
 
-	
+	@Autowired
+	private BlackListAccessTokenService blackListTokenService;
+
 	@Autowired
 	private UsuarioDetailsServiceImpl userDetailsService;
 	
@@ -64,8 +67,6 @@ public class SecurityConfig {
 				
 				// API
 				req.requestMatchers(HttpMethod.GET, "/api/evento/**").permitAll();
-
-				req.requestMatchers(HttpMethod.POST, "/api/usuario").permitAll();
 				
 				
 				req.anyRequest().authenticated();
@@ -134,7 +135,7 @@ public class SecurityConfig {
     }
 
 	private TokenAuthenticationService tokenAuthorizationFilter() {
-        return new TokenAuthenticationService(this.userDetailsService, null);
+		return new TokenAuthenticationService(this.userDetailsService, this.blackListTokenService);
     }
     
 }
