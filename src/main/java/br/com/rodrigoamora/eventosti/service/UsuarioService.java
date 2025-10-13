@@ -2,14 +2,15 @@ package br.com.rodrigoamora.eventosti.service;
 
 import java.util.Optional;
 
+import br.com.rodrigoamora.eventosti.dto.request.UsuarioRequestDTO;
 import org.springframework.data.domain.Page;
 
 import br.com.rodrigoamora.eventosti.entity.Usuario;
 
 public interface UsuarioService {
 
-	public Usuario salvar(Usuario usuario);
-	public Usuario editar(Usuario usuario);
+	public Usuario salvar(UsuarioRequestDTO request);
+	public Usuario editar(UsuarioRequestDTO request);
 	
 	public void apagarUsuario(Usuario usuario);
 	public void apagarUsuarioPorId(Long id);

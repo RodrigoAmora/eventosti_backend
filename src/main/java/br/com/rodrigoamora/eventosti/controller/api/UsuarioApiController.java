@@ -2,6 +2,8 @@ package br.com.rodrigoamora.eventosti.controller.api;
 
 import java.util.Optional;
 
+import br.com.rodrigoamora.eventosti.dto.request.UsuarioRequestDTO;
+import br.com.rodrigoamora.eventosti.dto.response.UsuarioResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -22,7 +24,7 @@ public class UsuarioApiController implements UsuarioApiDoc {
 	
 	@Override
 	@PostMapping
-	public ResponseEntity<Usuario> salvarUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity<UsuarioResponseDTO> salvarUsuario(@RequestBody UsuarioRequestDTO usuario) {
 		return ResponseEntity.ok(this.usuarioService.salvar(usuario));
 	}
 	

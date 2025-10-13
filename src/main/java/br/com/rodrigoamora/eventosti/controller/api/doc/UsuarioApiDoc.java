@@ -1,5 +1,7 @@
 package br.com.rodrigoamora.eventosti.controller.api.doc;
 
+import br.com.rodrigoamora.eventosti.dto.request.UsuarioRequestDTO;
+import br.com.rodrigoamora.eventosti.dto.response.UsuarioResponseDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,7 @@ public interface UsuarioApiDoc {
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Cadastro de evento", content = @Content(schema = @Schema(implementation = Usuario.class))),
 	})
-	public ResponseEntity<Usuario> salvarUsuario(@RequestBody Usuario usuario);
+	public ResponseEntity<UsuarioResponseDTO> salvarUsuario(@RequestBody UsuarioRequestDTO usuario);
 	
 	@Operation(summary = "Edição de usário")
 	public ResponseEntity<Usuario> editarUsuario(@PathVariable(name = "id") Long id,

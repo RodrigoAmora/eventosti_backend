@@ -2,6 +2,7 @@ package br.com.rodrigoamora.eventosti.service.impl;
 
 import java.util.Optional;
 
+import br.com.rodrigoamora.eventosti.dto.request.UsuarioRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,20 +28,20 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Autowired
 	private RoleRepository roleRepository;
 	
-	public Usuario salvar(Usuario usuario) {
-		var usuarioChecado = this.checarUsuario(usuario);
-		if (!usuarioChecado.getHasError().isEmpty()) {
-			return usuarioChecado;
+	public Usuario salvar(UsuarioRequestDTO request) {
+		var usuario = this.checarUsuario(request);
+		if (!usuario.getHasError().isEmpty()) {
+			return usuario;
 		}
 		
-		String senhaUsuario = usuario.getPassword();
+		String senhaUsuario = request.password();
 		usuario.setPassword(this.encryptPassword(senhaUsuario));
 		
 		return this.userRepository.save(usuario);
 	}
 
-	public Usuario editar(Usuario usuario) {
-		var usuarioChecado = this.checarUsuario(usuario);
+	public Usuario editar(UsuarioRequestDTO request) {
+		var usuarioChecado = this.checarUsuario(request);
 		if (!usuarioChecado.getHasError().isEmpty()) {
 			return usuarioChecado;
 		}
@@ -94,11 +95,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return this.buscarUsuarioPorLogin(nome);
 	}
 	
-	private Usuario checarUsuario(Usuario usuario) {
+	private Usuario checarUsuario(UsuarioRequestDTO request) {
+		Usuario usuario = new Usuario();
+
 		Role rolaAdmin = this.roleRepository.findByName(ERole.ROLE_ADMIN.name());
 		usuario.getRoles().add(rolaAdmin);
 		
-		if (this.userRepository.findByLogin(usuario.getLogin()) != null) {
+		if (this.userRepository.findByLogin(request.login()) != null) {
 			usuario.setHasError("user.with.email.already.created");
 			return usuario;
 		}

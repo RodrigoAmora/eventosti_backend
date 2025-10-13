@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.rodrigoamora.eventosti.entity.Evento;
-import br.com.rodrigoamora.eventosti.entity.dto.EventoDTO;
+import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
 import br.com.rodrigoamora.eventosti.service.impl.EventoServiceImpl;
 import jakarta.validation.Valid;
 
@@ -27,12 +27,12 @@ public class EventoController {
 	
 	@GetMapping("/evento/cadastrar")
 	public String cadastrar(Model model) {
-		model.addAttribute("evento", new EventoDTO());
+		model.addAttribute("evento", new EventoResponseDTO());
 		return "evento/enviar_evento";
 	}
 	
 	@PostMapping("/evento/cadastrar")
-	public String salvar(@ModelAttribute("evento") @Valid EventoDTO evento, BindingResult bindingResult) {
+	public String salvar(@ModelAttribute("evento") @Valid EventoResponseDTO evento, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "evento/enviar_evento";
 		}
