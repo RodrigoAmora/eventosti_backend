@@ -32,6 +32,9 @@ public class UsuarioService {
 		if (!usuario.getHasError().isEmpty()) {
 			return null;
 		}
+
+		usuario.setLogin(request.login());
+		usuario.setNome(request.nome());
 		
 		String senhaUsuario = request.password();
 		usuario.setPassword(this.encryptPassword(senhaUsuario));
@@ -105,7 +108,9 @@ public class UsuarioService {
 			usuario.setHasError("user.with.email.already.created");
 			return usuario;
 		}
-		
+
+		usuario.setHasError("");
+
 		return usuario;
 	}
 	

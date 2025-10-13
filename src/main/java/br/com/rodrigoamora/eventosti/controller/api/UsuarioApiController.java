@@ -28,18 +28,18 @@ public class UsuarioApiController implements UsuarioApiDoc {
 		return ResponseEntity.ok(this.usuarioService.salvar(usuario));
 	}
 
-	@Override
-	@PatchMapping(value = { "/{id}" })
-	public ResponseEntity<Usuario> editarUsuario(@PathVariable(name = "id") Long id,
-								 				 @RequestBody Usuario usuario) {
-		Optional<Usuario> usuarioDB = this.usuarioService.buscarUsurioPorId(id);
-
-		if (usuarioDB.isPresent()) {
-			return ResponseEntity.ok(this.usuarioService.editar(usuario));
-		}
-
-		return ResponseEntity.notFound().build();
-	}
+//	@Override
+//	@PatchMapping(value = { "/{id}" })
+//	public ResponseEntity<Usuario> editarUsuario(@PathVariable(name = "id") Long id,
+//								 				 @RequestBody Usuario usuario) {
+//		Optional<Usuario> usuarioDB = this.usuarioService.buscarUsurioPorId(id);
+//
+//		if (usuarioDB.isPresent()) {
+//			return ResponseEntity.ok(this.usuarioService.editar(usuario));
+//		}
+//
+//		return ResponseEntity.notFound().build();
+//	}
 
 	@Override
 	@GetMapping

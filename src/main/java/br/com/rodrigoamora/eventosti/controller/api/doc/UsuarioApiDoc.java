@@ -26,9 +26,9 @@ public interface UsuarioApiDoc {
 	})
 	public ResponseEntity<UsuarioResponseDTO> salvarUsuario(@RequestBody UsuarioRequestDTO usuario);
 	
-	@Operation(summary = "Edição de usário")
-	public ResponseEntity<Usuario> editarUsuario(@PathVariable(name = "id") Long id,
-			 									 @RequestBody Usuario usuario);
+//	@Operation(summary = "Edição de usário")
+//	public ResponseEntity<Usuario> editarUsuario(@PathVariable(name = "id") Long id,
+//			 									 @RequestBody Usuario usuario);
 	
 	@Operation(summary = "Listagem de usários")
 	public Page<Usuario> listarTodos(@RequestParam(value = "page", required = false, defaultValue = "0") int page,

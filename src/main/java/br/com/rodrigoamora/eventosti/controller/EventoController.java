@@ -1,23 +1,19 @@
 package br.com.rodrigoamora.eventosti.controller;
 
-import java.util.Optional;
-
+import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
+import br.com.rodrigoamora.eventosti.entity.Evento;
+import br.com.rodrigoamora.eventosti.entity.StatusEvento;
+import br.com.rodrigoamora.eventosti.service.EventoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import br.com.rodrigoamora.eventosti.entity.Evento;
-import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
-import br.com.rodrigoamora.eventosti.service.EventoService;
-import jakarta.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class EventoController {
@@ -27,7 +23,7 @@ public class EventoController {
 	
 	@GetMapping("/evento/cadastrar")
 	public String cadastrar(Model model) {
-		model.addAttribute("evento", new EventoResponseDTO());
+		model.addAttribute("evento", null);
 		return "evento/enviar_evento";
 	}
 	
@@ -37,7 +33,15 @@ public class EventoController {
 			return "evento/enviar_evento";
 		}
 		
-		Evento event = evento.converterParaEvento();
+		Evento event = new Evento();
+		event.setNome(evento.nome());
+		event.setDescricao(evento.descricao());
+		event.setTipoEvento(evento.tipoEvento());
+		event.setSite(evento.site());
+		event.setStatus(StatusEvento.EM_ESPERA);
+		event.setDataInicio(evento.dataInicio());
+		event.setDataFim(evento.dataFim());
+
 		this.eventoService.salvarEvento(event);
 		
 		return "redirect:/evento/cadastrar?result=success";
