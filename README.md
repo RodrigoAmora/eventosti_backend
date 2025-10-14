@@ -1,7 +1,7 @@
 # eventosti_backend
 📢 Descrição:
 -------------
-Projeto para divulgação de eventos de tecnologia, feito em Java 21, Spring Boot e hospedado no AWS.
+Projeto para divulgação de eventos de tecnologia, feito em Java 21 e Spring Boot e hospedado no AWS.
 
 🚀 Dependências:
 ----------------
