@@ -1,13 +1,13 @@
 # eventosti_backend
 📢 Descrição:
 -------------
-Projeto para divulgação de eventos de tecnologia, feito em Java 17, Spring Boot e hospedado no AWS.
+Projeto para divulgação de eventos de tecnologia, feito em Java 21, Spring Boot e hospedado no AWS.
 
 🚀 Dependências:
 ----------------
-O projeto usa o Java 17 e as seguintes dependências:
+O projeto usa o Java 21 e as seguintes dependências:
 
-* Spring Boot 3.1.5
+* Spring Boot 3.4.5
 * Spring Security
 * Spring Data JPA
 * Spring Actuator
@@ -35,7 +35,7 @@ http://localhost:8080/redoc.html
 ```
 
 ##
-Na pasta <b>`Postman`</b> contém a collection para usar os endpoints via Postman.
+Na pasta <b>`postman`</b> contém a collection para usar os endpoints via Postman.
 
 💾 Banco de dados:
 ------------------
