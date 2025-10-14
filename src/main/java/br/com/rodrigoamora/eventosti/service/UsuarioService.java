@@ -35,7 +35,7 @@ public class UsuarioService {
 
 		usuario.setLogin(request.login());
 		usuario.setNome(request.nome());
-		
+
 		String senhaUsuario = request.password();
 		usuario.setPassword(this.encryptPassword(senhaUsuario));
 
