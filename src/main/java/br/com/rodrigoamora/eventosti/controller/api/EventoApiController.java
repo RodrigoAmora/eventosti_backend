@@ -2,6 +2,9 @@ package br.com.rodrigoamora.eventosti.controller.api;
 
 import java.util.Optional;
 
+import br.com.rodrigoamora.eventosti.dto.request.EventoRequestDTO;
+import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
+import br.com.rodrigoamora.eventosti.entity.Evento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -18,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rodrigoamora.eventosti.controller.api.doc.EventoApiDoc;
-import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.service.EventoService;
 
 @RestController
@@ -30,39 +32,30 @@ public class EventoApiController implements EventoApiDoc {
 	
 	@Override
 	@PostMapping
-	public ResponseEntity<Evento> salvarEvento(@RequestBody Evento evento) {
-		evento = this.eventoService.salvarEvento(evento);
-		return ResponseEntity.ok(evento);
+	public ResponseEntity<EventoResponseDTO> salvarEvento(@RequestBody EventoRequestDTO eventoRequestDTO) {
+		var r = this.eventoService.salvarEvento(eventoRequestDTO);
+		return ResponseEntity.ok(r);
 	}
 	
 	@Override
 	@GetMapping(value = { "/{id}" })
-	public ResponseEntity<Evento> buscarEventoPorId(@PathVariable(name = "id") Long id) {
-		Optional<Evento> evento = this.eventoService.buscarEventoPorId(id);
-        return evento.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+	public ResponseEntity<EventoResponseDTO> buscarEventoPorId(@PathVariable(name = "id") Long id) {
+        return ResponseEntity.ok(this.eventoService.buscarEventoPeloId(id));
     }
 
 	@Override
 	@PutMapping(value = { "/{id}" })
-	public ResponseEntity<Evento> editarEvento(@PathVariable(name = "id") Long id,
-											   @RequestBody Evento evento) {
-		Optional<Evento> eventoDB = this.eventoService.buscarEventoPorId(id);
-
-		if (eventoDB.isPresent()) {
-			evento.setId(id);
-			Evento eventoEditado = this.eventoService.editarEvento(evento);
-			return ResponseEntity.ok(eventoEditado);
-		}
-		
-		return ResponseEntity.notFound().build();
+	public ResponseEntity<EventoResponseDTO> editarEvento(@PathVariable(name = "id") Long id,
+														  @RequestBody EventoRequestDTO eventoRequestDTO) {
+		return ResponseEntity.ok(this.eventoService.editarEvento(id, eventoRequestDTO));
 	}
 	
 	@Override
 	@GetMapping("/buscarPorNome")
-	public ResponseEntity<Page<Evento>> buscarEventoPorNome(@RequestParam(name = "nome") String nome,
-														    @RequestParam(value = "page", required = false, defaultValue = "0") int page,
-														    @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
-		Page<Evento> eventos= this.eventoService.buscarEventoPorNome(nome, page, size);
+	public ResponseEntity<Page<EventoResponseDTO>> buscarEventoPorNome(@RequestParam(name = "nome") String nome,
+																	  @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+																	  @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
+		Page<EventoResponseDTO> eventos= this.eventoService.buscarEventoPorNome(nome, page, size);
 
 		if (!eventos.isEmpty()) {
 			return ResponseEntity.ok(eventos);
@@ -73,9 +66,9 @@ public class EventoApiController implements EventoApiDoc {
 	
 	@Override
 	@GetMapping
-	public Page<Evento> listarTodos(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-			   				        @RequestParam(value = "size", required = false, defaultValue = "20") int size,
-			   				        @RequestParam(value = "order", required = false, defaultValue = "dataInicio") String order) {
+	public Page<EventoResponseDTO> listarTodos(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
+									@RequestParam(value = "size", required = false, defaultValue = "20") int size,
+									@RequestParam(value = "order", required = false, defaultValue = "dataInicio") String order) {
 		return this.eventoService.listarEventosAprovados(page, size, order);
 	}
 	

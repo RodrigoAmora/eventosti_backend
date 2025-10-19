@@ -1,8 +1,10 @@
 package br.com.rodrigoamora.eventosti.controller;
 
+import br.com.rodrigoamora.eventosti.dto.request.EventoRequestDTO;
 import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
 import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.entity.StatusEvento;
+import br.com.rodrigoamora.eventosti.mapper.EventoMapper;
 import br.com.rodrigoamora.eventosti.service.EventoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,21 +30,12 @@ public class EventoController {
 	}
 	
 	@PostMapping("/evento/cadastrar")
-	public String salvar(@ModelAttribute("evento") @Valid Evento evento, BindingResult bindingResult) {
+	public String salvar(@ModelAttribute("evento") @Valid EventoRequestDTO eventoRequestDTO, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "evento/enviar_evento";
 		}
-		
-		Evento event = new Evento();
-		event.setNome(evento.getNome());
-		event.setDescricao(evento.getDescricao());
-		event.setTipoEvento(evento.getTipoEvento());
-		event.setSite(evento.getSite());
-		event.setStatus(StatusEvento.EM_ESPERA);
-		event.setDataInicio(evento.getDataInicio());
-		event.setDataFim(evento.getDataFim());
 
-		this.eventoService.salvarEvento(event);
+		this.eventoService.salvarEvento(eventoRequestDTO);
 		
 		return "redirect:/evento/cadastrar?result=success";
 	}
@@ -55,7 +48,7 @@ public class EventoController {
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(5);
 		
-		Page<Evento> eventos = this.eventoService.buscarEventoPorNome(nome, currentPage-1, pageSize);
+		Page<EventoResponseDTO> eventos = this.eventoService.buscarEventoPorNome(nome, currentPage-1, pageSize);
 		model = this.eventoService.setModel(model, eventos);
 		
 		if (eventos.isEmpty()) {
@@ -73,7 +66,7 @@ public class EventoController {
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(5);
 		
-		Page<Evento> eventos = this.eventoService.listarEventosEmEspera(currentPage-1, pageSize);
+		Page<EventoResponseDTO> eventos = this.eventoService.listarEventosEmEspera(currentPage-1, pageSize);
 		model = this.eventoService.setModel(model, eventos);
 		
 		return "admin/eventos_em_espera";
@@ -86,7 +79,7 @@ public class EventoController {
 		if (!evento.isPresent()) {
 			return "not_found";
 		}
-		model.addAttribute("evento", evento.get());
+		model.addAttribute("evento", EventoMapper.toDTO(evento.get()));
 		return "evento/detalhes_evento";
 	}
 	

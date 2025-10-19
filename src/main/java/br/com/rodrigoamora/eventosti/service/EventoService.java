@@ -5,6 +5,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import br.com.rodrigoamora.eventosti.dto.request.EventoRequestDTO;
+import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
+import br.com.rodrigoamora.eventosti.entity.Evento;
+import br.com.rodrigoamora.eventosti.exception.EventoNotFoundException;
+import br.com.rodrigoamora.eventosti.mapper.EventoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,7 +17,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
-import br.com.rodrigoamora.eventosti.entity.Evento;
 import br.com.rodrigoamora.eventosti.entity.StatusEvento;
 import br.com.rodrigoamora.eventosti.entity.TipoEvento;
 import br.com.rodrigoamora.eventosti.repository.EventoRepository;
@@ -23,8 +27,10 @@ public class EventoService {
 	@Autowired
 	private EventoRepository eventoRepository;
 
-	public Evento salvarEvento(Evento evento) {
-		String site = this.verificarSite(evento.getSite());
+	public EventoResponseDTO salvarEvento(EventoRequestDTO eventoRequestDTO) {
+		String site = this.verificarSite(eventoRequestDTO.site());
+
+		var evento = EventoMapper.toEntity(eventoRequestDTO);
 		evento.setSite(site);
 		
 		if (evento.getDescricao() == null) {
@@ -34,25 +40,36 @@ public class EventoService {
 		if (evento.getTipoEvento() == null || evento.getTipoEvento().name().isEmpty()) {
 			evento.setTipoEvento(TipoEvento.PRESENCIAL);
 		}
-		
+
 		evento.setStatus(StatusEvento.EM_ESPERA);
-		
-		return this.eventoRepository.save(evento);
+
+		this.eventoRepository.save(evento);
+
+		return EventoMapper.toDTO(evento);
 	}
 
-	public Evento editarEvento(Evento evento) {
-		String site = this.verificarSite(evento.getSite());
+	public EventoResponseDTO editarEvento(Long id, EventoRequestDTO eventoRequestDTO) {
+		var evento = this.buscarEvento(id);
+
+		String site = this.verificarSite(eventoRequestDTO.site());
 		evento.setSite(site);
-		return this.eventoRepository.save(evento);
+
+		this.eventoRepository.save(evento);
+
+		return EventoMapper.toDTO(evento);
 	}
 
-	public Evento aprovarEvento(Long id) {
-		Evento evento = this.eventoRepository.findById(id).get();
+	public EventoResponseDTO aprovarEvento(Long id) {
+		var evento = this.buscarEvento(id);
 		evento.setStatus(StatusEvento.APROVADO);
-		return this.eventoRepository.save(evento);
+
+		this.eventoRepository.save(evento);
+
+		return EventoMapper.toDTO(evento);
 	}
 
 	public void apagarEventoPorId(Long id) {
+		this.buscarEvento(id);
 		this.eventoRepository.deleteById(id);
 	}
 
@@ -60,26 +77,31 @@ public class EventoService {
 		this.eventoRepository.deleteAll();
 	}
 
-	public Page<Evento> listarEventosAprovados(int page, int size, String order) {
+	public Page<EventoResponseDTO> listarEventosAprovados(int page, int size, String order) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, order);
-		return this.eventoRepository.listarEventosAprovados(pageRequest);
+		return this.eventoRepository.listarEventosAprovados(pageRequest).map(EventoMapper::toDTO);
 	}
 
-	public Page<Evento> listarEventosEmEspera(int page, int size) {
+	public Page<EventoResponseDTO> listarEventosEmEspera(int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
-		return this.eventoRepository.listarEventosEmEspera(pageRequest);
+		return this.eventoRepository.listarEventosEmEspera(pageRequest).map(EventoMapper::toDTO);
+	}
+
+	public EventoResponseDTO buscarEventoPeloId(Long id) {
+		var evento = buscarEvento(id);
+		return EventoMapper.toDTO(evento);
 	}
 
 	public Optional<Evento> buscarEventoPorId(Long id) {
 		return this.eventoRepository.buscarEventoPorId(id);
 	}
 
-	public Page<Evento> buscarEventoPorNome(String nome, int page, int size) {
+	public Page<EventoResponseDTO> buscarEventoPorNome(String nome, int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
-		return this.eventoRepository.buscarEventoPorNome(nome, pageRequest);
+		return this.eventoRepository.buscarEventoPorNome(nome, pageRequest).map(EventoMapper::toDTO);
 	}
 
-	public Model setModel(Model model, Page<Evento> eventos) {
+	public Model setModel(Model model, Page<EventoResponseDTO> eventos) {
 		int totalPages = eventos.getTotalPages();
 		if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
@@ -102,5 +124,8 @@ public class EventoService {
 		}
 		return siteEvento;
 	}
-	
+
+	private Evento buscarEvento(Long id) {
+		return eventoRepository.findById(id).orElseThrow(() -> new EventoNotFoundException("Video não encontrado"));
+	}
 }

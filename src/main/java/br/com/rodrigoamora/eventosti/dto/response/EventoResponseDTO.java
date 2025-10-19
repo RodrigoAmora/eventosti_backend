@@ -20,7 +20,6 @@ public record EventoResponseDTO (
 		@JsonFormat(pattern = "dd-MM-yyyy")
 		LocalDate dataFim,
 
-		TipoEvento tipoEvento,
+		TipoEvento tipoEvento
 
-		String hasError
 ) {}
