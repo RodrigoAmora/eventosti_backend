@@ -5,6 +5,7 @@ import br.com.rodrigoamora.eventosti.dto.response.UsuarioResponseDTO;
 import br.com.rodrigoamora.eventosti.entity.Usuario;
 import br.com.rodrigoamora.eventosti.entity.role.ERole;
 import br.com.rodrigoamora.eventosti.entity.role.Role;
+import br.com.rodrigoamora.eventosti.mapper.UsuarioMapper;
 import br.com.rodrigoamora.eventosti.repository.RoleRepository;
 import br.com.rodrigoamora.eventosti.repository.UsuarioRepository;
 import br.com.rodrigoamora.eventosti.validador.SenhaValidador;
@@ -30,7 +31,7 @@ public class UsuarioService {
 	public UsuarioResponseDTO salvar(UsuarioRequestDTO request) {
 		var usuario = this.checarUsuario(request);
 		if (!usuario.getHasError().isEmpty()) {
-			return null;
+			return UsuarioMapper.toResponseDTO(usuario);
 		}
 
 		usuario.setLogin(request.login());
@@ -41,19 +42,18 @@ public class UsuarioService {
 
 		usuario = this.userRepository.save(usuario);
 
-		UsuarioResponseDTO response = new UsuarioResponseDTO(usuario.getId(), usuario.getNome(),
-															 usuario.getLogin(), usuario.getHasError());
-
-		return response;
+		return UsuarioMapper.toResponseDTO(usuario);
 	}
 
-	public Usuario editar(UsuarioRequestDTO request) {
+	public UsuarioResponseDTO editar(UsuarioRequestDTO request) {
 		var usuarioChecado = this.checarUsuario(request);
 		if (!usuarioChecado.getHasError().isEmpty()) {
-			return usuarioChecado;
+			return UsuarioMapper.toResponseDTO(usuarioChecado);
 		}
-		
-		return this.userRepository.save(usuarioChecado);
+
+		usuarioChecado = this.userRepository.save(usuarioChecado);
+
+		return UsuarioMapper.toResponseDTO(usuarioChecado);
 	}
 
 	public Page<Usuario> listarTodos(int page, int size) {
@@ -99,7 +99,7 @@ public class UsuarioService {
 	}
 	
 	private Usuario checarUsuario(UsuarioRequestDTO request) {
-		Usuario usuario = new Usuario();
+		Usuario usuario = UsuarioMapper.toEntity(request);
 
 		Role rolaAdmin = this.roleRepository.findByName(ERole.ROLE_ADMIN.name());
 		usuario.getRoles().add(rolaAdmin);
