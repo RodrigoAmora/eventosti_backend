@@ -39,13 +39,8 @@ public class EventoApiController implements EventoApiDoc {
 	@GetMapping(value = { "/{id}" })
 	public ResponseEntity<Evento> buscarEventoPorId(@PathVariable(name = "id") Long id) {
 		Optional<Evento> evento = this.eventoService.buscarEventoPorId(id);
-
-		if (evento.isPresent()) {
-			return ResponseEntity.ok(evento.get());
-		}
-		
-		return ResponseEntity.notFound().build();
-	}
+        return evento.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
 	@Override
 	@PutMapping(value = { "/{id}" })
