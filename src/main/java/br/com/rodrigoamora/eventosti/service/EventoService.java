@@ -27,10 +27,13 @@ public class EventoService {
 	@Autowired
 	private EventoRepository eventoRepository;
 
+	@Autowired
+	private EventoMapper eventoMapper;
+
 	public EventoResponseDTO salvarEvento(EventoRequestDTO eventoRequestDTO) {
 		String site = this.verificarSite(eventoRequestDTO.site());
 
-		var evento = EventoMapper.toEntity(eventoRequestDTO);
+		var evento = eventoMapper.toEntity(eventoRequestDTO);
 		evento.setSite(site);
 		
 		if (evento.getDescricao() == null) {
@@ -45,7 +48,7 @@ public class EventoService {
 
 		this.eventoRepository.save(evento);
 
-		return EventoMapper.toDTO(evento);
+		return eventoMapper.toDTO(evento);
 	}
 
 	public EventoResponseDTO editarEvento(Long id, EventoRequestDTO eventoRequestDTO) {
@@ -56,7 +59,7 @@ public class EventoService {
 
 		this.eventoRepository.save(evento);
 
-		return EventoMapper.toDTO(evento);
+		return eventoMapper.toDTO(evento);
 	}
 
 	public EventoResponseDTO aprovarEvento(Long id) {
@@ -65,7 +68,7 @@ public class EventoService {
 
 		this.eventoRepository.save(evento);
 
-		return EventoMapper.toDTO(evento);
+		return eventoMapper.toDTO(evento);
 	}
 
 	public void apagarEventoPorId(Long id) {
@@ -79,17 +82,17 @@ public class EventoService {
 
 	public Page<EventoResponseDTO> listarEventosAprovados(int page, int size, String order) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, order);
-		return this.eventoRepository.listarEventosAprovados(pageRequest).map(EventoMapper::toDTO);
+		return this.eventoRepository.listarEventosAprovados(pageRequest).map(eventoMapper::toDTO);
 	}
 
 	public Page<EventoResponseDTO> listarEventosEmEspera(int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
-		return this.eventoRepository.listarEventosEmEspera(pageRequest).map(EventoMapper::toDTO);
+		return this.eventoRepository.listarEventosEmEspera(pageRequest).map(eventoMapper::toDTO);
 	}
 
 	public EventoResponseDTO buscarEventoPeloId(Long id) {
 		var evento = buscarEvento(id);
-		return EventoMapper.toDTO(evento);
+		return eventoMapper.toDTO(evento);
 	}
 
 	public Optional<Evento> buscarEventoPorId(Long id) {
@@ -98,7 +101,7 @@ public class EventoService {
 
 	public Page<EventoResponseDTO> buscarEventoPorNome(String nome, int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
-		return this.eventoRepository.buscarEventoPorNome(nome, pageRequest).map(EventoMapper::toDTO);
+		return this.eventoRepository.buscarEventoPorNome(nome, pageRequest).map(eventoMapper::toDTO);
 	}
 
 	public Model setModel(Model model, Page<EventoResponseDTO> eventos) {

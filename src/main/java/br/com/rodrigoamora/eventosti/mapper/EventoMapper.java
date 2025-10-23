@@ -3,12 +3,14 @@ package br.com.rodrigoamora.eventosti.mapper;
 import br.com.rodrigoamora.eventosti.dto.request.EventoRequestDTO;
 import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
 import br.com.rodrigoamora.eventosti.entity.Evento;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EventoMapper {
 
     private EventoMapper() {}
 
-    public static Evento toEntity(EventoRequestDTO dto) {
+    public Evento toEntity(EventoRequestDTO dto) {
         if (dto == null) {
             return null;
         }
@@ -24,7 +26,7 @@ public class EventoMapper {
         return evento;
     }
 
-    public static EventoResponseDTO toDTO(Evento evento) {
+    public EventoResponseDTO toDTO(Evento evento) {
         if (evento == null) {
             return null;
         }

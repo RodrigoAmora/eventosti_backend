@@ -22,7 +22,10 @@ public class EventoController {
 
 	@Autowired
 	private EventoService eventoService;
-	
+
+	@Autowired
+	private EventoMapper eventoMapper;
+
 	@GetMapping("/evento/cadastrar")
 	public String cadastrar(Model model) {
 		model.addAttribute("evento", new Evento());
@@ -79,7 +82,7 @@ public class EventoController {
 		if (!evento.isPresent()) {
 			return "not_found";
 		}
-		model.addAttribute("evento", EventoMapper.toDTO(evento.get()));
+		model.addAttribute("evento", eventoMapper.toDTO(evento.get()));
 		return "evento/detalhes_evento";
 	}
 	

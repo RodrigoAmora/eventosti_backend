@@ -24,14 +24,20 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository userRepository;
-	
+
+	@Autowired
+	private UsuarioMapper usuarioMapper;
+
 	@Autowired
 	private RoleRepository roleRepository;
+
+	@Autowired
+	private SenhaValidador senhaValidador;
 	
 	public UsuarioResponseDTO salvar(UsuarioRequestDTO request) {
 		var usuario = this.checarUsuario(request);
 		if (!usuario.getHasError().isEmpty()) {
-			return UsuarioMapper.toResponseDTO(usuario);
+			return usuarioMapper.toResponseDTO(usuario);
 		}
 
 		usuario.setLogin(request.login());
@@ -42,18 +48,18 @@ public class UsuarioService {
 
 		usuario = this.userRepository.save(usuario);
 
-		return UsuarioMapper.toResponseDTO(usuario);
+		return usuarioMapper.toResponseDTO(usuario);
 	}
 
 	public UsuarioResponseDTO editar(UsuarioRequestDTO request) {
 		var usuarioChecado = this.checarUsuario(request);
 		if (!usuarioChecado.getHasError().isEmpty()) {
-			return UsuarioMapper.toResponseDTO(usuarioChecado);
+			return usuarioMapper.toResponseDTO(usuarioChecado);
 		}
 
 		usuarioChecado = this.userRepository.save(usuarioChecado);
 
-		return UsuarioMapper.toResponseDTO(usuarioChecado);
+		return usuarioMapper.toResponseDTO(usuarioChecado);
 	}
 
 	public Page<Usuario> listarTodos(int page, int size) {
@@ -99,7 +105,7 @@ public class UsuarioService {
 	}
 	
 	private Usuario checarUsuario(UsuarioRequestDTO request) {
-		Usuario usuario = UsuarioMapper.toEntity(request);
+		Usuario usuario = usuarioMapper.toEntity(request);
 
 		Role rolaAdmin = this.roleRepository.findByName(ERole.ROLE_ADMIN.name());
 		usuario.getRoles().add(rolaAdmin);
@@ -115,7 +121,7 @@ public class UsuarioService {
 	}
 	
 	private String encryptPassword(String password) {
-		return SenhaValidador.encryptPassword(password);
+		return senhaValidador.encryptPassword(password);
 	}
 	
 }

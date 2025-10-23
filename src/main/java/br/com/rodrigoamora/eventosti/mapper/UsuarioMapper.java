@@ -3,10 +3,12 @@ package br.com.rodrigoamora.eventosti.mapper;
 import br.com.rodrigoamora.eventosti.dto.request.UsuarioRequestDTO;
 import br.com.rodrigoamora.eventosti.dto.response.UsuarioResponseDTO;
 import br.com.rodrigoamora.eventosti.entity.Usuario;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UsuarioMapper {
 
-    public static Usuario toEntity(UsuarioRequestDTO dto) {
+    public Usuario toEntity(UsuarioRequestDTO dto) {
         if (dto == null) {
             return null;
         }
@@ -19,7 +21,7 @@ public class UsuarioMapper {
         return usuario;
     }
 
-    public static UsuarioResponseDTO toResponseDTO(Usuario usuario) {
+    public UsuarioResponseDTO toResponseDTO(Usuario usuario) {
         if (usuario == null) {
             return null;
         }
