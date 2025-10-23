@@ -1,5 +1,3 @@
-[![Coverage Status](https://codecov.io/gh/RodrigoAmora/fiap-tech-challenge-mspagamento/branch/main/graph/badge.svg)](https://codecov.io/gh/RodrigoAmora/fiap-tech-challenge-mspagamento)
-
 # eventosti_backend
 📢 Descrição:
 -------------
