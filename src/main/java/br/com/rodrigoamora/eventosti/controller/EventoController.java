@@ -3,7 +3,6 @@ package br.com.rodrigoamora.eventosti.controller;
 import br.com.rodrigoamora.eventosti.dto.request.EventoRequestDTO;
 import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
 import br.com.rodrigoamora.eventosti.entity.Evento;
-import br.com.rodrigoamora.eventosti.entity.StatusEvento;
 import br.com.rodrigoamora.eventosti.mapper.EventoMapper;
 import br.com.rodrigoamora.eventosti.service.EventoService;
 import jakarta.validation.Valid;

@@ -1,9 +1,7 @@
 package br.com.rodrigoamora.eventosti.controller;
 
-import java.util.Optional;
-
 import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
-import br.com.rodrigoamora.eventosti.entity.Evento;
+import br.com.rodrigoamora.eventosti.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.com.rodrigoamora.eventosti.service.EventoService;
+import java.util.Optional;
 
 @Controller
 public class HelloController {
