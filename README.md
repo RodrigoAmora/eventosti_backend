@@ -1,3 +1,5 @@
+[![Coverage Status](https://codecov.io/gh/RodrigoAmora/fiap-tech-challenge-mspagamento/branch/main/graph/badge.svg)](https://codecov.io/gh/RodrigoAmora/fiap-tech-challenge-mspagamento)
+
 # eventosti_backend
 📢 Descrição:
 -------------
@@ -65,9 +67,20 @@ mvn clean install -P{profile} -DskipTests
 
 ✅ Rodando os testes:
 ---------------------
-Para rodar os testes, exceute o comando no diretório raiz do projeto via terminal:
+<b>A cobertura de testes do projeto:</b>
+![A cobertura de testes do projeto:](imagens/cobertura-de-testes.png)
+
+##
+
+Para rodar os testes, execute o comando na raiz do projeto:
 ```shell script
 mvn test
+```
+
+##
+Para gerar o relatório de cobertura de testes do projeto com o JaCoCo, execute o comando na raiz do projeto:
+```shell script
+mvn clean test jacoco:report
 ```
 
 💻 Rodando o projeto localmente:
