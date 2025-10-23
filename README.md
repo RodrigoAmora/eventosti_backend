@@ -113,8 +113,8 @@ Para automatizar esse processo, basta executar o Shellscript <b>`docker_build_an
 O projeto está disponível através do endereço:<br>
 http://eventosti.com.br
 
-👤Autor:
---------
+👤Autor
+-------
 <b>Rodrigo Amora</b>
 
 LinkedIn: https://linkedin.com/in/rodrigoamora <br>
