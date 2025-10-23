@@ -67,4 +67,5 @@ public class BlackListAccessTokenServiceTest {
         assertNull(result);
         verify(blackListAccessTokenRepository, times(1)).findByToken(token);
     }
+
 }

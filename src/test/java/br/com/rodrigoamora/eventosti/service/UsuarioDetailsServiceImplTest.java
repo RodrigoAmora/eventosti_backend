@@ -66,5 +66,4 @@ class UsuarioDetailsServiceImplTest {
         verify(usuarioRepository, times(1)).findByLogin(email);
     }
 
-
 }
