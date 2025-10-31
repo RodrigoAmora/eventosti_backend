@@ -41,8 +41,8 @@ public class EventoApiController implements EventoApiDoc {
 	@Override
 	@GetMapping("/buscarPorNome")
 	public ResponseEntity<Page<EventoResponseDTO>> buscarEventoPorNome(@RequestParam(name = "nome") String nome,
-																	  @RequestParam(value = "page", required = false, defaultValue = "0") int page,
-																	  @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
+																	   @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+																	   @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
 		Page<EventoResponseDTO> eventos= this.eventoService.buscarEventoPorNome(nome, page, size);
 
 		if (!eventos.isEmpty()) {
@@ -55,8 +55,8 @@ public class EventoApiController implements EventoApiDoc {
 	@Override
 	@GetMapping
 	public Page<EventoResponseDTO> listarTodos(@RequestParam(value = "page", required = false, defaultValue = "0") int page,
-									@RequestParam(value = "size", required = false, defaultValue = "20") int size,
-									@RequestParam(value = "order", required = false, defaultValue = "dataInicio") String order) {
+											   @RequestParam(value = "size", required = false, defaultValue = "20") int size,
+											   @RequestParam(value = "order", required = false, defaultValue = "dataInicio") String order) {
 		return this.eventoService.listarEventosAprovados(page, size, order);
 	}
 	
