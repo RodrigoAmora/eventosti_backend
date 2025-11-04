@@ -4,7 +4,7 @@
 # eventosti_backend
 Descrição
 ---------
-Projeto para divulgação de eventos de tecnologia, feito em Java 21 e Spring Boot e hospedado no AWS.
+Projeto para divulgação de eventos de tecnologia, feito com Java e Spring Boot e hospedado no AWS.
 
 Dependências
 ------------
@@ -18,14 +18,14 @@ O projeto usa o Java 21 e as seguintes dependências:
 * Thymeleaf
 * Micrometer
 * Swagger / OpenAPI
-* OpenAPI
 * MySQL
 * H2
 * jUnit
+* Mockito
 
 Documentação dos Endpoints
 --------------------------
-A API conta com documentação automática via Swagger e Redoc:<br>
+A documentação da API pode ser vista através do Swagger e do Redoc.<br>
 
 <b>Documentação via Swagger:</b>
 ```shell script
