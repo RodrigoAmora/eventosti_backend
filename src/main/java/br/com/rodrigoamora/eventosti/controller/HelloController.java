@@ -37,4 +37,9 @@ public class HelloController {
 		return "download";
 	}
 
+	@RequestMapping(value = "/wifi", method = RequestMethod.GET)
+	public String wiFi() {
+		return "video";
+	}
+
 }
