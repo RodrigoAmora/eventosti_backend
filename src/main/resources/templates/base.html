@@ -2,7 +2,9 @@
 <head th:fragment="head">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
+	<title>Eventos TI</title>
+
 	<!-- CSS -->
 	<link th:href="@{/css/styles.css}" type="text/css" rel="stylesheet">
 	<link th:href="@{/css/relogio.css}" type="text/css" rel="stylesheet">
@@ -10,8 +12,6 @@
 	<link th:href="@{/css/bootstrap-5.2.3.min.css}" type="text/css" rel="stylesheet">
 	
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-	<title>Eventos TI</title>
 </head>
 
 <!-- Header -->
@@ -74,7 +74,6 @@
 		</div>
 	</nav>	
 </header>
-
 	
 <!-- Footer -->
 <footer th:fragment="footer" class="footer container-fluid">
@@ -117,7 +116,7 @@
 	
 	<div class="container px-5 text-center">
         <div class="text-white-50 small">
-            <div class="mb-2" id"copywrite">
+            <div class="mb-2" id="copywrite">
 				&copy;EventosTI <script>document.write(new Date().getFullYear());</script>. All Rights Reserved.
 			</div>
             <a href="#!">Privacy</a>
@@ -137,4 +136,3 @@
 	<script th:src="@{/js/validacoes.js}"></script>
 	<script th:src="@{/js/form_enviar_eventos.js}"></script>
 </footer>
-
