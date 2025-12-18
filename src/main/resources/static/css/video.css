@@ -10,5 +10,5 @@ html, body {
 video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* cobre a tela inteira */
+    object-fit: contain; /* cobre a tela inteira */
 }

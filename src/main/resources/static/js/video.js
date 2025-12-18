@@ -5,14 +5,21 @@ function entrarEmFullscreen() {
         video.requestFullscreen();
     } else if (video.webkitRequestFullscreen) {
         video.webkitRequestFullscreen();
-    } else if (video.msRequestFullscreen) {
-        video.msRequestFullscreen();
+    }
+}
+
+// Tenta travar em paisagem (Android funciona)
+function travarPaisagem() {
+    if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock("landscape").catch(() => {});
     }
 }
 
 window.addEventListener("load", () => {
     video.play().catch(() => {});
-    entrarEmFullscreen();
 });
 
-document.addEventListener("click", entrarEmFullscreen);
+video.addEventListener("click", () => {
+    entrarEmFullscreen();
+    travarPaisagem();
+});
