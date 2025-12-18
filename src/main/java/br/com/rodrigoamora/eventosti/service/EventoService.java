@@ -1,27 +1,26 @@
 package br.com.rodrigoamora.eventosti.service;
 
+import br.com.rodrigoamora.eventosti.dto.request.EventoRequestDTO;
+import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
+import br.com.rodrigoamora.eventosti.entity.Evento;
+import br.com.rodrigoamora.eventosti.entity.StatusEvento;
+import br.com.rodrigoamora.eventosti.entity.TipoEvento;
+import br.com.rodrigoamora.eventosti.exception.EventoNotFoundException;
+import br.com.rodrigoamora.eventosti.mapper.EventoMapper;
+import br.com.rodrigoamora.eventosti.repository.EventoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import br.com.rodrigoamora.eventosti.dto.request.EventoRequestDTO;
-import br.com.rodrigoamora.eventosti.dto.response.EventoResponseDTO;
-import br.com.rodrigoamora.eventosti.entity.Evento;
-import br.com.rodrigoamora.eventosti.exception.EventoNotFoundException;
-import br.com.rodrigoamora.eventosti.mapper.EventoMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
-
-import br.com.rodrigoamora.eventosti.entity.StatusEvento;
-import br.com.rodrigoamora.eventosti.entity.TipoEvento;
-import br.com.rodrigoamora.eventosti.repository.EventoRepository;
-
-@Component
+@Service
 public class EventoService {
 
 	@Autowired

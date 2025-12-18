@@ -1,12 +1,11 @@
 package br.com.rodrigoamora.eventosti.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import br.com.rodrigoamora.eventosti.repository.BlackListAccessTokenRepository;
 import br.com.rodrigoamora.eventosti.security.token.BlackListAccessToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class BlackListAccessTokenService {
 
 	@Autowired
