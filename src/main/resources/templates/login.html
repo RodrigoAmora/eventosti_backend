@@ -1,6 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="https://www.thymeleaf.org">
-<head th:replace="~{base :: head}"></head>
+	<head th:replace="~{base :: head}"></head>
 <body>
 	<head th:replace="~{base :: header}"></head>
 	
@@ -21,13 +21,13 @@
 			<form id="formLogin" th:action="@{/formLogin}" method="post" class="row g-3">
 				<div class="mb-3">
 					<input type="email" id="username" name="username" th:placeholder="#{message.type_email}" class="form-control" />
-					<p class="errorMessage" id="emailEmpty" th:message"#{message.error.login.email_empty}"></p>
+					<p class="errorMessage" id="emailEmpty" th:message="#{message.error.login.email_empty}"></p>
 				</div>
 				
 				<div class="mb-3">
 					<input type="password" id="password" name="password" th:placeholder="#{message.type_password}" value="" class="form-control" />
 					<span id="togglePassword" toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-					<p class="errorMessage" id="passwordEmpty" th:message"#{message.error.login.password_empty}"></p>
+					<p class="errorMessage" id="passwordEmpty" th:message="#{message.error.login.password_empty}"></p>
 				</div>
 				
 				<div class="mb-12">
