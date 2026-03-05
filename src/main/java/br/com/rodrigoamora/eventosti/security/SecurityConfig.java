@@ -81,7 +81,7 @@ public class SecurityConfig {
                 form -> form
                 .loginPage("/formLogin")
                 .loginProcessingUrl("/formLogin")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/evento/aprovar")
                 .permitAll()
             )
 			.logout(
