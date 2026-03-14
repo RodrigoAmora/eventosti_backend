@@ -21,8 +21,8 @@ public class EventoApiController implements EventoApiDoc {
 	@Override
 	@PostMapping
 	public ResponseEntity<EventoResponseDTO> salvarEvento(@RequestBody EventoRequestDTO eventoRequestDTO) {
-		var r = this.eventoService.salvarEvento(eventoRequestDTO);
-		return ResponseEntity.ok(r);
+		var response = this.eventoService.salvarEvento(eventoRequestDTO);
+		return ResponseEntity.ok(response);
 	}
 	
 	@Override
@@ -43,7 +43,7 @@ public class EventoApiController implements EventoApiDoc {
 	public ResponseEntity<Page<EventoResponseDTO>> buscarEventoPorNome(@RequestParam(name = "nome") String nome,
 																	   @RequestParam(value = "page", required = false, defaultValue = "0") int page,
 																	   @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
-		Page<EventoResponseDTO> eventos= this.eventoService.buscarEventoPorNome(nome, page, size);
+		Page<EventoResponseDTO> eventos = this.eventoService.buscarEventoPorNome(nome, page, size);
 
 		if (!eventos.isEmpty()) {
 			return ResponseEntity.ok(eventos);
