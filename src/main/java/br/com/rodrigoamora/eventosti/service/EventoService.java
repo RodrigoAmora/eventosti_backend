@@ -128,6 +128,7 @@ public class EventoService {
 	}
 
 	private Evento buscarEvento(Long id) {
-		return eventoRepository.findById(id).orElseThrow(() -> new EventoNotFoundException("Video não encontrado"));
+		return eventoRepository.findById(id).orElseThrow(() -> new EventoNotFoundException("Evento não encontrado"));
 	}
+	
 }
