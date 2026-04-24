@@ -1,14 +1,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="https://www.thymeleaf.org">
+
 	<head th:replace="~{base :: head}"></head>
+
 <body>
 	<head th:replace="~{base :: header}"></head>
 	
 	<div class="container body-content">
 		<div class="row text-center">
 			<h1 th:text="#{message.log_in}"></h1>
-			
-			<hr class="border border-primary border-3 opacity-75">
+
+			<img th:src="@{/assets/img/line-pulsing.gif}" style="width: 100%;" />
 			
 			<div th:if="${param.error}" class="mb-12">
 				<p class="errorMessage" th:text="#{message.error.login.login_invalid}"></p>
