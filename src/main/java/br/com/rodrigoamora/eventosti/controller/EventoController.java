@@ -68,12 +68,30 @@ public class EventoController {
 		int currentPage = page.orElse(1);
 		int pageSize = size.orElse(5);
 		
-		Page<EventoResponseDTO> eventos = this.eventoService.listarEventosEmEspera(currentPage-1, pageSize);
+		Page<EventoResponseDTO> eventos = this.buscarEventosEmEspera(currentPage-1, pageSize);
 		model = this.eventoService.setModel(model, eventos);
 		
 		return "admin/eventos_em_espera";
 	}
-	
+
+	@PostMapping("/evento/aprovar")
+	@PreAuthorize("hasRole('MODERATOR') || hasRole('ADMIN')")
+	public String redirectLogin(Model model,
+						        @RequestParam("page") Optional<Integer> page,
+						        @RequestParam("size") Optional<Integer> size) {
+		int currentPage = page.orElse(1);
+		int pageSize = size.orElse(5);
+
+		Page<EventoResponseDTO> eventos = this.buscarEventosEmEspera(currentPage-1, pageSize);
+		model = this.eventoService.setModel(model, eventos);
+
+		return "admin/eventos_em_espera";
+	}
+
+	private Page<EventoResponseDTO> buscarEventosEmEspera(int page, int size) {
+		return this.eventoService.listarEventosEmEspera(page, size);
+	}
+
 	@GetMapping("/verEvento")
 	public String verEvento(Model model,
 			  				@RequestParam("id") Long id) {
