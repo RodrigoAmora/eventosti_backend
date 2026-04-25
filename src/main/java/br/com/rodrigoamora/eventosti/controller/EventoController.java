@@ -65,10 +65,7 @@ public class EventoController {
 	public String aprovar(Model model,
   						  @RequestParam("page") Optional<Integer> page,
   						  @RequestParam("size") Optional<Integer> size) {
-		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(5);
-		
-		Page<EventoResponseDTO> eventos = this.buscarEventosEmEspera(currentPage-1, pageSize);
+		Page<EventoResponseDTO> eventos = this.buscarEventosEmEspera(page, size);
 		model = this.eventoService.setModel(model, eventos);
 		
 		return "admin/eventos_em_espera";
@@ -79,24 +76,24 @@ public class EventoController {
 	public String redirectLogin(Model model,
 						        @RequestParam("page") Optional<Integer> page,
 						        @RequestParam("size") Optional<Integer> size) {
-		int currentPage = page.orElse(1);
-		int pageSize = size.orElse(5);
-
-		Page<EventoResponseDTO> eventos = this.buscarEventosEmEspera(currentPage-1, pageSize);
+		Page<EventoResponseDTO> eventos = this.buscarEventosEmEspera(page, size);
 		model = this.eventoService.setModel(model, eventos);
 
 		return "admin/eventos_em_espera";
 	}
 
-	private Page<EventoResponseDTO> buscarEventosEmEspera(int page, int size) {
-		return this.eventoService.listarEventosEmEspera(page, size);
+	private Page<EventoResponseDTO> buscarEventosEmEspera(Optional<Integer> page,
+														  Optional<Integer> size) {
+		int currentPage = page.orElse(1);
+		int pageSize = size.orElse(5);
+		return this.eventoService.listarEventosEmEspera(currentPage-1, pageSize);
 	}
 
 	@GetMapping("/verEvento")
 	public String verEvento(Model model,
 			  				@RequestParam("id") Long id) {
 		Optional<Evento> evento = this.eventoService.buscarEventoPorId(id);
-		if (!evento.isPresent()) {
+		if (evento.isEmpty()) {
 			return "not_found";
 		}
 		model.addAttribute("evento", eventoMapper.toDTO(evento.get()));
