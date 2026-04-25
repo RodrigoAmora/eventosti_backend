@@ -1,6 +1,5 @@
 [![Coverage Status](https://codecov.io/gh/RodrigoAmora/eventosti_backend/branch/main/graph/badge.svg)](https://codecov.io/gh/RodrigoAmora/eventosti_backend)
 
-
 # eventosti_backend
 Descrição
 ---------
@@ -119,6 +118,6 @@ http://eventosti.com.br
 Autor
 -----
 <b>Rodrigo Amora</b>
-
+##
 LinkedIn: https://linkedin.com/in/rodrigoamora <br>
 E-mail: rodrigo.amora.freitas@gmail.com
