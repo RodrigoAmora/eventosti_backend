@@ -81,12 +81,14 @@ public class EventoService {
 
 	public Page<EventoResponseDTO> listarEventosAprovados(int page, int size, String order) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, order);
-		return this.eventoRepository.listarEventosAprovados(pageRequest).map(eventoMapper::toDTO);
+		return this.eventoRepository.listarEventosAprovados(pageRequest)
+									.map(eventoMapper::toDTO);
 	}
 
 	public Page<EventoResponseDTO> listarEventosEmEspera(int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
-		return this.eventoRepository.listarEventosEmEspera(pageRequest).map(eventoMapper::toDTO);
+		return this.eventoRepository.listarEventosEmEspera(pageRequest)
+									.map(eventoMapper::toDTO);
 	}
 
 	public EventoResponseDTO buscarEventoPeloId(Long id) {
@@ -100,15 +102,16 @@ public class EventoService {
 
 	public Page<EventoResponseDTO> buscarEventoPorNome(String nome, int page, int size) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "id");
-		return this.eventoRepository.buscarEventoPorNome(nome, pageRequest).map(eventoMapper::toDTO);
+		return this.eventoRepository.buscarEventoPorNome(nome, pageRequest)
+									.map(eventoMapper::toDTO);
 	}
 
 	public Model setModel(Model model, Page<EventoResponseDTO> eventos) {
 		int totalPages = eventos.getTotalPages();
 		if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
-                .boxed()
-                .collect(Collectors.toList());
+                								 .boxed()
+                								 .collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
@@ -128,7 +131,8 @@ public class EventoService {
 	}
 
 	private Evento buscarEvento(Long id) {
-		return eventoRepository.findById(id).orElseThrow(() -> new EventoNotFoundException("Evento não encontrado"));
+		return eventoRepository.findById(id)
+							   .orElseThrow(() -> new EventoNotFoundException("Evento não encontrado"));
 	}
 	
 }
