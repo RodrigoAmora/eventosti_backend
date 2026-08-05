@@ -15,7 +15,13 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="usuarios")
 public class Usuario {
@@ -37,54 +43,5 @@ public class Usuario {
             joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="id")})
     private List<Role> roles = new ArrayList<>();
-	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public String getNome() {
-		return nome;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	
-	public String getLogin() {
-		return login;
-	}
-	
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String login) {
-		this.password = login;
-	}
 
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
-
-	public String getHasError() {
-		return hasError;
-	}
-
-	public void setHasError(String hasError) {
-		this.hasError = hasError;
-	}
-	
 }
