@@ -17,6 +17,7 @@ O projeto usa o Java 21 e as seguintes dependências:
 * Thymeleaf
 * Micrometer
 * Swagger / OpenAPI
+* Lombok
 * MySQL
 * H2
 * jUnit
