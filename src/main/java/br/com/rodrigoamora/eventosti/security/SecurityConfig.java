@@ -98,7 +98,7 @@ public class SecurityConfig {
 	WebSecurityCustomizer webSecurityCustomizer() {
 		return (web) -> web.ignoring().requestMatchers("/ignore2", "/swagger-ui/**", "/swagger-ui.html",
 																	"/v3/api-docs/**", "/v2/api-docs/**", "/redoc.html",
-																	"css/**", "js/**", "assets/**", "/wifi");
+																	"css/**", "js/**", "assets/**");
 	}
 
 	@Bean
