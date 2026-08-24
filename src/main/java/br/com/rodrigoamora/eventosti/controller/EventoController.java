@@ -51,7 +51,7 @@ public class EventoController {
 		int pageSize = size.orElse(5);
 		
 		Page<EventoResponseDTO> eventos = this.eventoService.buscarEventoPorNome(nome, currentPage-1, pageSize);
-		model = this.eventoService.setModel(model, eventos);
+		this.eventoService.setModel(model, eventos);
 		
 		if (eventos.isEmpty()) {
 			return "not_found";
@@ -66,7 +66,7 @@ public class EventoController {
   						  @RequestParam("page") Optional<Integer> page,
   						  @RequestParam("size") Optional<Integer> size) {
 		Page<EventoResponseDTO> eventos = this.buscarEventosEmEspera(page, size);
-		model = this.eventoService.setModel(model, eventos);
+		this.eventoService.setModel(model, eventos);
 		
 		return "admin/eventos_em_espera";
 	}
@@ -77,7 +77,7 @@ public class EventoController {
 						        @RequestParam("page") Optional<Integer> page,
 						        @RequestParam("size") Optional<Integer> size) {
 		Page<EventoResponseDTO> eventos = this.buscarEventosEmEspera(page, size);
-		model = this.eventoService.setModel(model, eventos);
+		this.eventoService.setModel(model, eventos);
 
 		return "admin/eventos_em_espera";
 	}
